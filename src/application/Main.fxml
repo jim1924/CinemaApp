@@ -12,6 +12,7 @@
          <font>
             <Font size="28.0" />
          </font></Label>
-      <Button layoutX="268.0" layoutY="168.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="84.0" text="Staff" />
+      <Button layoutX="268.0" layoutY="168.0" mnemonicParsing="false" onAction="#gotosecondscene" prefHeight="31.0" prefWidth="84.0" text="Staff" />
+      <Label fx:id="lab" layoutX="94.0" layoutY="40.0" prefHeight="47.0" prefWidth="62.0" text=" " textFill="#c91f1f" />
    </children>
 </AnchorPane>
