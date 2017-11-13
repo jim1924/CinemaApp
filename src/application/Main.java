@@ -3,6 +3,7 @@ package application;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import users.Customer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -23,6 +24,8 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		launch(args);
+		//launch(args);
+		Customer cust = new Customer("fff","");
+		System.out.println(cust.getEmail());
 	}
 }
