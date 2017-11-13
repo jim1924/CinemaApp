@@ -20,5 +20,10 @@ public class CustLoginCtrl
 		window.setScene(loginscene);
 		window.show();
 	}
+	
+	public void checkcredentials(ActionEvent Event) throws IOException{
+		
+		
+	}
 
 }

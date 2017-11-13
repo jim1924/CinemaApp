@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="270.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StaffLoginCtrl">
    <children>
-      <Button layoutX="223.0" layoutY="182.0" mnemonicParsing="false" text="Login" />
+      <Button layoutX="223.0" layoutY="182.0" mnemonicParsing="false" onAction="#checkcredentials" text="Login" />
       <TextField layoutX="165.0" layoutY="120.0" />
       <TextField layoutX="165.0" layoutY="79.0" />
       <Label alignment="CENTER" layoutX="188.0" layoutY="36.0" prefHeight="21.0" prefWidth="126.0" text="Welcome" />
