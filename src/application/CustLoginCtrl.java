@@ -1,4 +1,5 @@
 package application;
+
 //test
 import java.io.IOException;
 
@@ -11,19 +12,20 @@ import javafx.stage.Stage;
 
 public class CustLoginCtrl
 {
-	
-	public void goback(ActionEvent Event) throws IOException{
-		
+
+	public void goback(ActionEvent Event) throws IOException
+	{
+
 		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
-		Scene loginscene=new Scene (main);
-		Stage window=(Stage)((Node)Event.getSource()).getScene().getWindow();
+		Scene loginscene = new Scene(main);
+		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
 	}
-	
-	public void checkcredentials(ActionEvent Event) throws IOException{
-		
-		
+
+	public void checkcredentials(ActionEvent Event) throws IOException
+	{
+
 	}
 
 }
