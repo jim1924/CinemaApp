@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +13,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class StaffLoginCtrl
 {
@@ -33,7 +35,7 @@ public class StaffLoginCtrl
 	TextField password = new TextField();
 	@FXML
 	Label lab = new Label();
-
+	
 	public void checkcredentials(ActionEvent Event) throws IOException
 	{
 
@@ -49,7 +51,7 @@ public class StaffLoginCtrl
 			if (true)
 			{
 				// go to next Scene
-				Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
+				Parent HomePage = FXMLLoader.load(getClass().getResource("/staff/HomePage.fxml"));
 				Scene HomePageScene = new Scene(HomePage);
 				Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 				window.setScene(HomePageScene);
@@ -66,5 +68,5 @@ public class StaffLoginCtrl
 		br.close();
 
 	}
-
+	
 }
