@@ -1,8 +1,19 @@
 package application;
 
+	
+import cinema.Screening;
+import cinema.Seat;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
+import users.Customer;
+import users.Employee;
+
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -25,7 +36,17 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
+
+		//launch(args);
+		Employee emp = new Employee("a@gmail.com","test");
+		Screening screening1=emp.createScreening("Justice League", "Batman.Superman, and Wonder woman", "//..", 4, 3);
+		Seat seat= screening1.getSeat(5, 5);
+		seat.book();
+		
+		System.out.println(seat.getBooked());
+
 		launch(args);
+
 
 	}
 }
