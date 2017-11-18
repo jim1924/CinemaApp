@@ -46,7 +46,7 @@ public class MovieSelectCtrl implements Initializable
 				System.out.println("clicked on " + list.getSelectionModel().getSelectedItem());
 			}
 		});
-		Image image = new Image(getClass().getResourceAsStream("/images/10.jpg"));
+		Image image = new Image(getClass().getResourceAsStream("/assets/10.jpg"));
 		iv.setImage(image);
 		
 
