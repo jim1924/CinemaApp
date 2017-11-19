@@ -30,7 +30,7 @@ public class MainCtrl
 	
 	public void gotocustlogin(ActionEvent Event) throws IOException{
 		
-		Parent login = FXMLLoader.load(getClass().getResource("/application/CustLogin.fxml"));
+		Parent login = FXMLLoader.load(getClass().getResource("/application/CustRegister.fxml"));
 		FadeTransition ft = new FadeTransition(Duration.millis(2000), login);
 		ft.setFromValue(0.0);
 		ft.setToValue(1.0);
