@@ -2,8 +2,8 @@ package users;
 
 public class User {
 
-private String email="";
-private String password="";
+protected String email="";
+protected String password="";
 private String firstName="";
 private String lastName="";
 
