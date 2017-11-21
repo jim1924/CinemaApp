@@ -7,12 +7,12 @@
 
 <AnchorPane prefHeight="270.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainCtrl">
    <children>
-      <Button fx:id="clickme" layoutX="159.0" layoutY="168.0" mnemonicParsing="false" onAction="#gotocustlogin" prefHeight="31.0" prefWidth="84.0" text="Customer" />
-      <Label alignment="CENTER" layoutX="174.0" layoutY="91.0" prefHeight="47.0" prefWidth="151.0" text="Log in">
+      <Button fx:id="clickme" layoutX="130.0" layoutY="168.0" mnemonicParsing="false" onAction="#gotocustlogin" prefHeight="47.0" prefWidth="110.0" text="Customer" />
+      <Label alignment="CENTER" layoutX="160.0" layoutY="55.0" prefHeight="80.0" prefWidth="177.0" text="Log in">
          <font>
-            <Font size="28.0" />
+            <Font size="35.0" />
          </font></Label>
-      <Button layoutX="268.0" layoutY="168.0" mnemonicParsing="false" onAction="#gotostafflogin" prefHeight="31.0" prefWidth="84.0" text="Staff" />
+      <Button layoutX="268.0" layoutY="168.0" mnemonicParsing="false" onAction="#gotostafflogin" prefHeight="47.0" prefWidth="110.0" text="Staff" />
       <Label fx:id="lab" layoutX="94.0" layoutY="40.0" prefHeight="47.0" prefWidth="62.0" text=" " textFill="#c91f1f" />
    </children>
 </AnchorPane>

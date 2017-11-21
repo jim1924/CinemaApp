@@ -1,6 +1,20 @@
 {
+	"LoginDetails":[
 
-	"Number": 2,
+		{
+		"username": "jim1924",
+		"password": 12345,
+		"email": "jim.1924@hotmail.com"
+		},
+		{
+		"username": "afify",
+		"password": 12345,
+		"email": "jim.1924@hotmail.com"			
+		}
+	],	
+
+	"Number" : 2 ,
+	"Number2": 5,
 	"String": "Hello World!",
 	"Boolean": true,
 	"Object": {
@@ -14,6 +28,10 @@
 		{
 			"Array Object String": "Objects in arrays do not need names"
 		}
-	]
+	],
+	"skata": [2,3,4,5,6]
+
+
+
 
 }
