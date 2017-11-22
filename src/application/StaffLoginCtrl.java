@@ -19,7 +19,7 @@ import javafx.util.Duration;
 
 public class StaffLoginCtrl
 {
-
+	//go back button
 	public void goback(ActionEvent Event) throws IOException
 	{
 		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
@@ -36,36 +36,22 @@ public class StaffLoginCtrl
 	@FXML
 	Label lab = new Label();
 	
+	//check credentials method
 	public void checkcredentials(ActionEvent Event) throws IOException
 	{
 
-		lab.setVisible(false);
-		BufferedReader br = new BufferedReader(new FileReader("./Credentials/Staff.txt"));
-		String line = br.readLine();
-
-		while (line != null)
-		{
-			String[] tester = new String[2];
-			tester = line.split(",");
-			// if (tester[0].equals(username.getText()) && tester[1].equals(password.getText()))
+		lab.setVisible(true);
+		
 			if (true)
 			{
-				// go to next Scene
+				// go to next Scene if the credentials are correct
 				Parent HomePage = FXMLLoader.load(getClass().getResource("/staff/HomePage.fxml"));
 				Scene HomePageScene = new Scene(HomePage);
 				Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 				window.setScene(HomePageScene);
 				window.show();
 				HomePageScene.getWindow().centerOnScreen();
-				break;
 			}
-			line = br.readLine();
-			if (line == null)
-			{
-				lab.setVisible(true);
-			}
-		}
-		br.close();
 
 	}
 	
