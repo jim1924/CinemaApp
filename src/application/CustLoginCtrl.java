@@ -30,6 +30,7 @@ public class CustLoginCtrl
 	 * @throws IOException
 	 */
 
+	//go back method
 	public void goback(ActionEvent Event) throws IOException
 	{
 
@@ -86,4 +87,16 @@ public class CustLoginCtrl
 
 	}
 
+	public void register(ActionEvent Event)throws IOException{
+		
+		Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/CustRegister.fxml"));
+		Scene HomePageScene = new Scene(HomePage);
+		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+		window.setScene(HomePageScene);
+		window.show();
+		HomePageScene.getWindow().centerOnScreen();
+		
+		
+	}
+	
 }
