@@ -44,8 +44,7 @@ public class MovieSelectCtrl implements Initializable
 	ComboBox<String> movieTimes=new ComboBox<>();
 	@FXML
 	ImageView iv = new ImageView();// Place where the image of the screen will be hosted
-	ObservableList<String> movieListItems = FXCollections.observableArrayList("Single", "Double", "Suite", "Family App", "Suite",
-			"Family App", "Suite", "Family App", "Suite", "Family App", "Suite", "Family App");
+	ObservableList<String> movieListItems = FXCollections.observableArrayList();
 	
 	ObservableList<String> movieTimesItems = FXCollections.observableArrayList("Monday 19/12 10.30", "Wednesday 20/12 17.00", "Wednesday 20/12 19.00", "Thursday 21/12 20.00","Thursday 21/12 21.00","Friday 22/12 21.00");
 
@@ -59,6 +58,11 @@ public class MovieSelectCtrl implements Initializable
 	{
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
 		JSONArray jsonArray = obj.getJSONArray("Movies");
+		JSONArray MovieList=jsonArray;
+		for (int i=0;i<MovieList.length();i++)
+		{
+			movieListItems.add(MovieList.getJSONObject(i).getString("title"));
+		}
 		
 		movieList.setItems(movieListItems);
 
