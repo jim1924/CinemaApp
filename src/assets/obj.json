@@ -1,1 +1,55 @@
-{"Array":["String in Array",300,false,{"Array Object String":"Objects in arrays do not need names"}],"skata":[2,3,4,5,6],"Number2":5,"Number":2,"Object":{"Object Number":23,"Object String":"I am in the object"},"String":"Hello World!","Boolean":true,"LoginDetails":[{"password":12345,"email":"jim.1924@hotmail.com","username":"jim1924"},{"password":12345,"email":"a@hotmail.com","username":"AFIFY"},{"password":12345,"email":"a@hotmail.com","username":"AFIFY"},{"username":"skata"},{"username":"skata"}]}
+{
+	"CustomerDetails": 
+	[
+		{
+			"firstName": "Ahmed",
+			"lastName": "Afify",
+			"password": "afasfafsfag",
+			"email": "asfas",
+			"bookings": [1]
+		}
+	],
+
+	"StaffDetails": 
+	[
+		{
+			"password": "afasfafsfag",
+			"email": "asfas"
+		}
+	],
+
+	"Movies": 
+	[
+		{
+			"title": "Justice League",
+			"desc": " batman",
+			"imgSrc": "./assests/1.jpg"
+		}
+	],
+
+	"Screenings": 
+	[
+		{ "screeningID":1,
+			"title": "Justice League",
+			"date": "15/12/17",
+			"time": "14:00",
+			"seats": 
+			[
+				{
+					"coor": "0,0",
+					"booked": false
+				}
+			]
+		}
+	],
+	"Bookings":
+	[
+	{"bookingID":1, 
+	"customerEmail":"aaaa@ss.com",
+	"screeningID" : 1,
+	"bookedSeats" : [
+	 "0,0","0,1"
+	]
+	}
+	]
+}

@@ -29,7 +29,7 @@ public class CustRegisterCtrl {
 		String emailVal=email.getText();
 		String pass=password.getText();
 		Customer cust = new Customer(emailVal,pass);
-		System.out.println(cust.getEmail());
+		
 		
 		Parent homePage = null;
 		try {
