@@ -22,7 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class MovieSelectCtrl implements Initializable
+public class SeatSelectionCtrl implements Initializable
 {
 
 	@FXML
@@ -50,22 +50,12 @@ public class MovieSelectCtrl implements Initializable
 	
 	}
 	
-	public void clickmovie(){ //Action when each movie of the list is clicked
 
-			
-			//code to change the displayed photo
-			System.out.println("clicked on " + movieList.getSelectionModel().getSelectedItem());
-			
-			//code to change the displayed description
-			System.out.println("Description changed");
-			
-			//code to change the available times
-	}
 
 	public void back(ActionEvent Event) throws IOException //back button
 	{
 
-		Parent main = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
+		Parent main = FXMLLoader.load(getClass().getResource("/customer/MovieSelect.fxml"));
 		Scene loginscene = new Scene(main);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
@@ -77,7 +67,7 @@ public class MovieSelectCtrl implements Initializable
 	{
 		
 		//code to go to the booking screen 
-		Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/AvailableTimes.fxml"));
+		Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/Confirmation.fxml"));
 		Scene availableTimesScene = new Scene(availableTimes);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(availableTimesScene);
