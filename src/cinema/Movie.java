@@ -1,9 +1,12 @@
 package cinema;
 
+import org.json.JSONArray;
+
 public class Movie {
-private String title;
-private String desc;
-private String imgSrc;
+
+	private String title;
+	private String desc;
+	private String imgSrc;
 
 public Movie (String title,String desc, String imgSrc)
 {

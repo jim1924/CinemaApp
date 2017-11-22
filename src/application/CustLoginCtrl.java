@@ -3,6 +3,12 @@ package application;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.tcg.json.JSONUtils;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import users.*;
 
 /**
  * This class incorporates the login page for the Customer.
@@ -57,15 +64,9 @@ public class CustLoginCtrl
 	public void checkcredentials(ActionEvent Event) throws IOException
 	{
 
-		lab.setVisible(false);
-		BufferedReader br = new BufferedReader(new FileReader("./Credentials/Customers.txt"));
-		String line = br.readLine();
+		lab.setVisible(true);
 
-		while (line != null)
-		{
-			String[] tester = new String[2];
-			tester = line.split(",");
-			// if (tester[0].equals(username.getText()) && tester[1].equals(password.getText())) {
+
 			if (true)
 			{
 				// go to next scene
@@ -75,15 +76,11 @@ public class CustLoginCtrl
 				window.setScene(HomePageScene);
 				window.show();
 				HomePageScene.getWindow().centerOnScreen();
-				break;
+				
+
+				
+
 			}
-			line = br.readLine();
-			if (line == null)
-			{
-				lab.setVisible(true);
-			}
-		}
-		br.close();
 
 	}
 

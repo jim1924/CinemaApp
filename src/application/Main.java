@@ -36,7 +36,8 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
-
+		
+		
 		
 		Employee emp = new Employee("a@gmail.com","test");
 		Screening screening1=emp.createScreening("Justice League", "Batman.Superman, and Wonder woman", "//..", 4, 3);
