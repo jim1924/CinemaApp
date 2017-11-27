@@ -10,21 +10,32 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustRegisterCtrl">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="600.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="61.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="339.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="300.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="0.0" prefWidth="0.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="name" promptText="Enter Name" GridPane.rowIndex="1" />
-      <TextField fx:id="email" promptText="Email" GridPane.rowIndex="2" />
-      <Label text="Registration Form" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Button fx:id="submit" onAction="#registerCustomer" alignment="CENTER" mnemonicParsing="false" text="Submit" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-      <PasswordField fx:id="password" promptText="Password" GridPane.rowIndex="3" />
+      <TextField fx:id="firstName" prefHeight="27.0" prefWidth="318.0" promptText="First Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="lastName" prefHeight="27.0" prefWidth="318.0" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="email" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <PasswordField fx:id="password" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <PasswordField fx:id="password2" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Label prefHeight="17.0" prefWidth="116.0" text="Registration Form" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Label fx:id="firstNameErrorLbl" prefHeight="66.0" prefWidth="240.0" textAlignment="CENTER" textFill="#d31919" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <Label fx:id="lastNameErrorLbl" prefHeight="67.0" prefWidth="240.0" textAlignment="CENTER" textFill="#d31919" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Label fx:id="emailErrorLbl" prefHeight="67.0" prefWidth="240.0" textAlignment="CENTER" textFill="#d31919" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Label fx:id="passwordErrorLbl" prefHeight="67.0" prefWidth="240.0" textAlignment="CENTER" textFill="#d31919" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Label fx:id="passwordErrorLbl2" prefHeight="67.0" prefWidth="240.0" textAlignment="CENTER" textFill="#d31919" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" onAction="#registerCustomer" text="Submit" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" /> 
    </children>
 </GridPane>

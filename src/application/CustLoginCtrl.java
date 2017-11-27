@@ -86,7 +86,7 @@ public class CustLoginCtrl
 
 	public void register(ActionEvent Event)throws IOException{
 		
-		Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/CustRegister.fxml"));
+		Parent HomePage = FXMLLoader.load(getClass().getResource("/application/CustRegister.fxml"));
 		Scene HomePageScene = new Scene(HomePage);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(HomePageScene);

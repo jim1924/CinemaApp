@@ -11,8 +11,8 @@ import com.tcg.json.JSONUtils;
 
 public class Customer extends User{
 
-	public Customer(String email, String password) {
-		super(email, password);
+	public Customer(String firstName,String lastName,String email, String password) {
+		super(firstName,lastName,email, password);
 		try {
 			registerCustomer();
 		} catch (IOException e) {
@@ -24,10 +24,12 @@ public class Customer extends User{
 	{
 		
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
-		JSONArray jsonArray = obj.getJSONArray("LoginDetails");
+		JSONArray jsonArray = obj.getJSONArray("CustomerDetails");
 		JSONObject temp = new JSONObject();
 		temp.put("email", email);
 		temp.put("password", password);
+		temp.put("firstname", firstName);
+		temp.put("lastname", lastName);
 		jsonArray.put(temp);
 		
 		

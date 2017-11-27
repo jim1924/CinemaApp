@@ -4,13 +4,16 @@ public class User {
 
 protected String email="";
 protected String password="";
-private String firstName="";
-private String lastName="";
+protected String firstName="";
+protected String lastName="";
 
-public User (String email, String password)
+public User (String firstName,String lastName,String email, String password)
 {
 	this.email=email;
 	this.password=password;
+	this.firstName=firstName;
+	this.lastName=lastName;
+	
 }
 public String getEmail()
 {

@@ -1,12 +1,18 @@
 {
-	"CustomerDetails": 
+	"Screenings": 
 	[
 		{
-			"firstName": "Ahmed",
-			"lastName": "Afify",
-			"password": "afasfafsfag",
-			"email": "asfas",
-			"bookings": [1]
+			"date": "15/12/17",
+			"screeningID": 1,
+			"time": "14:00",
+			"title": "Justice League",
+			"seats": 
+			[
+				{
+					"coor": "0,0",
+					"booked": false
+				}
+			]
 		}
 	],
 
@@ -18,38 +24,41 @@
 		}
 	],
 
+	"Bookings": 
+	[
+		{
+			"customerEmail": "aaaa@ss.com",
+			"screeningID": 1,
+			"bookingID": 1,
+			"bookedSeats": 
+			[
+				"0,0",
+				"0,1"
+			]
+		}
+	],
+
 	"Movies": 
 	[
 		{
 			"title": "Justice League",
-			"desc": " batman",
-			"imgSrc": "./assests/1.jpg"
+			"imgSrc": "./assests/1.jpg",
+			"desc": " batman"
 		}
 	],
 
-	"Screenings": 
+	"CustomerDetails": 
 	[
-		{ "screeningID":1,
-			"title": "Justice League",
-			"date": "15/12/17",
-			"time": "14:00",
-			"seats": 
+		{
+			"firstName": "Ahmed",
+			"lastName": "Afify",
+			"password": "afasfafsfag",
+			"bookings": 
 			[
-				{
-					"coor": "0,0",
-					"booked": false
-				}
-			]
+				1
+			],
+
+			"email": "asfas@gmail.com"
 		}
-	],
-	"Bookings":
-	[
-	{"bookingID":1, 
-	"customerEmail":"aaaa@ss.com",
-	"screeningID" : 1,
-	"bookedSeats" : [
-	 "0,0","0,1"
-	]
-	}
 	]
 }
