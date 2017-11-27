@@ -36,6 +36,7 @@
       <Label fx:id="emailErrorLbl" prefHeight="67.0" prefWidth="240.0" textAlignment="CENTER" textFill="#d31919" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Label fx:id="passwordErrorLbl" prefHeight="67.0" prefWidth="240.0" textAlignment="CENTER" textFill="#d31919" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
       <Label fx:id="passwordErrorLbl2" prefHeight="67.0" prefWidth="240.0" textAlignment="CENTER" textFill="#d31919" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-      <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" onAction="#registerCustomer" text="Submit" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" /> 
+      <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" onAction="#registerCustomer" text="Submit" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+      <Button mnemonicParsing="false" onAction="#goBack" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="6" /> 
    </children>
 </GridPane>

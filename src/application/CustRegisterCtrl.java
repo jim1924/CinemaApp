@@ -39,6 +39,14 @@ public class CustRegisterCtrl {
 	@FXML
 	Label passwordErrorLbl2;
 	
+	public void goBack(ActionEvent Event) throws IOException
+	{
+		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
+		Scene loginscene = new Scene(main);
+		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+		window.setScene(loginscene);
+		window.show();
+	}
 	
 	public void registerCustomer(ActionEvent Event)
 	{

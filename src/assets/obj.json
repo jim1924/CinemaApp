@@ -19,8 +19,8 @@
 	"StaffDetails": 
 	[
 		{
-			"password": "afasfafsfag",
-			"email": "asfas"
+			"password": "1234",
+			"email": "q@w.com"
 		}
 	],
 
@@ -59,6 +59,20 @@
 			],
 
 			"email": "asfas@gmail.com"
+		},
+
+		{
+			"password": "abcde",
+			"firstname": "Ahmed",
+			"email": "a.afifi1995@gmail.com",
+			"lastname": "Afify"
+		},
+
+		{
+			"password": "1234",
+			"firstname": "lolo",
+			"email": "a@b.com",
+			"lastname": "toto"
 		}
 	]
 }

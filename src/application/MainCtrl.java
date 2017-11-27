@@ -59,32 +59,53 @@ public class MainCtrl implements Initializable
 	}
 	
 	@FXML
-	TextField email; // decleration of a email text field
+	TextField email; // decleration of an email text field
 	@FXML
 	TextField password; // decleration of a password text field
 	@FXML
 	Label emailErrorLbl;
 	@FXML
 	Label passwordErrorLbl;
+	@FXML
+	Label loginErrorLbl;
 	
 	
-	public void checkcredentials(ActionEvent Event) throws IOException
+	public void checkCredentials(ActionEvent Event) throws IOException
 	{
 		boolean emailIsValid = DataValidation.emailValidator(email, emailErrorLbl);
 		boolean passwordIsValid = DataValidation.passwordValidator(password, passwordErrorLbl);
+		
 
 
 
 			if (emailIsValid && passwordIsValid)
 			{
-//				// go to next scene
-//				Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
-//				Scene HomePageScene = new Scene(HomePage);
-//				Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-//				window.setScene(HomePageScene);
-//				window.show();
-//				HomePageScene.getWindow().centerOnScreen();
-				System.out.println("ok");
+				String sEmail = email.getText();
+				String sPassword = password.getText();
+				boolean validDetails = false;
+				JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+				JSONArray jsonArray = obj.getJSONArray("CustomerDetails");
+				
+				for (int i=0; i<jsonArray.length(); i++)
+				{
+					JSONObject cust = jsonArray.getJSONObject(i);
+					String jEmail = cust.getString("email");
+					
+					if(sEmail.equals(jEmail))
+					{
+						String jPassword = cust.getString("password");
+						if(sPassword.equals(jPassword))
+						{
+							validDetails = true;
+							break;
+						}
+					}
+				}
+				if(validDetails)
+				{
+					loginErrorLbl.setText("You are Logged in");
+				}
+				else loginErrorLbl.setText("Invalid details");
 
 				
 
