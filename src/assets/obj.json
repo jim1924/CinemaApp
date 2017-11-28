@@ -5,7 +5,33 @@
 			"date": "15/12/17",
 			"screeningID": 1,
 			"time": "14:00",
-			"title": "Justice League",
+			"title": "The Shawshank Redemption (1994)",
+			"seats": 
+			[
+				{
+					"coor": "0,0",
+					"booked": false
+				}
+			]
+		},
+		{
+			"date": "16/12/17",
+			"screeningID": 1,
+			"time": "17:00",
+			"title": "The Godfather (1972)",
+			"seats": 
+			[
+				{
+					"coor": "0,0",
+					"booked": false
+				}
+			]
+		},
+		{
+			"date": "20/12/17",
+			"screeningID": 1,
+			"time": "19:00",
+			"title": "The Dark Knight (2008)",
 			"seats": 
 			[
 				{
@@ -15,6 +41,9 @@
 			]
 		}
 	],
+	
+	
+	
 
 	"StaffDetails": 
 	[
@@ -42,52 +71,52 @@
 	[
 		{
 			"title": "The Shawshank Redemption (1994)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/1.jpg",
 			"desc": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. "
 		},
 				{
 			"title": "The Godfather (1972)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/2.jpg",
 			"desc": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son. "
 		},
 				{
 			"title": "The Godfather: Part II (1974)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/3.jpg",
 			"desc": "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate. "
 		},
 				{
 			"title": "The Dark Knight (2008)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/4.jpg",
 			"desc": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, the Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice. "
 		},
 				{
 			"title": " 12 Angry Men (1957)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/5.jpg",
 			"desc": "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence. "
 		},
 				{
 			"title": " Schindler's List (1993)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/6.jpg",
 			"desc": "In German-occupied Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazi Germans. "
 		},
 				{
 			"title": " Pulp Fiction (1994)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/7.jpg",
 			"desc": "The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption. "
 		},
 				{
 			"title": "The Lord of the Rings: The Return of the King (2003)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/8.jpg",
 			"desc": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring. "
 		},
 				{
 			"title": "The Good, the Bad and the Ugly (1966)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/9.jpg",
 			"desc": "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery."
 		},
 				{
 			"title": " Fight Club (1999)",
-			"imgSrc": "./assests/1.jpg",
+			"imgSrc": "/assets/10.jpg",
 			"desc": "An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soap maker, forming an underground fight club that evolves into something much, much more. "
 		}
 	],

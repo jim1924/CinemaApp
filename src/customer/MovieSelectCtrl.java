@@ -2,6 +2,8 @@ package customer;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.json.JSONArray;
@@ -12,7 +14,6 @@ import com.tcg.json.JSONUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,7 +25,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -44,9 +44,12 @@ public class MovieSelectCtrl implements Initializable
 	ComboBox<String> movieTimes=new ComboBox<>();
 	@FXML
 	ImageView iv = new ImageView();// Place where the image of the screen will be hosted
-	ObservableList<String> movieListItems = FXCollections.observableArrayList();
 	
-	ObservableList<String> movieTimesItems = FXCollections.observableArrayList("Monday 19/12 10.30", "Wednesday 20/12 17.00", "Wednesday 20/12 19.00", "Thursday 21/12 20.00","Thursday 21/12 21.00","Friday 22/12 21.00");
+	ObservableList<String> movieListItems = FXCollections.observableArrayList();
+	ArrayList<String> movieDescription=new ArrayList<String>();
+	ArrayList<String> ImagesPath=new ArrayList<String>();
+ 	ObservableList<String> movieTimesItems = FXCollections.observableArrayList();
+ 	ArrayList<String[]> movieTimesList = new ArrayList<String[]>();  
 
 	/**
 	 * This method is initializing the movie-selection page.
@@ -58,18 +61,34 @@ public class MovieSelectCtrl implements Initializable
 	{
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
 		JSONArray jsonArray = obj.getJSONArray("Movies");
-		JSONArray MovieList=jsonArray;
-		for (int i=0;i<MovieList.length();i++)
+		JSONArray jsonArray2 = obj.getJSONArray("Screenings");
+		JSONArray Movies=jsonArray;
+		JSONArray Screenings=jsonArray2;
+		
+		for (int i=0;i<Movies.length();i++)
 		{
-			movieListItems.add(MovieList.getJSONObject(i).getString("title"));
+			movieListItems.add(Movies.getJSONObject(i).getString("title"));
+			movieDescription.add(Movies.getJSONObject(i).getString("desc"));
+			ImagesPath.add(Movies.getJSONObject(i).getString("imgSrc"));
+			String[] tempArray=new String[100];
+			for (int j=0;j<Screenings.length();j++)
+			{
+				if (Screenings.getJSONObject(j).getString("title").equals(Movies.getJSONObject(i).getString("title")))
+				{
+					tempArray[j]=Screenings.getJSONObject(j).getString("date");
+				}
+			}
+			movieTimesList.add(tempArray);
+			
+			
 		}
+		
 		
 		movieList.setItems(movieListItems);
 
 		Image image = new Image(getClass().getResourceAsStream("/assets/10.jpg"));
 		iv.setImage(image);
-		description.setText("A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery. ");
-		movieTimes.setItems(movieTimesItems);
+		description.setText(movieDescription.get(0));
 	
 	}
 	
@@ -84,9 +103,19 @@ public class MovieSelectCtrl implements Initializable
 			System.out.println("clicked on " + movieList.getSelectionModel().getSelectedItem());
 			
 			//code to change the displayed description
-			System.out.println("Description changed");
+			for (int i=0;i<movieListItems.size();i++){
+				if(movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i)))
+				{
+					description.setText(movieDescription.get(i));
+					System.out.println(String.valueOf(ImagesPath.get(i)));
+					Image image = new Image(getClass().getResourceAsStream(String.valueOf(ImagesPath.get(i))));
+					iv.setImage(image);
+				}
+			}
+			
 			
 			//code to change the available times
+			
 	}
 
 	/**
