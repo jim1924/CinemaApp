@@ -157,8 +157,15 @@ public class MovieSelectCtrl implements Initializable {
 	 * @param Event
 	 * @throws IOException
 	 */
+
 	public void booknow(ActionEvent Event) throws IOException {
 		if (movieTimes.getValue() != null) {
+
+	public void booknow(ActionEvent Event) throws IOException
+	{
+		//if (movieTimes.getValue() != null)
+		{
+
 			// code to go to the booking screen
 			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
 			Scene availableTimesScene = new Scene(availableTimes);
