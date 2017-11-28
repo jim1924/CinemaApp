@@ -1,7 +1,8 @@
-package application;
+package customer;
 
 import java.io.IOException;
 
+import application.DataValidation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

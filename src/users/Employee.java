@@ -12,7 +12,7 @@ public class Employee extends User{
 
 	public Screening createScreening(String title,String desc, String imgSrc,int date, int time)
 	{
-		Movie movie= new Movie(title,desc,imgSrc);
+		Movie movie= new Movie(title,desc);
 		Screening screening = new Screening(date,time,movie);
 		return screening;
 		
