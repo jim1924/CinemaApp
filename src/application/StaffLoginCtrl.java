@@ -1,8 +1,12 @@
 package application;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.tcg.json.JSONUtils;
 
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -17,11 +21,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class StaffLoginCtrl
-{
-	//go back button
-	public void goback(ActionEvent Event) throws IOException
-	{
+public class StaffLoginCtrl {
+	// go back button
+	public void goBack(ActionEvent Event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 		Scene loginscene = new Scene(main);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
@@ -30,29 +32,47 @@ public class StaffLoginCtrl
 	}
 
 	@FXML
-	TextField username = new TextField();
+	TextField email;
 	@FXML
-	TextField password = new TextField();
+	TextField password;
 	@FXML
-	Label lab = new Label();
-	
-	//check credentials method
-	public void checkcredentials(ActionEvent Event) throws IOException
-	{
+	Label emailErrorLbl;
+	@FXML
+	Label passwordErrorLbl;
+	@FXML
+	Label loginErrorLbl;
 
-		lab.setVisible(true);
-		
-			if (true)
-			{
-				// go to next Scene if the credentials are correct
-				Parent HomePage = FXMLLoader.load(getClass().getResource("/staff/HomePage.fxml"));
-				Scene HomePageScene = new Scene(HomePage);
-				Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-				window.setScene(HomePageScene);
-				window.show();
-				HomePageScene.getWindow().centerOnScreen();
+	// check credentials method
+	public void checkCredentials(ActionEvent Event) throws IOException {
+		boolean emailIsValid = DataValidation.emailValidator(email, emailErrorLbl);
+		boolean passwordIsValid = DataValidation.passwordValidator(password, passwordErrorLbl);
+
+		if (emailIsValid && passwordIsValid) {
+			String sEmail = email.getText();
+			String sPassword = password.getText();
+			boolean validDetails = false;
+			JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+			JSONArray jsonArray = obj.getJSONArray("StaffDetails");
+
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject cust = jsonArray.getJSONObject(i);
+				String jEmail = cust.getString("email");
+
+				if (sEmail.equals(jEmail)) {
+					String jPassword = cust.getString("password");
+					if (sPassword.equals(jPassword)) {
+						validDetails = true;
+						break;
+					}
+				}
 			}
+			if (validDetails) {
+				loginErrorLbl.setText("You are Logged in");
+			} else
+				loginErrorLbl.setText("Invalid details");
+
+		}
 
 	}
-	
+
 }

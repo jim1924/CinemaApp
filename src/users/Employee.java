@@ -5,8 +5,8 @@ import cinema.Screening;
 
 public class Employee extends User{
 
-	public Employee(String email, String password) {
-		super(email, password);
+	public Employee(String firstName,String lastName,String email, String password) {
+		super(firstName,lastName,email, password);
 		// TODO Auto-generated constructor stub
 	}
 
