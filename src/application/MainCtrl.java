@@ -26,7 +26,7 @@ public class MainCtrl implements Initializable
 {
 	public void gotostafflogin(ActionEvent Event) throws IOException{
 		
-		Parent login = FXMLLoader.load(getClass().getResource("/application/StaffLogin.fxml"));
+		Parent login = FXMLLoader.load(getClass().getResource("/staff/StaffLogin.fxml"));
 		FadeTransition ft = new FadeTransition(Duration.millis(500), login);
 		ft.setFromValue(0.0);
 		ft.setToValue(1.0);
@@ -39,7 +39,7 @@ public class MainCtrl implements Initializable
 	
 	public void goToCustReg(ActionEvent Event) throws IOException{
 		
-		Parent reg = FXMLLoader.load(getClass().getResource("/application/CustRegister.fxml"));
+		Parent reg = FXMLLoader.load(getClass().getResource("/customer/CustRegister.fxml"));
 		FadeTransition ft = new FadeTransition(Duration.millis(500), reg);
 		ft.setFromValue(0.0);
 		ft.setToValue(1.0);

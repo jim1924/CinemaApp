@@ -35,8 +35,7 @@ import javafx.stage.Stage;
  *
  */
 
-public class MovieSelectCtrl implements Initializable
-{
+public class MovieSelectCtrl implements Initializable {
 
 	@FXML
 	ListView<String> movieList = new ListView<>(); // movie list ListView
@@ -54,39 +53,34 @@ public class MovieSelectCtrl implements Initializable
 	ArrayList<String[]> movieTimesList = new ArrayList<String[]>();
 
 	/**
-	 * This method is initializing the movie-selection page. It populates the "movieList" ListView
-	 * with the available movies in order for the user to make a selection.
+	 * This method is initializing the movie-selection page. It populates the
+	 * "movieList" ListView with the available movies in order for the user to make
+	 * a selection.
 	 */
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{
+	public void initialize(URL location, ResourceBundle resources) {
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
 		JSONArray jsonArray = obj.getJSONArray("Movies");
 		JSONArray jsonArray2 = obj.getJSONArray("Screenings");
 		JSONArray Movies = jsonArray;
 		JSONArray Screenings = jsonArray2;
 
-		for (int i = 0; i < Movies.length(); i++)
-		{
+		for (int i = 0; i < Movies.length(); i++) {
 			movieListItems.add(Movies.getJSONObject(i).getString("title"));
 			movieDescription.add(Movies.getJSONObject(i).getString("desc"));
 			ImagesPath.add(Movies.getJSONObject(i).getString("imgSrc"));
 			int counter = 0;
-			for (int k = 0; k < Screenings.length(); k++)
-			{
+			for (int k = 0; k < Screenings.length(); k++) {
 
-				if (Screenings.getJSONObject(k).getString("title").equals(Movies.getJSONObject(i).getString("title")))
-				{
+				if (Screenings.getJSONObject(k).getString("title").equals(Movies.getJSONObject(i).getString("title"))) {
 					counter++;
 				}
 			}
 			String[] tempArray = new String[counter];
 			int counter2 = 0;
-			for (int j = 0; j < Screenings.length(); j++)
-			{
-				if (Screenings.getJSONObject(j).getString("title").equals(Movies.getJSONObject(i).getString("title")))
-				{
+			for (int j = 0; j < Screenings.length(); j++) {
+				if (Screenings.getJSONObject(j).getString("title").equals(Movies.getJSONObject(i).getString("title"))) {
 					tempArray[counter2] = "Date: " + Screenings.getJSONObject(j).getString("date") + " Time: "
 							+ Screenings.getJSONObject(j).getString("time");
 					counter2++;
@@ -104,26 +98,30 @@ public class MovieSelectCtrl implements Initializable
 	}
 
 	/**
-	 * This method changed the movie image, the description and the available times when each movie
-	 * is clicked
+	 * This method changed the movie image, the description and the available times
+	 * when each movie is clicked
 	 */
-	public void clickmovie()
-	{
+	public void clickmovie() {
 
 		// code to change the displayed photo
 		System.out.println("clicked on " + movieList.getSelectionModel().getSelectedItem());
 
-		// code to change the displayed description, available times and the displayed photo
-		for (int i = 0; i < movieListItems.size(); i++)
-		{
-			if (movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i)))
-			{
+		// code to change the displayed description, available times and the displayed
+		// photo
+		for (int i = 0; i < movieListItems.size(); i++) {
+			if (movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i))) {
+				Image validImage = null;
 				description.setText(movieDescription.get(i));
-				Image image = new Image(getClass().getResourceAsStream(String.valueOf(ImagesPath.get(i))));
-				iv.setImage(image);
+				try {
+					Image image = new Image(getClass().getResourceAsStream(String.valueOf(ImagesPath.get(i))));
+					validImage = image;
+				} catch (NullPointerException e) {
+					Image image = new Image(getClass().getResourceAsStream("/assets/placeholder.png"));
+					validImage = image;
+				}
+				iv.setImage(validImage);
 				ObservableList<String> movieTimesItems = FXCollections.observableArrayList();
-				for (int j = 0; j < movieTimesList.get(i).length; j++)
-				{
+				for (int j = 0; j < movieTimesList.get(i).length; j++) {
 					movieTimesItems.add(movieTimesList.get(i)[j]);
 				}
 				movieTimes.setItems(movieTimesItems);
@@ -135,7 +133,8 @@ public class MovieSelectCtrl implements Initializable
 	}
 
 	/**
-	 * This method allows the user to go one screen back when the back button is pressed
+	 * This method allows the user to go one screen back when the back button is
+	 * pressed
 	 * 
 	 * @param Event
 	 * @throws IOException
@@ -152,15 +151,14 @@ public class MovieSelectCtrl implements Initializable
 	}
 
 	/**
-	 * This method loads the Seat Selection page after the user has chosen a movie and a time
+	 * This method loads the Seat Selection page after the user has chosen a movie
+	 * and a time
 	 * 
 	 * @param Event
 	 * @throws IOException
 	 */
-	public void booknow(ActionEvent Event) throws IOException
-	{
-		if (movieTimes.getValue() != null)
-		{
+	public void booknow(ActionEvent Event) throws IOException {
+		if (movieTimes.getValue() != null) {
 			// code to go to the booking screen
 			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
 			Scene availableTimesScene = new Scene(availableTimes);
@@ -178,8 +176,7 @@ public class MovieSelectCtrl implements Initializable
 	 * @param Event
 	 * @throws IOException
 	 */
-	public void logout(ActionEvent Event) throws IOException
-	{
+	public void logout(ActionEvent Event) throws IOException {
 		// code to go to the first screen
 		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 		Scene loginscene = new Scene(main);
