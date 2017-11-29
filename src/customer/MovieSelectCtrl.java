@@ -111,12 +111,7 @@ public class MovieSelectCtrl implements Initializable
 	 */
 	public void clickMovie()
 	{
-
-		// code to change the displayed photo
-		System.out.println("clicked on " + movieList.getSelectionModel().getSelectedItem());
-
-		// code to change the displayed description, available times and the displayed
-		// photo
+		// code to change the displayed description, available times and the displayed photo
 		for (int i = 0; i < movieListItems.size(); i++) {
 			if (movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i))) {
 				

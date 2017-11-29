@@ -36,10 +36,7 @@ public class SeatSelectionCtrl implements Initializable
 	GridPane grid = new GridPane();
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) // values
-																	// when the
-																	// screen
-																	// loads
+	public void initialize(URL location, ResourceBundle resources) 
 	{
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
 		JSONArray jsonArray = obj.getJSONArray("Screenings");
@@ -67,7 +64,7 @@ public class SeatSelectionCtrl implements Initializable
 
 		grid.setVgap(5);
 		grid.setHgap(5);
-		//populates the GridPane. If the seat is booked, then the background colour is red.
+		// populates the GridPane. If the seat is booked, then the background colour is red.
 		for (int i = 0; i < 10; i++)
 		{
 			for (int j = 0; j < 10; j++)
@@ -76,19 +73,17 @@ public class SeatSelectionCtrl implements Initializable
 				Button button = new Button();
 				button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 				button.setAlignment(Pos.CENTER);
-				if (bookedSeats[i][j])
+				if (bookedSeats[i][j]!=null && bookedSeats[i][j])
 				{
 					button.setStyle("-fx-background-color: red;");
 				}
-				// button.setStyle("-fx-bac ");
-				// button.setStyle("-fx-background-color: green;");
 				GridPane.setConstraints(button, j, i);
 				grid.getChildren().add(button);
 			}
 		}
-		
-		//This for loop constantly listens for a mouseclick and handles the event. If the user clicks a pre-booked seat then nothing happens
-		//If the user click an available seat then it turns green. It they click it again, then it goes back to default.
+
+		// This for loop constantly listens for a mouseclick and handles the event. If the user clicks a pre-booked seat then nothing happens
+		// If the user click an available seat then it turns green. It they click it again, then it goes back to default.
 		for (Node element : grid.getChildren())
 		{
 			element.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>()
@@ -96,8 +91,10 @@ public class SeatSelectionCtrl implements Initializable
 				@Override
 				public void handle(MouseEvent event)
 				{
-					if (!bookedSeats[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)])
+					// if the seat is not booked from another person
+					if (bookedSeats[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)]!=null && !bookedSeats[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)])
 					{
+						// if the seat is empty, turn it into green
 						if (seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] == null || seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] == false)
 						{
 							getNodeFromGridPane(grid, GridPane.getColumnIndex(element), GridPane.getRowIndex(element)).setStyle("-fx-background-color: green;");
@@ -106,11 +103,10 @@ public class SeatSelectionCtrl implements Initializable
 						{
 							seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] = false;
 							getNodeFromGridPane(grid, GridPane.getColumnIndex(element), GridPane.getRowIndex(element)).setStyle("");
-
 						}
-
 					}
-					System.out.println(GridPane.getRowIndex(element) + " " + GridPane.getColumnIndex(element));
+					else
+						System.out.println("This seat is not registered as free or booked");
 				}
 			});
 		}
@@ -150,9 +146,21 @@ public class SeatSelectionCtrl implements Initializable
 		loginscene.getWindow().centerOnScreen();
 	}
 
-	public void booknow(ActionEvent Event) throws IOException // book now button
+	public void confirm(ActionEvent Event) throws IOException // book now button
 	{
-
+		boolean atLeastOneSeatLelected=false;
+		for (int i=0;i<10;i++)
+		{
+			for (int j=0;j<10;j++)
+			{
+				if (seatsToBook[i][j]!=null)
+				{
+					atLeastOneSeatLelected=true;
+				}
+			}
+		}
+		if(atLeastOneSeatLelected)
+		{
 		// code to go to the booking screen
 		Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/Confirmation.fxml"));
 		Scene availableTimesScene = new Scene(availableTimes);
@@ -160,6 +168,7 @@ public class SeatSelectionCtrl implements Initializable
 		window.setScene(availableTimesScene);
 		window.show();
 		availableTimesScene.getWindow().centerOnScreen();
+		}
 
 	}
 
