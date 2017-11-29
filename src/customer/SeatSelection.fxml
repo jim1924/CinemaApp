@@ -83,7 +83,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <GridPane gridLinesVisible="true" layoutX="78.0" layoutY="145.0" prefHeight="341.0" prefWidth="38.0" vgap="5.0">
+      <GridPane layoutX="78.0" layoutY="145.0" prefHeight="341.0" prefWidth="38.0" vgap="7.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -100,19 +100,19 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="A" GridPane.rowIndex="9" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="B" GridPane.rowIndex="8" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="C" GridPane.rowIndex="7" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="D" GridPane.rowIndex="6" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="E" GridPane.rowIndex="5" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="F" GridPane.rowIndex="4" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="G" GridPane.rowIndex="3" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="H" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="I" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" text="J" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="A" GridPane.rowIndex="9" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="B" GridPane.rowIndex="8" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="C" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="D" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="E" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="F" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="G" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="H" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="I" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="37.0" style="-fx-border-color: black;" text="J" />
          </children>
       </GridPane>
-      <GridPane gridLinesVisible="true" hgap="5.0" layoutX="116.0" layoutY="115.0" prefHeight="30.0" prefWidth="566.0">
+      <GridPane hgap="5.0" layoutX="116.0" layoutY="115.0" prefHeight="30.0" prefWidth="566.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -129,16 +129,16 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="1" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="2" GridPane.columnIndex="1" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="3" GridPane.columnIndex="2" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="4" GridPane.columnIndex="3" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="5" GridPane.columnIndex="4" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="6" GridPane.columnIndex="5" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="7" GridPane.columnIndex="6" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="8" GridPane.columnIndex="7" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="9" GridPane.columnIndex="8" />
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" text="10" GridPane.columnIndex="9" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="1" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="2" GridPane.columnIndex="1" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="3" GridPane.columnIndex="2" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="4" GridPane.columnIndex="3" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="5" GridPane.columnIndex="4" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="6" GridPane.columnIndex="5" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="7" GridPane.columnIndex="6" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="8" GridPane.columnIndex="7" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="9" GridPane.columnIndex="8" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="56.0" style="-fx-border-color: black;" text="10" GridPane.columnIndex="9" />
          </children>
       </GridPane>
    </children>

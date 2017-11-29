@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="662.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customer.MovieSelectCtrl">
    <children>
-      <ListView fx:id="movieList" layoutX="434.0" layoutY="344.0" onMouseClicked="#clickmovie" prefHeight="214.0" prefWidth="395.0" />
+      <ListView fx:id="movieList" layoutX="434.0" layoutY="344.0" onMouseClicked="#clickMovie" prefHeight="214.0" prefWidth="395.0" />
       <Label alignment="CENTER" layoutX="518.0" layoutY="67.0" prefHeight="45.0" prefWidth="221.0" text="Description" underline="true">
          <font>
             <Font size="26.0" />
@@ -59,7 +59,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="281.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#booknow" prefHeight="26.0" prefWidth="125.0" text="Book now">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#bookNow" prefHeight="26.0" prefWidth="125.0" text="Book now">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -68,11 +68,11 @@
             </HBox>
          </items>
       </ToolBar>
-      <Label alignment="CENTER" layoutX="507.0" layoutY="575.0" prefHeight="38.0" prefWidth="248.0" text="Choose a time" underline="true">
+      <Label alignment="CENTER" layoutX="507.0" layoutY="575.0" prefHeight="38.0" prefWidth="248.0" text="Choose a Date" underline="true">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <ComboBox fx:id="movieTimes" layoutX="515.0" layoutY="613.0" prefHeight="31.0" prefWidth="231.0" />
+      <ComboBox fx:id="movieTimes" layoutX="515.0" layoutY="613.0" prefHeight="31.0" prefWidth="248.0" />
    </children>
 </AnchorPane>

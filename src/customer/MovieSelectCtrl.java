@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import org.json.JSONArray;
@@ -37,6 +36,10 @@ import javafx.stage.Stage;
 
 public class MovieSelectCtrl implements Initializable
 {
+	public static String selectedMovie;
+	public static String selectedDate;
+	public static String selectedTime;
+	
 
 	@FXML
 	ListView<String> movieList = new ListView<>(); // movie list ListView
@@ -66,7 +69,7 @@ public class MovieSelectCtrl implements Initializable
 		JSONArray jsonArray2 = obj.getJSONArray("Screenings");
 		JSONArray Movies = jsonArray;
 		JSONArray Screenings = jsonArray2;
-
+		
 		for (int i = 0; i < Movies.length(); i++)
 		{
 			movieListItems.add(Movies.getJSONObject(i).getString("title"));
@@ -87,8 +90,7 @@ public class MovieSelectCtrl implements Initializable
 			{
 				if (Screenings.getJSONObject(j).getString("title").equals(Movies.getJSONObject(i).getString("title")))
 				{
-					tempArray[counter2] = "Date: " + Screenings.getJSONObject(j).getString("date") + " Time: "
-							+ Screenings.getJSONObject(j).getString("time");
+					tempArray[counter2] ="Date: "+Screenings.getJSONObject(j).getString("date") + " Time: "+ Screenings.getJSONObject(j).getString("time");
 					counter2++;
 				}
 			}
@@ -97,6 +99,7 @@ public class MovieSelectCtrl implements Initializable
 
 		movieList.setItems(movieListItems);
 
+		//populates with the first item of the movies list (to show something)
 		Image image = new Image(getClass().getResourceAsStream((ImagesPath.get(0))));
 		iv.setImage(image);
 		description.setText(movieDescription.get(0));
@@ -107,10 +110,8 @@ public class MovieSelectCtrl implements Initializable
 	 * This method changed the movie image, the description and the available times when each movie
 	 * is clicked
 	 */
-	public void clickmovie()
+	public void clickMovie()
 	{
-
-		// code to change the displayed photo
 		System.out.println("clicked on " + movieList.getSelectionModel().getSelectedItem());
 
 		// code to change the displayed description, available times and the displayed photo
@@ -157,10 +158,15 @@ public class MovieSelectCtrl implements Initializable
 	 * @param Event
 	 * @throws IOException
 	 */
-	public void booknow(ActionEvent Event) throws IOException
+	public void bookNow(ActionEvent Event) throws IOException
 	{
-		//if (movieTimes.getValue() != null)
+		if (movieTimes.getValue() != null)
 		{
+			String[] dateAndTime=splitDateValue();
+			selectedMovie=movieList.getSelectionModel().getSelectedItem();
+			selectedDate=dateAndTime[0];
+			selectedTime=dateAndTime[1];
+			
 			// code to go to the booking screen
 			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
 			Scene availableTimesScene = new Scene(availableTimes);
@@ -171,6 +177,15 @@ public class MovieSelectCtrl implements Initializable
 		}
 
 	}
+	//takes the selected item of the comboBox and returns and array where the 0'th element is the day and the 1'st is the time
+	public String[] splitDateValue()
+	{
+		String[] dateTimeTemp=movieTimes.getSelectionModel().getSelectedItem().split(" ");//takes what is in the comboBox, and splits it
+		String[] dateTime={dateTimeTemp[1],dateTimeTemp[3]};
+		return dateTime;
+	}
+	
+	
 
 	/**
 	 * This method allows the user to log out when the Log out button is pressed
