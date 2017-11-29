@@ -73,12 +73,15 @@ public class MainCtrl implements Initializable
 	public void checkCredentials(ActionEvent Event) throws IOException
 	{
 		//i wrote this code in order to move from one screen to another without having to put every time the credentials
-		Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
+		if(true) {
+			
+	    Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
 		Scene HomePageScene = new Scene(HomePage);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(HomePageScene);
 		window.show();
 		HomePageScene.getWindow().centerOnScreen();
+		}
 		
 		
 		boolean emailIsValid = DataValidation.emailValidator(email, emailErrorLbl);
@@ -91,13 +94,15 @@ public class MainCtrl implements Initializable
 			{
 				String sEmail = email.getText();
 				String sPassword = password.getText();
-				boolean validDetails = false;
+				boolean isCustomer = false;
+				boolean isStaff = false;
 				JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
-				JSONArray jsonArray = obj.getJSONArray("CustomerDetails");
+				JSONArray custArray = obj.getJSONArray("CustomerDetails");
+				JSONArray staffArray = obj.getJSONArray("StaffDetails");
 				
-				for (int i=0; i<jsonArray.length(); i++)
+				for (int i=0; i<custArray.length(); i++)
 				{
-					JSONObject cust = jsonArray.getJSONObject(i);
+					JSONObject cust = custArray.getJSONObject(i);
 					String jEmail = cust.getString("email");
 					
 					if(sEmail.equals(jEmail))
@@ -105,15 +110,48 @@ public class MainCtrl implements Initializable
 						String jPassword = cust.getString("password");
 						if(sPassword.equals(jPassword))
 						{
-							validDetails = true;
+							isCustomer = true;
 							break;
 						}
 					}
 				}
-				if(validDetails)
+				if(!isCustomer)
 				{
-					loginErrorLbl.setText("You are Logged in");
+					for (int i=0; i<staffArray.length(); i++)
+					{
+						JSONObject staff = staffArray.getJSONObject(i);
+						String jEmail = staff.getString("email");
+						
+						if(sEmail.equals(jEmail))
+						{
+							String jPassword = staff.getString("password");
+							if(sPassword.equals(jPassword))
+							{
+								isStaff = true;
+								break;
+							}
+						}
+					}
 				}
+				if(isCustomer)
+				{
+					Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
+					Scene HomePageScene = new Scene(HomePage);
+					Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+					window.setScene(HomePageScene);
+					window.show();
+					HomePageScene.getWindow().centerOnScreen();
+				}
+				else if(isStaff)
+				{
+					Parent HomePage = FXMLLoader.load(getClass().getResource("/staff/StaffHomePage.fxml"));
+					Scene HomePageScene = new Scene(HomePage);
+					Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+					window.setScene(HomePageScene);
+					window.show();
+					HomePageScene.getWindow().centerOnScreen();
+				}
+				
 				else loginErrorLbl.setText("Invalid details");
 
 				

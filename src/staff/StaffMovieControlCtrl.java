@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
 
+import application.VariableTracker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,10 +54,9 @@ public class StaffMovieControlCtrl implements Initializable {
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
-		JSONArray jsonArray = obj.getJSONArray("Movies");
-		JSONArray jsonArray2 = obj.getJSONArray("Screenings");
-		JSONArray Movies = jsonArray;
-		JSONArray Screenings = jsonArray2;
+		JSONArray Movies = obj.getJSONArray("Movies");
+		JSONArray Screenings = obj.getJSONArray("Screenings");
+		
 
 		for (int i = 0; i < Movies.length(); i++)
 		{
@@ -111,6 +111,13 @@ public class StaffMovieControlCtrl implements Initializable {
 		window.show();
 		loginscene.getWindow().centerOnScreen();
 	}
+	public void goToScreeningControl(ActionEvent Event) throws IOException {
+		Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningControl.fxml"));
+		Scene loginscene = new Scene(main);
+		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+		window.setScene(loginscene);
+		window.show();
+	}
 	/**
 	 * This method changed the movie image, the description and the available times when each movie
 	 * is clicked
@@ -126,6 +133,8 @@ public class StaffMovieControlCtrl implements Initializable {
 		{
 			if (movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i)))
 			{ Image validImage = null;
+			VariableTracker.movieTitle=movieListItems.get(i);
+			VariableTracker.movieDescription=movieDescription.get(i);
 				description.setText(movieDescription.get(i));
 				try {
 					Image image = new Image(getClass().getResourceAsStream(String.valueOf(ImagesPath.get(i))));
@@ -136,6 +145,7 @@ public class StaffMovieControlCtrl implements Initializable {
 					Image image = new Image(getClass().getResourceAsStream("/assets/placeholder.png"));
 					validImage = image;
 				}
+				VariableTracker.movieImage=validImage;
 				iv.setImage(validImage);
 				ObservableList<String> movieTimesItems = FXCollections.observableArrayList();
 				for (int j = 0; j < movieTimesList.get(i).length; j++)
