@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
 
+import application.VariableTracker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -67,6 +68,7 @@ public class MovieSelectCtrl implements Initializable {
 		JSONArray Screenings = jsonArray2;
 
 		for (int i = 0; i < Movies.length(); i++) {
+
 			movieListItems.add(Movies.getJSONObject(i).getString("title"));
 			movieDescription.add(Movies.getJSONObject(i).getString("desc"));
 			ImagesPath.add(Movies.getJSONObject(i).getString("imgSrc"));
@@ -110,6 +112,9 @@ public class MovieSelectCtrl implements Initializable {
 		// photo
 		for (int i = 0; i < movieListItems.size(); i++) {
 			if (movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i))) {
+				
+				VariableTracker.movieTitle=movieListItems.get(i);
+				VariableTracker.movieDescription=movieDescription.get(i);
 				Image validImage = null;
 				description.setText(movieDescription.get(i));
 				try {
@@ -119,6 +124,7 @@ public class MovieSelectCtrl implements Initializable {
 					Image image = new Image(getClass().getResourceAsStream("/assets/placeholder.png"));
 					validImage = image;
 				}
+				VariableTracker.movieImage=validImage;
 				iv.setImage(validImage);
 				ObservableList<String> movieTimesItems = FXCollections.observableArrayList();
 				for (int j = 0; j < movieTimesList.get(i).length; j++) {
@@ -159,11 +165,7 @@ public class MovieSelectCtrl implements Initializable {
 	 */
 
 	public void booknow(ActionEvent Event) throws IOException {
-		if (movieTimes.getValue() != null) {
-
-	public void booknow(ActionEvent Event) throws IOException
-	{
-		//if (movieTimes.getValue() != null)
+		// if (movieTimes.getValue() != null)
 		{
 
 			// code to go to the booking screen
