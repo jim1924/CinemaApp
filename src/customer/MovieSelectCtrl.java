@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
 
+import application.VariableTracker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -57,13 +58,13 @@ public class MovieSelectCtrl implements Initializable
 	ArrayList<String[]> movieTimesList = new ArrayList<String[]>();
 
 	/**
-	 * This method is initializing the movie-selection page. It populates the "movieList" ListView
-	 * with the available movies in order for the user to make a selection.
+	 * This method is initializing the movie-selection page. It populates the
+	 * "movieList" ListView with the available movies in order for the user to make
+	 * a selection.
 	 */
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{
+	public void initialize(URL location, ResourceBundle resources) {
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
 		JSONArray jsonArray = obj.getJSONArray("Movies");
 		JSONArray jsonArray2 = obj.getJSONArray("Screenings");
@@ -76,11 +77,9 @@ public class MovieSelectCtrl implements Initializable
 			movieDescription.add(Movies.getJSONObject(i).getString("desc"));
 			ImagesPath.add(Movies.getJSONObject(i).getString("imgSrc"));
 			int counter = 0;
-			for (int k = 0; k < Screenings.length(); k++)
-			{
+			for (int k = 0; k < Screenings.length(); k++) {
 
-				if (Screenings.getJSONObject(k).getString("title").equals(Movies.getJSONObject(i).getString("title")))
-				{
+				if (Screenings.getJSONObject(k).getString("title").equals(Movies.getJSONObject(i).getString("title"))) {
 					counter++;
 				}
 			}
@@ -107,24 +106,35 @@ public class MovieSelectCtrl implements Initializable
 	}
 
 	/**
-	 * This method changed the movie image, the description and the available times when each movie
-	 * is clicked
+	 * This method changed the movie image, the description and the available times
+	 * when each movie is clicked
 	 */
 	public void clickMovie()
 	{
+
+		// code to change the displayed photo
 		System.out.println("clicked on " + movieList.getSelectionModel().getSelectedItem());
 
-		// code to change the displayed description, available times and the displayed photo
-		for (int i = 0; i < movieListItems.size(); i++)
-		{
-			if (movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i)))
-			{
+		// code to change the displayed description, available times and the displayed
+		// photo
+		for (int i = 0; i < movieListItems.size(); i++) {
+			if (movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i))) {
+				
+				VariableTracker.movieTitle=movieListItems.get(i);
+				VariableTracker.movieDescription=movieDescription.get(i);
+				Image validImage = null;
 				description.setText(movieDescription.get(i));
-				Image image = new Image(getClass().getResourceAsStream(String.valueOf(ImagesPath.get(i))));
-				iv.setImage(image);
+				try {
+					Image image = new Image(getClass().getResourceAsStream(String.valueOf(ImagesPath.get(i))));
+					validImage = image;
+				} catch (NullPointerException e) {
+					Image image = new Image(getClass().getResourceAsStream("/assets/placeholder.png"));
+					validImage = image;
+				}
+				VariableTracker.movieImage=validImage;
+				iv.setImage(validImage);
 				ObservableList<String> movieTimesItems = FXCollections.observableArrayList();
-				for (int j = 0; j < movieTimesList.get(i).length; j++)
-				{
+				for (int j = 0; j < movieTimesList.get(i).length; j++) {
 					movieTimesItems.add(movieTimesList.get(i)[j]);
 				}
 				movieTimes.setItems(movieTimesItems);
@@ -136,7 +146,8 @@ public class MovieSelectCtrl implements Initializable
 	}
 
 	/**
-	 * This method allows the user to go one screen back when the back button is pressed
+	 * This method allows the user to go one screen back when the back button is
+	 * pressed
 	 * 
 	 * @param Event
 	 * @throws IOException
@@ -153,7 +164,8 @@ public class MovieSelectCtrl implements Initializable
 	}
 
 	/**
-	 * This method loads the Seat Selection page after the user has chosen a movie and a time
+	 * This method loads the Seat Selection page after the user has chosen a movie
+	 * and a time
 	 * 
 	 * @param Event
 	 * @throws IOException
@@ -193,8 +205,7 @@ public class MovieSelectCtrl implements Initializable
 	 * @param Event
 	 * @throws IOException
 	 */
-	public void logout(ActionEvent Event) throws IOException
-	{
+	public void logout(ActionEvent Event) throws IOException {
 		// code to go to the first screen
 		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 		Scene loginscene = new Scene(main);

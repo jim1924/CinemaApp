@@ -1,6 +1,7 @@
 package application;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class DataValidation {
@@ -9,6 +10,36 @@ public class DataValidation {
 
 	
 
+	public static boolean emptyValidator(TextArea field, Label label) 
+	{
+		boolean valid = true;
+		String labelString = null;
+		if (field.getText().isEmpty())
+		{
+			valid=false;
+			labelString = "Field can not be empty.";
+			
+		}
+		
+		label.setText(labelString);
+		return valid;
+	}
+	
+	public static boolean emptyValidator(TextField field, Label label) 
+	{
+		boolean valid = true;
+		String labelString = null;
+		if (field.getText().isEmpty())
+		{
+			valid=false;
+			labelString = "Field can not be empty.";
+			
+		}
+		
+		label.setText(labelString);
+		return valid;
+	}
+	
 	public static boolean nameValidator(TextField field, Label label) 
 	{
 		boolean valid = true;
@@ -28,6 +59,7 @@ public class DataValidation {
 		
 		return valid;
 	}
+
 	public static boolean emailValidator(TextField field, Label label) 
 	{
 		boolean valid = true;

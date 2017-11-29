@@ -149,6 +149,26 @@
 					"booked": false
 				}
 			]
+		},
+		{
+			"date": "09/06/17",
+			"time": "07:00",
+			"title": "Justice League"
+		},
+		{
+			"date": "02/12/2017",
+			"time": "03:00",
+			"title": "Fight Club (1999)"
+		},
+		{
+			"date": "09/12/2017",
+			"time": "13:00",
+			"title": "12 Angry Men (1957)"
+		},
+		{
+			"date": "02/12/2017",
+			"time": "06:00",
+			"title": "The Shawshank Redemption (1994)"
 		}
 		
 	],
@@ -229,6 +249,21 @@
 			"title": "Fight Club (1999)",
 			"imgSrc": "/assets/10.jpg",
 			"desc": "An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soap maker, forming an underground fight club that evolves into something much, much more. "
+		},
+		{
+			"title": "Justice League",
+			"imgSrc": "/assets/Justice League.jpg",
+			"desc": "Heroes do shit"
+		},
+		{
+			"title": "eee",
+			"imgSrc": "/assets/eee.jpg",
+			"desc": "asfqw\nefwefwe ke eig we\ngwegiw gweig  weig wig we giwgiw gi giwgi giwg\nwngiwe g\nw \ngw"
+		},
+		{
+			"title": "goku",
+			"imgSrc": "/assets/goku.jpg",
+			"desc": "ninja"
 		}
 	],
 
@@ -261,3 +296,4 @@
 		}
 	]
 }
+
