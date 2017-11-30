@@ -105,8 +105,10 @@ public class SeatSelectionCtrl implements Initializable
 							getNodeFromGridPane(grid, GridPane.getColumnIndex(element), GridPane.getRowIndex(element)).setStyle("");
 						}
 					}
-					else
+					else if(bookedSeats[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)]==null)
 						System.out.println("This seat is not registered as free or booked");
+					else
+						System.out.println("this seat is booked");
 				}
 			});
 		}
@@ -146,6 +148,7 @@ public class SeatSelectionCtrl implements Initializable
 		loginscene.getWindow().centerOnScreen();
 	}
 
+	
 	public void confirm(ActionEvent Event) throws IOException // book now button
 	{
 		boolean atLeastOneSeatLelected=false;
