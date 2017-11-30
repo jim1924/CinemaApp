@@ -1,5 +1,7 @@
 package customer;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,12 +36,13 @@ public class SeatSelectionCtrl implements Initializable
 
 	@FXML
 	GridPane grid = new GridPane();
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+	JSONArray jsonArray = obj.getJSONArray("Screenings");
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
-		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
-		JSONArray jsonArray = obj.getJSONArray("Screenings");
+
 		JSONArray Screenings = jsonArray;
 		for (int i = 0; i < Screenings.length(); i++)
 		{
@@ -52,11 +55,13 @@ public class SeatSelectionCtrl implements Initializable
 				// or not
 				for (int j = 0; j < availabilityObj.length(); j++)
 				{
+					
 					int row;
 					int column;
 					row = Integer.parseInt(Character.toString((availabilityObj.getJSONObject(j).getString("coor").charAt(0))));
 					column = Integer.parseInt(Character.toString((availabilityObj.getJSONObject(j).getString("coor").charAt(2))));
 					bookedSeats[row][column] = (availabilityObj.getJSONObject(j).getBoolean("booked"));
+					seatsToBook[row][column]=false;//populates the array which stores the seats that are going to booked
 				}
 
 			}
@@ -164,15 +169,50 @@ public class SeatSelectionCtrl implements Initializable
 		}
 		if(atLeastOneSeatLelected)
 		{
-		// code to go to the booking screen
-		Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/Confirmation.fxml"));
-		Scene availableTimesScene = new Scene(availableTimes);
-		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-		window.setScene(availableTimesScene);
-		window.show();
-		availableTimesScene.getWindow().centerOnScreen();
+			updateTheDataBase();
+			// code to go to the booking screen
+			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/Confirmation.fxml"));
+			Scene availableTimesScene = new Scene(availableTimes);
+			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+			window.setScene(availableTimesScene);
+			window.show();
+			availableTimesScene.getWindow().centerOnScreen();
 		}
 
+	}
+	
+	private void updateTheDataBase() throws IOException{
+		JSONArray Screenings = jsonArray;
+		for (int i = 0; i < Screenings.length(); i++)
+		{
+			// finds the specific screening
+			if (selectedMovie.equals(Screenings.getJSONObject(i).getString("title")) && selectedDate.equals(Screenings.getJSONObject(i).getString("date")) && selectedTime.equals(Screenings.getJSONObject(i).getString("time")))
+			{
+				// creates an object with the availability of each seat
+				JSONArray availabilityObj = Screenings.getJSONObject(i).getJSONArray("seats");
+				// loops through each object to identify if each seat is booked
+				// or not
+				for (int j = 0; j < availabilityObj.length(); j++)
+				{
+					int row;
+					int column;
+					row = Integer.parseInt(Character.toString((availabilityObj.getJSONObject(j).getString("coor").charAt(0))));
+					column = Integer.parseInt(Character.toString((availabilityObj.getJSONObject(j).getString("coor").charAt(2))));
+					if (availabilityObj.getJSONObject(j).getBoolean("booked"))
+					{
+						continue;
+					}
+					else if (seatsToBook[row][column])
+					availabilityObj.getJSONObject(j).put("booked", true);
+				}
+
+			}
+		}
+		BufferedWriter writer= new BufferedWriter( new FileWriter("./src/assets/obj.json"));
+		writer.write(obj.toString());
+		writer.close();
+		
+		
 	}
 
 	public void logout(ActionEvent Event) throws IOException // logout button
