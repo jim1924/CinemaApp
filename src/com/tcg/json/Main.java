@@ -20,7 +20,7 @@ public class Main {
 		
 		
 		
-		//jsonArray.put(jsonArray.length(),temp);// puts  the object to the index 2
+		//jsonArray.put(  ,temp);// puts  the object to the index 2
 		//jsonArray.remove(2);//removes the index 2
 		BufferedWriter writer= new BufferedWriter( new FileWriter("./src/assets/obj.json"));
 		writer.write(obj.toString());
