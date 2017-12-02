@@ -61,7 +61,7 @@ public class StaffLoginCtrl {
 			String sEmail = email.getText();
 			String sPassword = password.getText();
 			boolean validDetails = false;
-			JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+			JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
 			JSONArray jsonArray = obj.getJSONArray("StaffDetails");
 
 			for (int i = 0; i < jsonArray.length(); i++) {

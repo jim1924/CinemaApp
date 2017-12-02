@@ -62,10 +62,18 @@ public class MovieSelectCtrl implements Initializable
 	 * "movieList" ListView with the available movies in order for the user to make
 	 * a selection.
 	 */
+	
+	public MovieSelectCtrl() throws IOException {
+	} 
+	
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+	public void initialize(URL location, ResourceBundle resources)  {
+		
+		
+		
+		
 		JSONArray jsonArray = obj.getJSONArray("Movies");
 		JSONArray jsonArray2 = obj.getJSONArray("Screenings");
 		JSONArray Movies = jsonArray;

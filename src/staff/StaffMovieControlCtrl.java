@@ -31,6 +31,7 @@ import javafx.stage.Stage;
 
 public class StaffMovieControlCtrl implements Initializable {
 	
+	
 	@FXML
 	ListView<String> movieList = new ListView<>(); // movie list ListView
 	@FXML
@@ -50,12 +51,24 @@ public class StaffMovieControlCtrl implements Initializable {
 	 * This method is initializing the movie-selection page. It populates the "movieList" ListView
 	 * with the available movies in order for the user to make a selection.
 	 */
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
-		JSONArray Movies = obj.getJSONArray("Movies");
-		JSONArray Screenings = obj.getJSONArray("Screenings");
+		JSONObject obj = new JSONObject();
+		JSONArray Movies=new JSONArray();
+		JSONArray Screenings=new JSONArray();
+		try
+		{
+			obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+			Movies = obj.getJSONArray("Movies");
+			 Screenings = obj.getJSONArray("Screenings");
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
 		
 
 		for (int i = 0; i < Movies.length(); i++)

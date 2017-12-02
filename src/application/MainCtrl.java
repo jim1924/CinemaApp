@@ -1,15 +1,15 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
-import cinema.*;
+
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -71,7 +71,7 @@ public class MainCtrl implements Initializable
 	Label loginErrorLbl;
 	
 	
-	public void checkCredentials(ActionEvent Event) throws IOException
+	public void checkCredentials(ActionEvent Event) throws Exception
 	{
 /*		//i wrote this code in order to move from one screen to another without having to put every time the credentials
 		if(true) {
@@ -97,7 +97,8 @@ public class MainCtrl implements Initializable
 				String sPassword = password.getText();
 				boolean isCustomer = false;
 				boolean isStaff = false;
-				JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+				
+				JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
 				JSONArray custArray = obj.getJSONArray("CustomerDetails");
 				JSONArray staffArray = obj.getJSONArray("StaffDetails");
 				
@@ -118,7 +119,6 @@ public class MainCtrl implements Initializable
 								
 									{
 										VariableTracker.custBookings.add(((custArray.getJSONObject(i).getJSONArray("bookings").getInt(k))));
-										System.out.println(custArray.getJSONObject(i).getJSONArray("bookings").getInt(k));
 									}
 							break;
 						}

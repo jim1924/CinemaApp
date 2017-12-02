@@ -44,7 +44,7 @@ public Seat getSeat(int x,int y)
 public void addScreening() throws IOException
 {
 	
-	JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
 	JSONArray jsonArray = obj.getJSONArray("Screenings");
 	JSONObject temp = new JSONObject();
 	temp.put("date", date);

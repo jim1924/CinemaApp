@@ -1,7 +1,4 @@
 package customer;
-import application.*;
-
-import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -36,9 +33,12 @@ public class SeatSelectionCtrl implements Initializable
 	String selectedTime = MovieSelectCtrl.selectedTime;
 	Integer screeningID;
 
+	public SeatSelectionCtrl() throws IOException {
+	} 
+	
 	@FXML
 	GridPane grid = new GridPane();
-	JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
 	JSONArray screenings = obj.getJSONArray("Screenings");
 	JSONArray bookings = obj.getJSONArray("Bookings");
 	JSONArray customerDetails = obj.getJSONArray("CustomerDetails");
@@ -46,7 +46,7 @@ public class SeatSelectionCtrl implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
-
+		
 		JSONArray Screenings = screenings;
 		for (int i = 0; i < Screenings.length(); i++)
 		{
@@ -159,7 +159,7 @@ public class SeatSelectionCtrl implements Initializable
 	}
 
 	
-	public void confirm(ActionEvent Event) throws IOException // book now button
+	public void confirm(ActionEvent Event) throws Exception // book now button
 	{
 		boolean atLeastOneSeatLelected=false;
 		for (int i=0;i<10;i++)
@@ -186,7 +186,7 @@ public class SeatSelectionCtrl implements Initializable
 
 	}
 	
-	private void updateTheDataBase() throws IOException{
+	private void updateTheDataBase() throws Exception{
 		JSONArray Screenings = screenings;
 		for (int i = 0; i < Screenings.length(); i++)
 		{
@@ -227,7 +227,7 @@ public class SeatSelectionCtrl implements Initializable
 		}
 		
 		JSONObject newBooking = new JSONObject();
-		newBooking.put("customerEmail", "i have to find it");
+		newBooking.put("customerEmail", application.VariableTracker.custEmail);
 		newBooking.put("screeningID", screeningID);
 		newBooking.put("bookingID", bookingID);
 		ArrayList<String> seats=new ArrayList<String>();
@@ -246,50 +246,32 @@ public class SeatSelectionCtrl implements Initializable
 		
 		JSONArray CustomerDetails = customerDetails;
 		
-		System.out.println(application.VariableTracker.custEmail);
 		
-		
-/*		for (int i = 0; i < CustomerDetails.length(); i++)
+		for (int i = 0; i < CustomerDetails.length(); i++)
 		{
 			// finds the specific customer
-			if (selectedDate.equals(Screenings.getJSONObject(i).getString("date")) && selectedTime.equals(Screenings.getJSONObject(i).getString("time")))
+			if (application.VariableTracker.custEmail.equals(CustomerDetails.getJSONObject(i).getString("email")))
 			{
-				// creates an object with the availability of each seat
-				JSONArray availabilityObj = Screenings.getJSONObject(i).getJSONArray("seats");
-				// loops through each object to identify if each seat is booked
-				// or not
-				for (int j = 0; j < availabilityObj.length(); j++)
-				{
-					int row;
-					int column;
-					row = Integer.parseInt(Character.toString((availabilityObj.getJSONObject(j).getString("coor").charAt(0))));
-					column = Integer.parseInt(Character.toString((availabilityObj.getJSONObject(j).getString("coor").charAt(2))));
-					if (availabilityObj.getJSONObject(j).getBoolean("booked"))
-					{
-						continue;
-					}
-					else if (seatsToBook[row][column])
-					availabilityObj.getJSONObject(j).put("booked", true);
-				}
+				customerDetails.getJSONObject(i).getJSONArray("bookings").put(bookingID);
 
 			}
-		}*/
+		}
 		
 		
 		
 		
 		
+		FileWriter write = new FileWriter( "./src/assets/obj.json");
+		write.write(obj.toString());
+		write.close();
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
+		JSONObject skata = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+		System.out.println(skata.getJSONArray("Screenings").getJSONObject(0).getJSONArray("seats").getJSONObject(0).getBoolean("booked"));
+		System.out.println(skata.getJSONArray("Screenings").getJSONObject(0).getJSONArray("seats").getJSONObject(1).getBoolean("booked"));
+		System.out.println(skata.getJSONArray("Screenings").getJSONObject(0).getJSONArray("seats").getJSONObject(2).getBoolean("booked"));
+	
 		
 		
 		

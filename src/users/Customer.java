@@ -23,7 +23,7 @@ public class Customer extends User{
 	public void registerCustomer() throws IOException
 	{
 		
-		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+		JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
 		JSONArray jsonArray = obj.getJSONArray("CustomerDetails");
 		JSONObject temp = new JSONObject();
 		temp.put("email", email);

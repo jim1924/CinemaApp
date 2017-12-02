@@ -31,7 +31,7 @@ public Movie (String title,String desc)
 public void addMovie() throws IOException
 {
 	
-	JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
 	JSONArray jsonArray = obj.getJSONArray("Movies");
 	JSONObject temp = new JSONObject();
 	temp.put("title", title);

@@ -27,6 +27,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class ScreeningControlCtrl implements Initializable {
+	
+	
 
 	String title = VariableTracker.movieTitle;
 	String desc = VariableTracker.movieDescription;
@@ -46,13 +48,22 @@ public class ScreeningControlCtrl implements Initializable {
 		window.setScene(loginscene);
 		window.show();
 	}
+	
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
+		JSONObject obj =new JSONObject();
+		try{
+			obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
 		titleLbl.setText(title);
 		poster.setImage(image);
-		JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
+		
 		JSONArray screenings = obj.getJSONArray("Screenings");
 		ObservableList<String> times = FXCollections.observableArrayList();
 		

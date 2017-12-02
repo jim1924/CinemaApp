@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
@@ -8,6 +9,8 @@ public class VariableTracker {
 public static String movieTitle = "";
 public static String movieDescription = "";
 public static Image movieImage = null;
+
+
 
 
 
