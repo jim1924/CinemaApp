@@ -1,4 +1,5 @@
 package customer;
+import application.*;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -38,14 +39,15 @@ public class SeatSelectionCtrl implements Initializable
 	@FXML
 	GridPane grid = new GridPane();
 	JSONObject obj = JSONUtils.getJSONObjectFromFile("/assets/obj.json");
-	JSONArray jsonArray = obj.getJSONArray("Screenings");
-	JSONArray jsonArray2 = obj.getJSONArray("Bookings");
+	JSONArray screenings = obj.getJSONArray("Screenings");
+	JSONArray bookings = obj.getJSONArray("Bookings");
+	JSONArray customerDetails = obj.getJSONArray("CustomerDetails");
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
 
-		JSONArray Screenings = jsonArray;
+		JSONArray Screenings = screenings;
 		for (int i = 0; i < Screenings.length(); i++)
 		{
 			// finds the specific screening
@@ -185,7 +187,7 @@ public class SeatSelectionCtrl implements Initializable
 	}
 	
 	private void updateTheDataBase() throws IOException{
-		JSONArray Screenings = jsonArray;
+		JSONArray Screenings = screenings;
 		for (int i = 0; i < Screenings.length(); i++)
 		{
 			// finds the specific screening
@@ -211,9 +213,8 @@ public class SeatSelectionCtrl implements Initializable
 
 			}
 		}
-		JSONArray Bookings = jsonArray2;
+		JSONArray Bookings = bookings;
 		int bookingID=0;
-		//this doesn't work
 		//This for loops finds an available booking ID counting from 0
 		for (int i = 0; i < Bookings.length(); i++,bookingID++)
 		{
@@ -221,31 +222,79 @@ public class SeatSelectionCtrl implements Initializable
 				continue;
 			else
 			{
-				bookingID=Bookings.getJSONObject(i).getInt("bookingID");
 				break;
 			}
 		}
-		System.out.println(bookingID);
+		
 		JSONObject newBooking = new JSONObject();
 		newBooking.put("customerEmail", "i have to find it");
 		newBooking.put("screeningID", screeningID);
 		newBooking.put("bookingID", bookingID);
-		String[] seats=new String[100];
-		int counter=0;
+		ArrayList<String> seats=new ArrayList<String>();
 		for (int i=0;i<10;i++)
 		{
 			for (int j=0;j<10;j++)
 			{
 					if(seatsToBook[i][j])
 					{
-						seats[counter]=i+","+j;
-						counter++;
+						seats.add(i+","+j);
 					}
 			}
 		}
-/*		newBooking.put("seats", seats);
-		jsonArray2.put(jsonArray2.length(),newBooking);
-		BufferedWriter writer= new BufferedWriter( new FileWriter("./src/assets/obj.json"));
+		newBooking.put("seats", seats.toArray());
+		bookings.put(bookings.length(),newBooking);
+		
+		JSONArray CustomerDetails = customerDetails;
+		
+		System.out.println(application.VariableTracker.custEmail);
+		
+		
+/*		for (int i = 0; i < CustomerDetails.length(); i++)
+		{
+			// finds the specific customer
+			if (selectedDate.equals(Screenings.getJSONObject(i).getString("date")) && selectedTime.equals(Screenings.getJSONObject(i).getString("time")))
+			{
+				// creates an object with the availability of each seat
+				JSONArray availabilityObj = Screenings.getJSONObject(i).getJSONArray("seats");
+				// loops through each object to identify if each seat is booked
+				// or not
+				for (int j = 0; j < availabilityObj.length(); j++)
+				{
+					int row;
+					int column;
+					row = Integer.parseInt(Character.toString((availabilityObj.getJSONObject(j).getString("coor").charAt(0))));
+					column = Integer.parseInt(Character.toString((availabilityObj.getJSONObject(j).getString("coor").charAt(2))));
+					if (availabilityObj.getJSONObject(j).getBoolean("booked"))
+					{
+						continue;
+					}
+					else if (seatsToBook[row][column])
+					availabilityObj.getJSONObject(j).put("booked", true);
+				}
+
+			}
+		}*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+/*		BufferedWriter writer= new BufferedWriter( new FileWriter("./src/assets/obj.json"));
 		writer.write(obj.toString());
 		writer.close();*/
 		

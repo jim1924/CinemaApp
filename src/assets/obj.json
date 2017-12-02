@@ -342,17 +342,21 @@
 		},
 
 		{
-			"password": "abcde",
-			"firstname": "Ahmed",
-			"email": "a.afifi1995@gmail.com",
-			"lastname": "Afify"
+			"password": "12345",
+			"firstName": "Dimitris",
+			"email": "jim.1924@hotmail.com",
+			"lastName": "Selalmazidis",
+			"bookings": 
+			[
+				
+			]
 		},
 
 		{
 			"password": "1234",
-			"firstname": "lolo",
+			"firstName": "lolo",
 			"email": "a@b.com",
-			"lastname": "toto"
+			"lastName": "toto"
 		}
 	]
 }

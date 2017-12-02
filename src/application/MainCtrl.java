@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import org.json.JSONArray;
@@ -72,7 +73,7 @@ public class MainCtrl implements Initializable
 	
 	public void checkCredentials(ActionEvent Event) throws IOException
 	{
-		//i wrote this code in order to move from one screen to another without having to put every time the credentials
+/*		//i wrote this code in order to move from one screen to another without having to put every time the credentials
 		if(true) {
 			
 	    Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
@@ -81,7 +82,7 @@ public class MainCtrl implements Initializable
 		window.setScene(HomePageScene);
 		window.show();
 		HomePageScene.getWindow().centerOnScreen();
-		}
+		}*/
 		
 		
 		boolean emailIsValid = DataValidation.emailValidator(email, emailErrorLbl);
@@ -111,6 +112,14 @@ public class MainCtrl implements Initializable
 						if(sPassword.equals(jPassword))
 						{
 							isCustomer = true;
+							VariableTracker.custFirstName=cust.getString("firstName");
+							VariableTracker.custLastName=cust.getString("lastName");
+							for(int k=0;k<custArray.getJSONObject(i).getJSONArray("bookings").length();k++)
+								
+									{
+										VariableTracker.custBookings.add(((custArray.getJSONObject(i).getJSONArray("bookings").getInt(k))));
+										System.out.println(custArray.getJSONObject(i).getJSONArray("bookings").getInt(k));
+									}
 							break;
 						}
 					}
@@ -135,6 +144,8 @@ public class MainCtrl implements Initializable
 				}
 				if(isCustomer)
 				{
+					VariableTracker.custEmail=email.getText();
+					
 					Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
 					Scene HomePageScene = new Scene(HomePage);
 					Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
