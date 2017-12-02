@@ -2,44 +2,104 @@ package customer;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.tcg.json.JSONUtils;
-
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ConfirmationCtrl implements Initializable
 {
+	@FXML
+	Label seatLabel = new Label();
 
 
 	@FXML
-	GridPane grid = new GridPane();
+	Label movie = new Label();
+	@FXML
+	Label date = new Label();
+	@FXML
+	Label time = new Label();
+	@FXML
+	Label bookedSeats = new Label();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
-		
-
+		movie.setText(SeatSelectionCtrl.selectedMovie);
+		date.setText(SeatSelectionCtrl.selectedDate);
+		time.setText(SeatSelectionCtrl.selectedTime);
+		ArrayList<String> bookedSeats = new ArrayList<String>();
+		int counter = 0;
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				if (SeatSelectionCtrl.seatsToBook[i][j])
+				{
+					bookedSeats.add(mapping(i, j));
+					counter++;
+					
+				}
+			}
+		}
+		String allSeats="";
+		if(counter==1){
+			seatLabel.setText("Booked seat:");
+			allSeats="Seat: "+bookedSeats.get(0);
+		}
+		else{
+			
+			int count=1;
+			for (int i=0;i<bookedSeats.size();i++)
+			{
+				allSeats=allSeats+"Seat "+count+": "+bookedSeats.get(i)+" ";
+				count++;
+			}
+		}
+		this.bookedSeats.setText(allSeats);
+	}
+	
+	public String mapping(int i,int j)
+	{
+		String row="";
+		String column="";
+		switch (i){
+		case 0:row="J"; break;
+		case 1:row="I"; break;
+		case 2:row="H"; break;
+		case 3:row="G"; break;
+		case 4:row="F"; break;
+		case 5:row="E"; break;
+		case 6:row="D"; break;
+		case 7:row="C"; break;
+		case 8:row="B"; break;
+		case 9:row="A"; break;
+		}
+		switch (j){
+		case 0:column="1"; break;
+		case 1:column="2"; break;
+		case 2:column="3"; break;
+		case 3:column="4"; break;
+		case 4:column="5"; break;
+		case 5:column="6"; break;
+		case 6:column="7"; break;
+		case 7:column="8"; break;
+		case 8:column="9"; break;
+		case 9:column="10"; break;
+		}
+		String rowColumn=row+""+column;
+		return rowColumn;
 	}
 
 	
-
 	public void logout(ActionEvent Event) throws IOException // logout button
 	{
 		// code to go to the first screen

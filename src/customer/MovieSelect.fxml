@@ -68,11 +68,17 @@
             </HBox>
          </items>
       </ToolBar>
-      <Label alignment="CENTER" layoutX="507.0" layoutY="575.0" prefHeight="38.0" prefWidth="248.0" text="Choose a Date" underline="true">
+      <Label alignment="CENTER" layoutX="434.0" layoutY="569.0" prefHeight="38.0" prefWidth="181.0" text="Choose a Date" underline="true">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <ComboBox fx:id="movieTimes" layoutX="515.0" layoutY="613.0" prefHeight="31.0" prefWidth="248.0" />
+      <ComboBox fx:id="movieDates" layoutX="434.0" layoutY="607.0" prefHeight="31.0" prefWidth="181.0" />
+      <Label alignment="CENTER" layoutX="632.0" layoutY="569.0" prefHeight="38.0" prefWidth="181.0" text="Choose a Time" underline="true">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="movieTimes" layoutX="653.0" layoutY="607.0" onMouseEntered="#mouseToTimeComboBox" prefHeight="31.0" prefWidth="140.0" />
    </children>
 </AnchorPane>

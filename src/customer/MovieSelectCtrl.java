@@ -1,9 +1,10 @@
 package customer;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import org.json.JSONArray;
@@ -40,12 +41,13 @@ public class MovieSelectCtrl implements Initializable
 	public static String selectedMovie;
 	public static String selectedDate;
 	public static String selectedTime;
-	
 
 	@FXML
 	ListView<String> movieList = new ListView<>(); // movie list ListView
 	@FXML
 	Label description = new Label(); // movie description label
+	@FXML
+	ComboBox<String> movieDates = new ComboBox<>();
 	@FXML
 	ComboBox<String> movieTimes = new ComboBox<>();
 	@FXML
@@ -55,39 +57,36 @@ public class MovieSelectCtrl implements Initializable
 	ArrayList<String> movieDescription = new ArrayList<String>();
 	ArrayList<String> ImagesPath = new ArrayList<String>();
 	// this is in arrayList with each row having an array
-	ArrayList<String[]> movieTimesList = new ArrayList<String[]>();
+	ArrayList<String[]> movieDatesList = new ArrayList<String[]>();
 
 	/**
-	 * This method is initializing the movie-selection page. It populates the
-	 * "movieList" ListView with the available movies in order for the user to make
-	 * a selection.
+	 * This method is initializing the movie-selection page. It populates the "movieList" ListView
+	 * with the available movies in order for the user to make a selection.
 	 */
-	
-	public MovieSelectCtrl() throws IOException {
-	} 
-	
+
+	public MovieSelectCtrl() throws IOException
+	{
+	}
+
 	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+	JSONArray Movies = obj.getJSONArray("Movies");
+	JSONArray Screenings = obj.getJSONArray("Screenings");
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources)  {
-		
-		
-		
-		
-		JSONArray jsonArray = obj.getJSONArray("Movies");
-		JSONArray jsonArray2 = obj.getJSONArray("Screenings");
-		JSONArray Movies = jsonArray;
-		JSONArray Screenings = jsonArray2;
-		
+	public void initialize(URL location, ResourceBundle resources)
+	{
+
 		for (int i = 0; i < Movies.length(); i++)
 		{
 			movieListItems.add(Movies.getJSONObject(i).getString("title"));
 			movieDescription.add(Movies.getJSONObject(i).getString("desc"));
 			ImagesPath.add(Movies.getJSONObject(i).getString("imgSrc"));
 			int counter = 0;
-			for (int k = 0; k < Screenings.length(); k++) {
+			for (int k = 0; k < Screenings.length(); k++)
+			{
 
-				if (Screenings.getJSONObject(k).getString("title").equals(Movies.getJSONObject(i).getString("title"))) {
+				if (Screenings.getJSONObject(k).getString("title").equals(Movies.getJSONObject(i).getString("title")))
+				{
 					counter++;
 				}
 			}
@@ -97,60 +96,83 @@ public class MovieSelectCtrl implements Initializable
 			{
 				if (Screenings.getJSONObject(j).getString("title").equals(Movies.getJSONObject(i).getString("title")))
 				{
-					tempArray[counter2] ="Date: "+Screenings.getJSONObject(j).getString("date") + " Time: "+ Screenings.getJSONObject(j).getString("time");
+					tempArray[counter2] = Screenings.getJSONObject(j).getString("date");
 					counter2++;
 				}
 			}
-			movieTimesList.add(tempArray);
+			// each row of this variable is a different movie. Each column has an array with the
+			// available Dates of this movie
+			movieDatesList.add(tempArray);
 		}
 
 		movieList.setItems(movieListItems);
 
-		//populates with the first item of the movies list (to show something)
+		// populates with the first item of the movies list (to show something)
 		Image image = new Image(getClass().getResourceAsStream((ImagesPath.get(0))));
 		iv.setImage(image);
 		description.setText(movieDescription.get(0));
-
+		
 	}
 
 	/**
-	 * This method changed the movie image, the description and the available times
-	 * when each movie is clicked
+	 * This method changed the movie image, the description and the available dates when each movie
+	 * is clicked
 	 */
 	public void clickMovie()
 	{
-		// code to change the displayed description, available times and the displayed photo
-		for (int i = 0; i < movieListItems.size(); i++) {
-			if (movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i))) {
-				
-				VariableTracker.movieTitle=movieListItems.get(i);
-				VariableTracker.movieDescription=movieDescription.get(i);
+		selectedMovie = movieList.getSelectionModel().getSelectedItem();
+		// code to change the displayed description, available Dates and the displayed photo
+		for (int i = 0; i < movieListItems.size(); i++)
+		{
+			if (movieList.getSelectionModel().getSelectedItem().equals(movieListItems.get(i)))
+			{
+
+				VariableTracker.movieTitle = movieListItems.get(i);
+				VariableTracker.movieDescription = movieDescription.get(i);
 				Image validImage = null;
 				description.setText(movieDescription.get(i));
-				try {
+				try
+				{
 					Image image = new Image(getClass().getResourceAsStream(String.valueOf(ImagesPath.get(i))));
 					validImage = image;
-				} catch (NullPointerException e) {
+				} catch (NullPointerException e)
+				{
 					Image image = new Image(getClass().getResourceAsStream("/assets/placeholder.png"));
 					validImage = image;
 				}
-				VariableTracker.movieImage=validImage;
+				VariableTracker.movieImage = validImage;
 				iv.setImage(validImage);
-				ObservableList<String> movieTimesItems = FXCollections.observableArrayList();
-				for (int j = 0; j < movieTimesList.get(i).length; j++) {
-					movieTimesItems.add(movieTimesList.get(i)[j]);
+				ObservableList<String> movieDatesItems = FXCollections.observableArrayList();
+				for (int j = 0; j < movieDatesList.get(i).length; j++)
+				{
+					movieDatesItems.add(movieDatesList.get(i)[j]);
 				}
-				movieTimes.setItems(movieTimesItems);
+				movieDates.setItems(movieDatesItems);
 			}
 		}
-
-		// code to change the available times
-
 	}
 
 	/**
-	 * This method allows the user to go one screen back when the back button is
-	 * pressed
+	 * This method changed the movie times, when the mouse enters the area of the time combobox
+	 */
+
+	public void mouseToTimeComboBox()
+	{
+		ObservableList<String> movieTimesItems = FXCollections.observableArrayList();
+		selectedDate = movieDates.getSelectionModel().getSelectedItem();
+		// code to change the content of the combox Times
+		for (int i = 0; i < Screenings.length(); i++)
+		{
+			if (Screenings.getJSONObject(i).getString("title").equals(selectedMovie) && Screenings.getJSONObject(i).getString("date").equals(selectedDate))
+			{
+				movieTimesItems.add(Screenings.getJSONObject(i).getString("time"));
+			}
+		}
+		movieTimes.setItems(movieTimesItems);
+	}
+
+	/**
+	 * This method allows the user to go one screen back when the back button is pressed
 	 * 
 	 * @param Event
 	 * @throws IOException
@@ -167,21 +189,19 @@ public class MovieSelectCtrl implements Initializable
 	}
 
 	/**
-	 * This method loads the Seat Selection page after the user has chosen a movie
-	 * and a time
+	 * This method loads the Seat Selection page after the user has chosen a movie and a time
 	 * 
 	 * @param Event
 	 * @throws IOException
 	 */
 	public void bookNow(ActionEvent Event) throws IOException
 	{
-		if (movieTimes.getValue() != null)
+		if (movieDates.getValue() != null && movieTimes.getValue() != null)
 		{
-			String[] dateAndTime=splitDateValue();
-			selectedMovie=movieList.getSelectionModel().getSelectedItem();
-			selectedDate=dateAndTime[0];
-			selectedTime=dateAndTime[1];
-			
+			selectedMovie = movieList.getSelectionModel().getSelectedItem();
+			selectedDate = movieDates.getSelectionModel().getSelectedItem();
+			selectedTime = movieTimes.getSelectionModel().getSelectedItem();
+
 			// code to go to the booking screen
 			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
 			Scene availableTimesScene = new Scene(availableTimes);
@@ -192,15 +212,7 @@ public class MovieSelectCtrl implements Initializable
 		}
 
 	}
-	//takes the selected item of the comboBox and returns and array where the 0'th element is the day and the 1'st is the time
-	public String[] splitDateValue()
-	{
-		String[] dateTimeTemp=movieTimes.getSelectionModel().getSelectedItem().split(" ");//takes what is in the comboBox, and splits it
-		String[] dateTime={dateTimeTemp[1],dateTimeTemp[3]};
-		return dateTime;
-	}
-	
-	
+
 
 	/**
 	 * This method allows the user to log out when the Log out button is pressed
@@ -208,7 +220,8 @@ public class MovieSelectCtrl implements Initializable
 	 * @param Event
 	 * @throws IOException
 	 */
-	public void logout(ActionEvent Event) throws IOException {
+	public void logout(ActionEvent Event) throws IOException
+	{
 		// code to go to the first screen
 		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 		Scene loginscene = new Scene(main);

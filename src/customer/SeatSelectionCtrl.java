@@ -27,10 +27,10 @@ import javafx.stage.Stage;
 public class SeatSelectionCtrl implements Initializable
 {
 	Boolean[][] bookedSeats = new Boolean[10][10];
-	Boolean[][] seatsToBook = new Boolean[10][10];
-	String selectedMovie = MovieSelectCtrl.selectedMovie;
-	String selectedDate = MovieSelectCtrl.selectedDate;
-	String selectedTime = MovieSelectCtrl.selectedTime;
+	static Boolean[][] seatsToBook = new Boolean[10][10];
+	static String selectedMovie = MovieSelectCtrl.selectedMovie;
+	static String selectedDate = MovieSelectCtrl.selectedDate;
+	static String selectedTime = MovieSelectCtrl.selectedTime;
 	Integer screeningID;
 
 	public SeatSelectionCtrl() throws IOException {
@@ -257,29 +257,10 @@ public class SeatSelectionCtrl implements Initializable
 			}
 		}
 		
-		
-		
-		
-		
 		FileWriter write = new FileWriter( "./src/assets/obj.json");
 		write.write(obj.toString());
 		write.close();
-		
-		
-		
-		JSONObject skata = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
-		System.out.println(skata.getJSONArray("Screenings").getJSONObject(0).getJSONArray("seats").getJSONObject(0).getBoolean("booked"));
-		System.out.println(skata.getJSONArray("Screenings").getJSONObject(0).getJSONArray("seats").getJSONObject(1).getBoolean("booked"));
-		System.out.println(skata.getJSONArray("Screenings").getJSONObject(0).getJSONArray("seats").getJSONObject(2).getBoolean("booked"));
-	
-		
-		
-		
-		
-/*		BufferedWriter writer= new BufferedWriter( new FileWriter("./src/assets/obj.json"));
-		writer.write(obj.toString());
-		writer.close();*/
-		
+
 		
 	}
 
