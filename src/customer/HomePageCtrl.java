@@ -28,10 +28,25 @@ public class HomePageCtrl implements Initializable {
 		window.show();
 		loginscene.getWindow().centerOnScreen();
 	}
+	/*
+	 * This method goes to a page where the user can select a movie they want to see
+	 */
 	public void goToMovieSelect(ActionEvent Event) throws IOException
 	{
-		//code to return to the first 
 		Parent movieSelect = FXMLLoader.load(getClass().getResource("/customer/MovieSelect.fxml"));
+		Scene movieSelectScene = new Scene(movieSelect);
+		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+		window.setScene(movieSelectScene);
+		window.show();
+		movieSelectScene.getWindow().centerOnScreen();
+	}
+	
+	/*
+	 * This method goes to a page where the user chooses a date they want to see a movie
+	 */
+	public void goToDateSelection(ActionEvent Event) throws IOException
+	{
+		Parent movieSelect = FXMLLoader.load(getClass().getResource("/customer/DateSelection.fxml"));
 		Scene movieSelectScene = new Scene(movieSelect);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(movieSelectScene);

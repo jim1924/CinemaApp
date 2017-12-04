@@ -28,9 +28,9 @@ public class SeatSelectionCtrl implements Initializable
 {
 	Boolean[][] bookedSeats = new Boolean[10][10];
 	static Boolean[][] seatsToBook = new Boolean[10][10];
-	static String selectedMovie = MovieSelectCtrl.selectedMovie;
-	static String selectedDate = MovieSelectCtrl.selectedDate;
-	static String selectedTime = MovieSelectCtrl.selectedTime;
+	static String selectedMovie = application.VariableTracker.selectedMovie;
+	static String selectedDate = application.VariableTracker.selectedDate;
+	static String selectedTime = application.VariableTracker.selectedTime;
 	Integer screeningID;
 
 	public SeatSelectionCtrl() throws IOException {
@@ -118,7 +118,7 @@ public class SeatSelectionCtrl implements Initializable
 					else if(bookedSeats[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)]==null)
 						System.out.println("This seat is not registered as free or booked");
 					else
-						System.out.println("this seat is booked");
+						System.out.println("this seat is already booked");
 				}
 			});
 		}

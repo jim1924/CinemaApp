@@ -198,9 +198,9 @@ public class MovieSelectCtrl implements Initializable
 	{
 		if (movieDates.getValue() != null && movieTimes.getValue() != null)
 		{
-			selectedMovie = movieList.getSelectionModel().getSelectedItem();
-			selectedDate = movieDates.getSelectionModel().getSelectedItem();
-			selectedTime = movieTimes.getSelectionModel().getSelectedItem();
+			application.VariableTracker.selectedMovie = movieList.getSelectionModel().getSelectedItem();
+			application.VariableTracker.selectedDate = movieDates.getSelectionModel().getSelectedItem();
+			application.VariableTracker.selectedTime = movieTimes.getSelectionModel().getSelectedItem();
 
 			// code to go to the booking screen
 			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));

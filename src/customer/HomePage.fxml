@@ -22,7 +22,7 @@
             <Font size="27.0" />
          </font>
       </Button>
-      <Button layoutX="261.0" layoutY="253.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="229.0" text="Choose a date">
+      <Button layoutX="261.0" layoutY="253.0" mnemonicParsing="false" onAction="#goToDateSelection" prefHeight="132.0" prefWidth="229.0" text="Choose a date">
          <font>
             <Font size="27.0" />
          </font>

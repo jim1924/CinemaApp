@@ -21,6 +21,13 @@ public static String custLastName="";
 public static ArrayList<Integer> custBookings=new ArrayList<Integer>();
 
 
+
+public static String selectedMovie;
+public static String selectedDate;
+public static String selectedTime;
+
+
+
 //public static void setMoviePosition(int i)
 //{
 //	moviePosition=i;

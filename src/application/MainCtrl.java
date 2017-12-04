@@ -73,7 +73,7 @@ public class MainCtrl implements Initializable
 	
 	public void checkCredentials(ActionEvent Event) throws Exception
 	{
-/*		//i wrote this code in order to move from one screen to another without having to put every time the credentials
+		//i wrote this code in order to move from one screen to another without having to put every time the credentials
 		if(true) {
 			
 	    Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
@@ -82,7 +82,7 @@ public class MainCtrl implements Initializable
 		window.setScene(HomePageScene);
 		window.show();
 		HomePageScene.getWindow().centerOnScreen();
-		}*/
+		}
 		
 		
 		boolean emailIsValid = DataValidation.emailValidator(email, emailErrorLbl);
