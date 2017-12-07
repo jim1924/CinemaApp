@@ -409,7 +409,7 @@
 			]
 		},
 		{
-			"date": "7/12/2017",
+			"date": "16/12/2017",
 			"screeningID": 2,
 			"time": "22:00",
 			"title": "The Shawshank Redemption (1994)",
@@ -5307,7 +5307,7 @@
 		{
 			"date": "28/12/2017",
 			"screeningID": 14,
-			"time": "13:00",
+			"time": "18:00",
 			"title": "12 Angry Men (1957)",
 			"seats": [
 				{
@@ -5715,7 +5715,7 @@
 		{
 			"date": "29/12/2017",
 			"screeningID": 15,
-			"time": "06:00",
+			"time": "21:00",
 			"title": "The Shawshank Redemption (1994)",
 			"seats": [
 				{
@@ -5724,7 +5724,7 @@
 				},
 				{
 					"coor": "0,1",
-					"booked": false
+					"booked": true
 				},
 				{
 					"coor": "0,2",
@@ -6128,15 +6128,7 @@
 		}
 	],
 	"Bookings": [
-		{
-			"customerEmail": "aaaa@ss.com",
-			"screeningID": 0,
-			"bookingID": 0,
-			"bookedSeats": [
-				"0,0",
-				"0,1"
-			]
-		},
+		
 		{
 			"customerEmail": "jim.1924@hotmail.com",
 			"screeningID": 2,
@@ -6146,6 +6138,14 @@
 				"0,5",
 				"0,6",
 				"0,7"
+			]
+		},
+		{
+			"customerEmail": "jim.1924@hotmail.com",
+			"screeningID": 15,
+			"bookingID": 1,
+			"bookedSeats": [
+				"0,1"
 			]
 		}
 	],
@@ -6199,21 +6199,6 @@
 			"title": "Fight Club (1999)",
 			"imgSrc": "/assets/10.jpg",
 			"desc": "An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soap maker, forming an underground fight club that evolves into something much, much more. "
-		},
-		{
-			"title": "Justice League",
-			"imgSrc": "/assets/Justice League.jpg",
-			"desc": "Heroes do shit"
-		},
-		{
-			"title": "eee",
-			"imgSrc": "/assets/eee.jpg",
-			"desc": "asfqw\nefwefwe ke eig we\ngwegiw gweig  weig wig we giwgiw gi giwgi giwg\nwngiwe g\nw \ngw"
-		},
-		{
-			"title": "goku",
-			"imgSrc": "/assets/goku.jpg",
-			"desc": "ninja"
 		}
 	],
 	"CustomerDetails": [
@@ -6222,7 +6207,6 @@
 			"lastName": "Afify",
 			"password": "afasfafsfag",
 			"bookings": [
-				1
 			],
 			"email": "asfas@gmail.com"
 		},
@@ -6231,7 +6215,8 @@
 			"lastName": "Selalmazidis",
 			"password": "12345",
 			"bookings": [
-				2
+				2,
+				1
 			],
 			"email": "jim.1924@hotmail.com"
 		},

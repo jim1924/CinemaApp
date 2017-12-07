@@ -116,7 +116,6 @@ public class HistoryCtrl implements Initializable
 	}
 
 	
-
 	/**
 	 * This method takes as input the ScreeningID and calculates whether the specific Screening has already been displayed
 	 * @param screeningID
