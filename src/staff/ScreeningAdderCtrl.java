@@ -78,7 +78,11 @@ public class ScreeningAdderCtrl implements Initializable {
 	{
 		try{
 			
-			String date = datePicker.getValue().toString();
+			String datein = datePicker.getValue().toString();
+			String year = datein.substring(0,4);
+			String month = datein.substring(5,7);
+			String day = datein.substring(8,10);
+			String date = day+"/"+month+"/"+year;
 			String movie = VariableTracker.movieTitle;
 			String time = timesBox.getValue();
 			Screening scr = new Screening(date,time,movie);
