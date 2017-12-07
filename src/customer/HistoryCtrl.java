@@ -83,8 +83,8 @@ public class HistoryCtrl implements Initializable
 						String bookedSeats=arrayToStringConverter(Bookings.getJSONObject(i).getJSONArray("bookedSeats"));
 						grid.add(new Label(bookedSeats), 1, 3);
 						
-						//presentDate();
-						if(true) //condition if the date of the screening has passed
+						
+						if(checkIfMovietimeHasPassed(screeningID))
 						{
 							Button deleteBooking=new Button("Delete Booking");
 							grid.add((deleteBooking), 0, 8,2,1);
@@ -116,6 +116,79 @@ public class HistoryCtrl implements Initializable
 	}
 
 	
+
+	/**
+	 * This method takes as input the ScreeningID and calculates whether the specific Screening has already been displayed
+	 * @param screeningID
+	 * @return
+	 */
+	private boolean checkIfMovietimeHasPassed(int screeningID)
+	{
+		Boolean checkCurrentDate=false;
+		String movieDate="";
+		String movieTime="";
+		for (int i = 0; i < Screenings.length(); i++)
+		{
+			if (Screenings.getJSONObject(i).getInt("screeningID") == screeningID)
+			{
+				movieDate=Screenings.getJSONObject(i).getString("date");
+				movieTime=Screenings.getJSONObject(i).getString("time");
+			}
+		}
+		String[] dayMonthYearTemp=movieDate.split("/");
+		String[] hourMinuteTemp=movieTime.split(":");
+		Integer[] dayMonthYear=new Integer[3];
+		Integer[] hourMinute=new Integer[2];
+		
+		dayMonthYear[0]=Integer.parseInt(dayMonthYearTemp[0]);
+		dayMonthYear[1]=Integer.parseInt(dayMonthYearTemp[1]);
+		dayMonthYear[2]=Integer.parseInt(dayMonthYearTemp[2]);
+		hourMinute[0]=Integer.parseInt(hourMinuteTemp[0]);
+		hourMinute[1]=Integer.parseInt(hourMinuteTemp[1]);
+		
+		Calendar now =Calendar.getInstance();
+		if(now.get(Calendar.YEAR)<dayMonthYear[2])
+			checkCurrentDate=true;
+		else if (now.get(Calendar.YEAR)==dayMonthYear[2])
+		{
+			if(now.get(Calendar.MONTH)+1<dayMonthYear[1])
+			{
+				checkCurrentDate=true;
+			}
+			else if(now.get(Calendar.MONTH)+1==dayMonthYear[1])
+			{
+				if(now.get(Calendar.DAY_OF_MONTH)<dayMonthYear[0])
+				{
+					checkCurrentDate=true;
+				}
+				else if(now.get(Calendar.DAY_OF_MONTH)==dayMonthYear[0])
+				{
+					
+					if(now.get(Calendar.HOUR_OF_DAY)<hourMinute[0]-1)
+					{
+						checkCurrentDate=true;
+					}
+					else
+					{
+						checkCurrentDate=false;
+					}
+				}
+				else
+				{
+					checkCurrentDate=false;
+				}
+			}
+			else
+			{
+				checkCurrentDate=false;
+			}
+		}
+		else
+		{
+			checkCurrentDate=false;
+		}
+		return checkCurrentDate;
+	}
 
 	/**
 	 * This method "reverses" all the changes made when a booking was made.
@@ -167,7 +240,6 @@ public class HistoryCtrl implements Initializable
 					}
 				}
 			}
-
 		}
 		FileWriter write = new FileWriter( "./src/assets/obj.json");
 		write.write(obj.toString());
@@ -200,47 +272,8 @@ public class HistoryCtrl implements Initializable
 		return allSeats;
 	}
 
-
-
-
-	public void presentDate()
-	{
-		Calendar now =Calendar.getInstance();
-		System.out.println(now.get(Calendar.YEAR));
-		System.out.println(now.get(Calendar.MONTH));
-		System.out.println(now.get(Calendar.DAY_OF_MONTH));
-		System.out.println(now.get(Calendar.HOUR_OF_DAY));
-		System.out.println(now.get(Calendar.MINUTE));
-		int year=now.get(Calendar.YEAR);
-	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**
-	 * This method allows the user to log out when the Log out button is pressed
-	 * 
-	 * @param Event
-	 * @throws IOException
-	 */
+	//logout button
 	public void logout(ActionEvent Event) throws IOException
 	{
 		// code to go to the first screen
@@ -252,12 +285,7 @@ public class HistoryCtrl implements Initializable
 		loginscene.getWindow().centerOnScreen();
 	}
 	
-	/**
-	 * This method allows the user to go one screen back when the back button is pressed
-	 * 
-	 * @param Event
-	 * @throws IOException
-	 */
+	//back button
 	public void back(ActionEvent Event) throws IOException // back button
 	{
 
