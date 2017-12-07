@@ -171,12 +171,7 @@ public class MovieSelectCtrl implements Initializable
 		movieTimes.setItems(movieTimesItems);
 	}
 
-	/**
-	 * This method allows the user to go one screen back when the back button is pressed
-	 * 
-	 * @param Event
-	 * @throws IOException
-	 */
+	//back button
 	public void back(ActionEvent Event) throws IOException // back button
 	{
 
@@ -214,12 +209,7 @@ public class MovieSelectCtrl implements Initializable
 	}
 
 
-	/**
-	 * This method allows the user to log out when the Log out button is pressed
-	 * 
-	 * @param Event
-	 * @throws IOException
-	 */
+	//logout button
 	public void logout(ActionEvent Event) throws IOException
 	{
 		// code to go to the first screen

@@ -28,9 +28,9 @@ public class SeatSelectionCtrl implements Initializable
 {
 	Boolean[][] bookedSeats = new Boolean[10][10];
 	static Boolean[][] seatsToBook = new Boolean[10][10];
-	static String selectedMovie = application.VariableTracker.selectedMovie;
-	static String selectedDate = application.VariableTracker.selectedDate;
-	static String selectedTime = application.VariableTracker.selectedTime;
+	 String selectedMovie ;
+	 String selectedDate ;
+	 String selectedTime ;
 	Integer screeningID;
 
 	public SeatSelectionCtrl() throws IOException {
@@ -46,7 +46,9 @@ public class SeatSelectionCtrl implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
-		
+		 selectedMovie = application.VariableTracker.selectedMovie;
+		 selectedDate = application.VariableTracker.selectedDate;
+		 selectedTime = application.VariableTracker.selectedTime;
 		JSONArray Screenings = screenings;
 		for (int i = 0; i < Screenings.length(); i++)
 		{
@@ -146,19 +148,38 @@ public class SeatSelectionCtrl implements Initializable
 		}
 		return null;
 	}
-
-	public void back(ActionEvent Event) throws IOException // back button
+	// back button
+	public void back(ActionEvent Event) throws IOException 
 	{
+		
+		if (application.VariableTracker.selectMovieFirst)
+		{
+			Parent main = FXMLLoader.load(getClass().getResource("/customer/MovieSelect.fxml"));
+			Scene loginscene = new Scene(main);
+			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+			window.setScene(loginscene);
+			window.show();
+			loginscene.getWindow().centerOnScreen();
+		}
+		else
+		{
+			Parent main = FXMLLoader.load(getClass().getResource("/customer/DateSelection.fxml"));
+			Scene loginscene = new Scene(main);
+			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+			window.setScene(loginscene);
+			window.show();
+			loginscene.getWindow().centerOnScreen();
+		}
 
-		Parent main = FXMLLoader.load(getClass().getResource("/customer/MovieSelect.fxml"));
-		Scene loginscene = new Scene(main);
-		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-		window.setScene(loginscene);
-		window.show();
-		loginscene.getWindow().centerOnScreen();
 	}
 
 	
+	/**
+	 * This method initializes the booking process. It checks that the customer has clicked a seat,calls the updateDatabase method
+	 * and moves to the confirmation page
+	 * @param Event
+	 * @throws Exception
+	 */
 	public void confirm(ActionEvent Event) throws Exception // book now button
 	{
 		boolean atLeastOneSeatLelected=false;
@@ -186,6 +207,12 @@ public class SeatSelectionCtrl implements Initializable
 
 	}
 	
+	/**
+	 * This method updates the json file with the relevant data
+	 * It creates a new booking object, searches the specific screening and makes the selected seats booked,
+	 *  and registers the booking ID the the CustomerDetails object
+	 * @throws Exception
+	 */
 	private void updateTheDataBase() throws Exception{
 		JSONArray Screenings = screenings;
 		for (int i = 0; i < Screenings.length(); i++)
@@ -207,8 +234,10 @@ public class SeatSelectionCtrl implements Initializable
 					{
 						continue;
 					}
-					else if (seatsToBook[row][column])
-					availabilityObj.getJSONObject(j).put("booked", true);
+					else if (seatsToBook[row][column]){
+						availabilityObj.getJSONObject(j).put("booked", true);
+					}
+					
 				}
 
 			}
@@ -216,13 +245,12 @@ public class SeatSelectionCtrl implements Initializable
 		JSONArray Bookings = bookings;
 		int bookingID=0;
 		//This for loops finds an available booking ID counting from 0
-		for (int i = 0; i < Bookings.length(); i++,bookingID++)
+		for (int i = 0; i < Bookings.length(); i++)
 		{
 			if(Bookings.getJSONObject(i).getInt("bookingID")==bookingID)
-				continue;
-			else
 			{
-				break;
+				bookingID++;
+				continue;
 			}
 		}
 		
@@ -241,7 +269,7 @@ public class SeatSelectionCtrl implements Initializable
 					}
 			}
 		}
-		newBooking.put("seats", seats.toArray());
+		newBooking.put("bookedSeats", seats.toArray());
 		bookings.put(bookings.length(),newBooking);
 		
 		JSONArray CustomerDetails = customerDetails;
@@ -263,8 +291,8 @@ public class SeatSelectionCtrl implements Initializable
 
 		
 	}
-
-	public void logout(ActionEvent Event) throws IOException // logout button
+	// logout button
+	public void logout(ActionEvent Event) throws IOException 
 	{
 		// code to go to the first screen
 		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));

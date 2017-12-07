@@ -27,12 +27,12 @@
             <Font size="27.0" />
          </font>
       </Button>
-      <Button layoutX="612.0" layoutY="526.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="124.0" text="Profile">
+      <Button layoutX="612.0" layoutY="526.0" mnemonicParsing="false" onAction="#goToProfile" prefHeight="68.0" prefWidth="124.0" text="Profile">
          <font>
             <Font size="27.0" />
          </font>
       </Button>
-      <Button layoutX="498.0" layoutY="253.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="229.0" text="History">
+      <Button layoutX="498.0" layoutY="253.0" mnemonicParsing="false" onAction="#goToHistory" prefHeight="132.0" prefWidth="229.0" text="History">
          <font>
             <Font size="27.0" />
          </font>

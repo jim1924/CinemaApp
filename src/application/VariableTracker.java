@@ -19,6 +19,7 @@ public static String custEmail="";
 public static String custFirstName="";
 public static String custLastName="";
 public static ArrayList<Integer> custBookings=new ArrayList<Integer>();
+public static boolean selectMovieFirst=true;
 
 
 

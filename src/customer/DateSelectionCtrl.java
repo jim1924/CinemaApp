@@ -53,10 +53,7 @@ public class DateSelectionCtrl implements Initializable
 	
 	ArrayList<String> ImagesPath = new ArrayList<String>();
 
-	/**
-	 * This method is initializing the movie-selection page. It populates the "movieList" ListView
-	 * with the available movies in order for the user to make a selection.
-	 */
+
 
 	public DateSelectionCtrl() throws IOException
 	{
@@ -65,6 +62,11 @@ public class DateSelectionCtrl implements Initializable
 	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
 	JSONArray Movies = obj.getJSONArray("Movies");
 	JSONArray Screenings = obj.getJSONArray("Screenings");
+	
+	
+	/**
+	 * This method is initializing the date-selection page. It populates the available times for a specific date the user chooses
+	 */
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
@@ -99,6 +101,11 @@ public class DateSelectionCtrl implements Initializable
 		ObservableList<String> movieTimesObs = FXCollections.observableArrayList(movieTimesItems);
 		movieTimes.setItems(movieTimesObs);
 	}
+	
+
+	/**
+	 * This method shows the available movies when the user has already chosen a day and a time
+	 */
 	public void chooseTime()
 	{
 		ArrayList<String> movieListItems=new ArrayList<String>();
@@ -113,6 +120,11 @@ public class DateSelectionCtrl implements Initializable
 		ObservableList<String> movieListObs = FXCollections.observableArrayList(movieListItems);
 		movieList.setItems(movieListObs);
 	}
+	
+
+	/**
+	 * this method updates the picture of a movie and the description of the movie when a movie is clicked from the listView
+	 */
 	public void chooseMovie()
 	{
 		application.VariableTracker.selectedMovie=movieList.getSelectionModel().getSelectedItem();
@@ -133,25 +145,19 @@ public class DateSelectionCtrl implements Initializable
 						description.setText(Movies.getJSONObject(k).getString("desc"));
 					}
 				}
-				
-				
-				
-				
 			}
 		}
 	}
 
-
-
-
 	/**
-	 * This method loads the Seat Selection page after the user has chosen a movie and a time
+	 * This method loads the Seat Selection page after the user has chosen a movie, a date and a time
 	 * 
 	 * @param Event
 	 * @throws IOException
 	 */
 	public void bookNow(ActionEvent Event) throws IOException
-	{	
+	{
+		System.out.println(application.VariableTracker.selectedMovie+" "+application.VariableTracker.selectedDate+" "+application.VariableTracker.selectedTime);
 		if (movieList.getSelectionModel().getSelectedItem()!=null && movieDates.getValue()!=null && movieTimes.getSelectionModel().getSelectedItem()!=null)
 		{
 			// code to go to the booking screen
@@ -165,12 +171,7 @@ public class DateSelectionCtrl implements Initializable
 	}
 
 
-	/**
-	 * This method allows the user to log out when the Log out button is pressed
-	 * 
-	 * @param Event
-	 * @throws IOException
-	 */
+	//logout button
 	public void logout(ActionEvent Event) throws IOException
 	{
 		// code to go to the first screen
@@ -182,20 +183,9 @@ public class DateSelectionCtrl implements Initializable
 		loginscene.getWindow().centerOnScreen();
 	}
 	
-	public void presentdate()
-	{
-		Calendar now =Calendar.getInstance();
-		int year=now.get(Calendar.YEAR);
-	}
-	
 
-	/**
-	 * This method allows the user to go one screen back when the back button is pressed
-	 * 
-	 * @param Event
-	 * @throws IOException
-	 */
-	public void back(ActionEvent Event) throws IOException // back button
+	//back button
+	public void back(ActionEvent Event) throws IOException 
 	{
 
 		Parent main = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));

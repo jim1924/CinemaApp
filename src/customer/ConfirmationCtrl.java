@@ -30,12 +30,13 @@ public class ConfirmationCtrl implements Initializable
 	@FXML
 	Label bookedSeats = new Label();
 
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
-		movie.setText(SeatSelectionCtrl.selectedMovie);
-		date.setText(SeatSelectionCtrl.selectedDate);
-		time.setText(SeatSelectionCtrl.selectedTime);
+		movie.setText(application.VariableTracker.selectedMovie);
+		date.setText(application.VariableTracker.selectedDate);
+		time.setText(application.VariableTracker.selectedTime);
 		ArrayList<String> bookedSeats = new ArrayList<String>();
 		int counter = 0;
 		for (int i = 0; i < 10; i++)
@@ -50,24 +51,39 @@ public class ConfirmationCtrl implements Initializable
 				}
 			}
 		}
-		String allSeats="";
-		if(counter==1){
+		String allSeats = "";
+		if (counter == 1)
+		{
 			seatLabel.setText("Booked seat:");
-			allSeats="Seat: "+bookedSeats.get(0);
-		}
-		else{
-			
-			int count=1;
-			for (int i=0;i<bookedSeats.size();i++)
+			allSeats =  bookedSeats.get(0);
+		} else
+		{
+
+			int count = 1;
+			for (int i = 0; i < bookedSeats.size(); i++)
 			{
-				allSeats=allSeats+"Seat "+count+": "+bookedSeats.get(i)+" ";
-				count++;
+				if (i == bookedSeats.size() - 1)
+				{
+					allSeats = allSeats + bookedSeats.get(i);
+					count++;
+				} else
+				{
+					allSeats = allSeats + bookedSeats.get(i) + ", ";
+					count++;
+				}
+
 			}
 		}
 		this.bookedSeats.setText(allSeats);
 	}
 	
-	public String mapping(int i,int j)
+	/**
+	 * This method takes as an input the index of the cinema array and converts it the the format A1,B2 etc.
+	 * @param i
+	 * @param j
+	 * @return
+	 */
+	public static String mapping(int i,int j)
 	{
 		String row="";
 		String column="";
@@ -99,7 +115,7 @@ public class ConfirmationCtrl implements Initializable
 		return rowColumn;
 	}
 
-	
+
 	public void logout(ActionEvent Event) throws IOException // logout button
 	{
 		// code to go to the first screen
