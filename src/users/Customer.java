@@ -25,11 +25,13 @@ public class Customer extends User{
 		
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
 		JSONArray jsonArray = obj.getJSONArray("CustomerDetails");
+		JSONArray emptyBooking = new JSONArray();
 		JSONObject temp = new JSONObject();
 		temp.put("email", email);
 		temp.put("password", password);
-		temp.put("firstname", firstName);
-		temp.put("lastname", lastName);
+		temp.put("firstName", firstName);
+		temp.put("lastName", lastName);
+		temp.put("bookings",emptyBooking);
 		jsonArray.put(temp);
 		
 		

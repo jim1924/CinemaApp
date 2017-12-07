@@ -49,7 +49,7 @@ public class CustRegisterCtrl {
 		window.show();
 	}
 	
-	public void registerCustomer(ActionEvent Event)
+	public void registerCustomer(ActionEvent Event) throws IOException
 	{
 		String sFirstName=firstName.getText();
 		String sLastName=lastName.getText();
@@ -70,6 +70,13 @@ public class CustRegisterCtrl {
 		{
 		
 		Customer cust = new Customer(sFirstName,sLastName,sEmail,sPassword);
+		// code to go to the first screen
+		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
+		Scene loginscene = new Scene(main);
+		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+		window.setScene(loginscene);
+		window.show();
+		loginscene.getWindow().centerOnScreen();
 		
 		
 //		Parent homePage = null;
