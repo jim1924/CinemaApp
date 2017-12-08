@@ -107,7 +107,7 @@ public class HomePageCtrl implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
-		name.setText("Welcome Mr."+application.VariableTracker.custLastName);
+		name.setText("Welcome Mr. "+application.VariableTracker.custLastName);
 
 	}
 	

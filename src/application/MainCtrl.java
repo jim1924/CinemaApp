@@ -28,10 +28,6 @@ public class MainCtrl implements Initializable
 	public void gotostafflogin(ActionEvent Event) throws IOException{
 		
 		Parent login = FXMLLoader.load(getClass().getResource("/staff/StaffLogin.fxml"));
-		FadeTransition ft = new FadeTransition(Duration.millis(500), login);
-		ft.setFromValue(0.0);
-		ft.setToValue(1.0);
-		ft.play();
 		Scene loginscene=new Scene (login);
 		Stage window=(Stage)((Node)Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
@@ -41,10 +37,6 @@ public class MainCtrl implements Initializable
 	public void goToCustReg(ActionEvent Event) throws IOException{
 		
 		Parent reg = FXMLLoader.load(getClass().getResource("/customer/CustRegister.fxml"));
-		FadeTransition ft = new FadeTransition(Duration.millis(500), reg);
-		ft.setFromValue(0.0);
-		ft.setToValue(1.0);
-		ft.play();
 		Scene regscene=new Scene (reg);
 		Stage window=(Stage)((Node)Event.getSource()).getScene().getWindow();
 		window.setScene(regscene);

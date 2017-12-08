@@ -111,7 +111,7 @@
             </PasswordField>
          </children>
       </GridPane>
-      <Button layoutX="655.0" layoutY="588.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="167.0" text="Update Profile">
+      <Button layoutX="655.0" layoutY="588.0" mnemonicParsing="false" onAction="#updateProfile" prefHeight="54.0" prefWidth="167.0" text="Update Profile">
          <font>
             <Font size="20.0" />
          </font>

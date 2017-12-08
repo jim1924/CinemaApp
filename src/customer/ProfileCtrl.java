@@ -43,11 +43,19 @@ public class ProfileCtrl implements Initializable
 		
 	}
 
-	//logout button
+
+	/**
+	 * This method updates the profile of the customer and moves to the home page
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void updateProfile(ActionEvent Event) throws IOException
 	{
+		
+		
+		
 		// code to go to the first screen
-		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
+		Parent main = FXMLLoader.load(getClass().getResource("/application/HomePage.fxml"));
 		Scene loginscene = new Scene(main);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
