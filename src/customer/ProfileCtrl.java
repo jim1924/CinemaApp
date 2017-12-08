@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.DataValidation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -28,10 +30,17 @@ public class ProfileCtrl implements Initializable
 	@FXML
 	PasswordField verifyNewPassword=new PasswordField();
 	
-
+	@FXML
+	Label firstNameErrorLbl;
+	@FXML
+	Label lastNameErrorLbl;
+	@FXML
+	Label emailErrorLbl;
+	@FXML
+	Label passwordErrorLbl;
+	@FXML
+	Label passwordErrorLbl2;
 	
-	
-
 
 
 	@Override
@@ -52,15 +61,15 @@ public class ProfileCtrl implements Initializable
 	public void updateProfile(ActionEvent Event) throws IOException
 	{
 		
+		boolean passwordIsValid = DataValidation.passwordValidator(newPassword, passwordErrorLbl);
 		
-		
-		// code to go to the first screen
-		Parent main = FXMLLoader.load(getClass().getResource("/application/HomePage.fxml"));
+/*		// code to go to the first screen
+		Parent main = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
 		Scene loginscene = new Scene(main);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
-		loginscene.getWindow().centerOnScreen();
+		loginscene.getWindow().centerOnScreen();*/
 	}
 
 	
