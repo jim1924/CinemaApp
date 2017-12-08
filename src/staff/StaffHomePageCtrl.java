@@ -17,6 +17,7 @@ public class StaffHomePageCtrl   {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 		
 	}
 	public void goToMovieControl(ActionEvent Event) throws IOException {
@@ -25,6 +26,7 @@ public class StaffHomePageCtrl   {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 		
 	}
 }

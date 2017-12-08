@@ -28,6 +28,7 @@ public class StaffLoginCtrl {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
 	
 	@FXML
@@ -45,14 +46,11 @@ public class StaffLoginCtrl {
 	public void checkCredentials(ActionEvent Event) throws IOException {
 		//goes in the if afterwards
 		Parent page = FXMLLoader.load(getClass().getResource("/staff/StaffHomePage.fxml"));
-		FadeTransition ft = new FadeTransition(Duration.millis(500), page);
-		ft.setFromValue(0.0);
-		ft.setToValue(1.0);
-		ft.play();
 		Scene scene=new Scene (page);
 		Stage window=(Stage)((Node)Event.getSource()).getScene().getWindow();
 		window.setScene(scene);
 		window.show();
+		scene.getWindow().centerOnScreen();
 		
 		boolean emailIsValid = DataValidation.emailValidator(email, emailErrorLbl);
 		boolean passwordIsValid = DataValidation.passwordValidator(password, passwordErrorLbl);

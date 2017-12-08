@@ -6212,12 +6212,12 @@
 		{
 			"firstName": "Dimitris",
 			"lastName": "Selalmazidis",
-			"password": "12345",
+			"password": "1234",
 			"bookings": [
 				2,
 				1
 			],
-			"email": "jim.1924@hotmail.com"
+			"email": "jim@hotmail.com"
 		},
 		{
 			"firstName": "John",

@@ -113,6 +113,7 @@ public class StaffMovieControlCtrl implements Initializable {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
 	public void logOut(ActionEvent Event) throws IOException
 	{
@@ -130,6 +131,7 @@ public class StaffMovieControlCtrl implements Initializable {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
 	/**
 	 * This method changed the movie image, the description and the available times when each movie
@@ -178,5 +180,6 @@ public class StaffMovieControlCtrl implements Initializable {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
 }

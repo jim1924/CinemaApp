@@ -28,11 +28,11 @@
       <RowConstraints maxHeight="192.1986541748047" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" onAction="#gotostafflogin" prefHeight="20.0" prefWidth="92.0" text="Staff" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
-      <Button mnemonicParsing="false" onAction="#checkCredentials" text="Login" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" onAction="#gotostafflogin" prefHeight="45.0" prefWidth="92.0" text="Staff" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
+      <Button mnemonicParsing="false" onAction="#checkCredentials" prefHeight="36.0" prefWidth="80.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
       <TextField fx:id="email" onAction="#checkCredentials" prefHeight="27.0" prefWidth="190.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <PasswordField fx:id="password" onAction="#checkCredentials" prefHeight="27.0" prefWidth="190.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Button mnemonicParsing="false" onAction="#goToCustReg" text="Register" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+      <Button mnemonicParsing="false" onAction="#goToCustReg" prefHeight="36.0" prefWidth="80.0" text="Register" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
       <Label prefHeight="18.0" prefWidth="128.0" text="New Users" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
          <font>
             <Font size="14.0" />

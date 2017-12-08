@@ -36,6 +36,7 @@ public class MovieAdderCtrl {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
 	
 	public void addMovie(ActionEvent Event) throws IOException
@@ -54,6 +55,8 @@ public class MovieAdderCtrl {
 			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 			window.setScene(loginscene);
 			window.show();
+			loginscene.getWindow().centerOnScreen();
+			
 		}
 	}
 	

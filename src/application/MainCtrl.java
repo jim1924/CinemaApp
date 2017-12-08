@@ -1,6 +1,5 @@
 package application;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,7 +9,6 @@ import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
 
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class MainCtrl implements Initializable
 {
@@ -32,6 +29,7 @@ public class MainCtrl implements Initializable
 		Stage window=(Stage)((Node)Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
 	
 	public void goToCustReg(ActionEvent Event) throws IOException{
@@ -41,6 +39,7 @@ public class MainCtrl implements Initializable
 		Stage window=(Stage)((Node)Event.getSource()).getScene().getWindow();
 		window.setScene(regscene);
 		window.show();
+		regscene.getWindow().centerOnScreen();
 	}
 
 	@Override

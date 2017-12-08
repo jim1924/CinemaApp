@@ -73,6 +73,7 @@ public class ScreeningAdderCtrl implements Initializable {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
 	public void addScreening(ActionEvent Event) throws IOException
 	{
@@ -96,6 +97,7 @@ public class ScreeningAdderCtrl implements Initializable {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 		
 	}
 	

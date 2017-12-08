@@ -47,6 +47,7 @@ public class ScreeningControlCtrl implements Initializable {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
 	
 	
@@ -84,6 +85,7 @@ public class ScreeningControlCtrl implements Initializable {
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
 		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
 	
 
