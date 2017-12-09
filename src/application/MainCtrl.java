@@ -106,23 +106,25 @@ public class MainCtrl implements Initializable
 			
 			
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
+		System.out.println("Database exists");
 
 		}
 		catch (Exception e){
 			
 			
-			System.out.println("File not found");
+			System.out.println("Database not found");
 			try{
 				InputStream in = getClass().getResourceAsStream("/database.json"); 
 				JSONObject obj = JSONUtils.getJSONObjectFromFile(in);
 				FileWriter write = new FileWriter( "database.json");
 				write.write(obj.toString());
 				write.close();
+				System.out.println("New database created");
 				
 			}
 			catch(Exception ex)
 			{
-				
+				System.out.println("Database wasn't written");
 			}
 		}
 		
@@ -132,7 +134,7 @@ public class MainCtrl implements Initializable
 				System.out.println("assets folder exists");
 				}
 			else{
-				System.out.println("folder wasn't found.New folder created");
+				System.out.println("folder wasn't found.");
 				new File("assets").mkdir();
 				try
 				{
@@ -268,7 +270,7 @@ public class MainCtrl implements Initializable
 	
 	private void updateWithDummy() throws IOException
 	{
-/*		for (int i=1;i<=10;i++)
+		for (int i=1;i<=10;i++)
 		{
 			URL inputUrl = getClass().getResource("/assets/"+i+".jpg");
 			File dest = new File("assets/"+i+".jpg");	
@@ -279,8 +281,8 @@ public class MainCtrl implements Initializable
 		FileUtils.copyURLToFile(inputUrl1, dest1);
 		URL inputUrl2 = getClass().getResource("/assets/placeholder.png");
 		File dest2 = new File("assets/placeholder.png");	
-		FileUtils.copyURLToFile(inputUrl2, dest2);*/
-
+		FileUtils.copyURLToFile(inputUrl2, dest2);
+		System.out.println("New folder created");
 	}
 	
 		
