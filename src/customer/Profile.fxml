@@ -82,24 +82,24 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <TextField fx:id="lastName" prefHeight="68.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="firstName" onAction="#updateProfile" prefHeight="68.0" prefWidth="250.0" GridPane.columnIndex="1">
                <font>
                   <Font size="18.0" />
                </font></TextField>
-            <TextField fx:id="email" prefHeight="68.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="lastName" onAction="#updateProfile" prefHeight="68.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font></TextField>
-            <TextField fx:id="firstName" prefHeight="68.0" prefWidth="250.0" GridPane.columnIndex="1">
+            <TextField fx:id="email" onAction="#updateProfile" prefHeight="68.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font></TextField>
-            <PasswordField fx:id="newPassword" prefHeight="83.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <PasswordField fx:id="newPassword" onAction="#updateProfile" prefHeight="83.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <PasswordField fx:id="verifyNewPassword" prefHeight="68.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <PasswordField fx:id="verifyNewPassword" onAction="#updateProfile" prefHeight="68.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />
                </font>

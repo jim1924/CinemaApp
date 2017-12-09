@@ -4,12 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Enumeration;
 import java.util.ResourceBundle;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
@@ -27,7 +23,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sun.misc.Launcher;
 
 public class MainCtrl implements Initializable
 {
@@ -57,11 +52,7 @@ public class MainCtrl implements Initializable
 		
 		try{
 			
-/*			new File("assets").mkdir();
-			
-			URL inputUrl = getClass().getResource("/assets/1.jpg");
-			File dest1 = new File("assets/1.jpg");
-			FileUtils.copyURLToFile(inputUrl, dest1);*/
+
 			
 
 			
@@ -116,7 +107,6 @@ public class MainCtrl implements Initializable
 			
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 
-
 		}
 		catch (Exception e){
 			
@@ -135,8 +125,35 @@ public class MainCtrl implements Initializable
 				
 			}
 		}
+		
+			File folder = new File("assets");
+
+			if (folder.exists() && folder.isDirectory()) {
+				System.out.println("assets folder exists");
+				}
+			else{
+				System.out.println("folder wasn't found.New folder created");
+				new File("assets").mkdir();
+				try
+				{
+					updateWithDummy();
+				} catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+
+
+				
+			}
+			
+		
+		
+		
+		
 	}
 	
+
+
 	@FXML
 	TextField email; // decleration of an email text field
 	@FXML
@@ -246,6 +263,23 @@ public class MainCtrl implements Initializable
 				
 
 			}
+
+	}
+	
+	private void updateWithDummy() throws IOException
+	{
+/*		for (int i=1;i<=10;i++)
+		{
+			URL inputUrl = getClass().getResource("/assets/"+i+".jpg");
+			File dest = new File("assets/"+i+".jpg");	
+			FileUtils.copyURLToFile(inputUrl, dest);
+		}
+		URL inputUrl1 = getClass().getResource("/assets/Justice League.jpg");
+		File dest1 = new File("assets/Justice League.jpg");	
+		FileUtils.copyURLToFile(inputUrl1, dest1);
+		URL inputUrl2 = getClass().getResource("/assets/placeholder.png");
+		File dest2 = new File("assets/placeholder.png");	
+		FileUtils.copyURLToFile(inputUrl2, dest2);*/
 
 	}
 	

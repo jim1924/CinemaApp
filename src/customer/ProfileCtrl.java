@@ -153,6 +153,7 @@ public class ProfileCtrl implements Initializable
 	{
 		JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 		JSONArray customerDetails = obj.getJSONArray("CustomerDetails");
+		JSONArray Bookings = obj.getJSONArray("Bookings");
 		for (int i=0;i<customerDetails.length();i++)
 		{
 			if (customerDetails.getJSONObject(i).getString("email").equals(application.VariableTracker.custEmail))
@@ -160,6 +161,13 @@ public class ProfileCtrl implements Initializable
 				customerDetails.getJSONObject(i).put("email", email);
 				customerDetails.getJSONObject(i).put("firstName", firstName);
 				customerDetails.getJSONObject(i).put("lastName", lastName);
+			}
+		}
+		for (int i=0;i<Bookings.length();i++)
+		{
+			if (Bookings.getJSONObject(i).getString("customerEmail").equals(application.VariableTracker.custEmail))
+			{
+				Bookings.getJSONObject(i).put("customerEmail", email);
 			}
 		}
 		FileWriter write = new FileWriter( "database.json");
