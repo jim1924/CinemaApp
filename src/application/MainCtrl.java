@@ -1,9 +1,17 @@
 package application;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Enumeration;
 import java.util.ResourceBundle;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
+import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sun.misc.Launcher;
 
 public class MainCtrl implements Initializable
 {
@@ -45,9 +54,87 @@ public class MainCtrl implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
+		
+		try{
+			
+/*			new File("assets").mkdir();
+			
+			URL inputUrl = getClass().getResource("/assets/1.jpg");
+			File dest1 = new File("assets/1.jpg");
+			FileUtils.copyURLToFile(inputUrl, dest1);*/
+			
 
+			
+			
+			
+			
+/*			final String path = "skata/assets";
+			final File jarFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+
+			if(jarFile.isFile()) {  // Run with JAR file
+			    final JarFile jar = new JarFile(jarFile);
+			    final Enumeration<JarEntry> entries = jar.entries(); //gives ALL entries in jar
+			    while(entries.hasMoreElements()) {
+			        final String name = entries.nextElement().getName();
+			        if (name.startsWith(path + "/")) { //filter according to the path
+			            System.out.println(name);
+			        }
+			    }
+			    jar.close();
+			} else { // Run with IDE
+			    final URL url = Launcher.class.getResource("/" + path);
+			    if (url != null) {
+			        try {
+			            final File apps = new File(url.toURI());
+			            for (File app : apps.listFiles()) {
+			                System.out.println(app);
+			            }
+			        } catch (URISyntaxException ex) {
+			            // never happens
+			        }
+			    }
+			}*/
+			
+			
+			
 		
+/*		URL res = getClass().getResource("/assets/database.json");
+		File f=(FileUtils.toFile(res));
+		//File fa = new File(this.getClass().getResource("/assets").getPath());
+		FileUtils.copyDirectory(f, new File("skata.json"));
+		System.out.println("goooood");
 		
+		URL inputUrl = getClass().getResource("/assets");
+		File dest = new File("skata");
+		FileUtils.copyURLToFile(inputUrl, dest);*/
+
+
+			
+			
+			
+			
+			
+		JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
+
+
+		}
+		catch (Exception e){
+			
+			
+			System.out.println("File not found");
+			try{
+				InputStream in = getClass().getResourceAsStream("database.json"); 
+				JSONObject obj = JSONUtils.getJSONObjectFromFile(in);
+				FileWriter write = new FileWriter( "database.json");
+				write.write(obj.toString());
+				write.close();
+				
+			}
+			catch(Exception ex)
+			{
+				
+			}
+		}
 	}
 	
 	@FXML
@@ -89,7 +176,7 @@ public class MainCtrl implements Initializable
 				boolean isCustomer = false;
 				boolean isStaff = false;
 				
-				JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+				JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 				JSONArray custArray = obj.getJSONArray("CustomerDetails");
 				JSONArray staffArray = obj.getJSONArray("StaffDetails");
 				

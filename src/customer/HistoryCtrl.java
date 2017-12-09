@@ -2,6 +2,8 @@ package customer;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
@@ -12,7 +14,6 @@ import org.json.JSONObject;
 import com.tcg.json.JSONUtils;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,8 +38,7 @@ public class HistoryCtrl implements Initializable
 	Accordion accd = new Accordion();
 	public Integer numberOfBooking = 0;
 	
-
-	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 	JSONArray Bookings = obj.getJSONArray("Bookings");
 	JSONArray Screenings = obj.getJSONArray("Screenings");
 	JSONArray CustomerDetails = obj.getJSONArray("CustomerDetails");
@@ -240,7 +240,9 @@ public class HistoryCtrl implements Initializable
 				}
 			}
 		}
-		FileWriter write = new FileWriter( "./src/assets/obj.json");
+		
+		
+		FileWriter write = new FileWriter("database.json");
 		write.write(obj.toString());
 		write.close();
 		

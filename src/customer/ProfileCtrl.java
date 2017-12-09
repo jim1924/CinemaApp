@@ -2,6 +2,7 @@ package customer;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -120,7 +121,7 @@ public class ProfileCtrl implements Initializable
 	 */
 	private void updateDataBaseWithPassword(String firstName, String lastName, String email, String newPassword) throws IOException
 	{
-		JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+		JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 		JSONArray customerDetails = obj.getJSONArray("CustomerDetails");
 		for (int i=0;i<customerDetails.length();i++)
 		{
@@ -132,7 +133,7 @@ public class ProfileCtrl implements Initializable
 				customerDetails.getJSONObject(i).put("password", newPassword);
 			}
 		}
-		FileWriter write = new FileWriter( "./src/assets/obj.json");
+		FileWriter write = new FileWriter( "database.json");
 		write.write(obj.toString());
 		write.close();
 		application.VariableTracker.custEmail=email;
@@ -150,7 +151,7 @@ public class ProfileCtrl implements Initializable
 	 */
 	private void updateDataBase(String firstName, String lastName, String email) throws IOException
 	{
-		JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+		JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 		JSONArray customerDetails = obj.getJSONArray("CustomerDetails");
 		for (int i=0;i<customerDetails.length();i++)
 		{
@@ -161,7 +162,7 @@ public class ProfileCtrl implements Initializable
 				customerDetails.getJSONObject(i).put("lastName", lastName);
 			}
 		}
-		FileWriter write = new FileWriter( "./src/assets/obj.json");
+		FileWriter write = new FileWriter( "database.json");
 		write.write(obj.toString());
 		write.close();
 		application.VariableTracker.custEmail=email;

@@ -3,6 +3,7 @@ package customer;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -67,8 +68,7 @@ public class MovieSelectCtrl implements Initializable
 	public MovieSelectCtrl() throws IOException
 	{
 	}
-
-	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 	JSONArray Movies = obj.getJSONArray("Movies");
 	JSONArray Screenings = obj.getJSONArray("Screenings");
 
