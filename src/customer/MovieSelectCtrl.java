@@ -1,10 +1,9 @@
 package customer;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -108,10 +107,10 @@ public class MovieSelectCtrl implements Initializable
 		movieList.setItems(movieListItems);
 
 		// populates with the first item of the movies list (to show something)
-		Image image = new Image(getClass().getResourceAsStream((ImagesPath.get(0))));
+		
+		Image image = new Image(getClass().getResourceAsStream((ImagesPath.get(0))));		
 		iv.setImage(image);
 		description.setText(movieDescription.get(0));
-		
 	}
 
 	/**
