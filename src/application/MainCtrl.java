@@ -123,7 +123,7 @@ public class MainCtrl implements Initializable
 			
 			System.out.println("File not found");
 			try{
-				InputStream in = getClass().getResourceAsStream("database.json"); 
+				InputStream in = getClass().getResourceAsStream("/database.json"); 
 				JSONObject obj = JSONUtils.getJSONObjectFromFile(in);
 				FileWriter write = new FileWriter( "database.json");
 				write.write(obj.toString());
