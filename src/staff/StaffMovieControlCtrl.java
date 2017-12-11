@@ -1,5 +1,6 @@
 package staff;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class StaffMovieControlCtrl implements Initializable {
 		JSONArray Screenings=new JSONArray();
 		try
 		{
-			obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+			obj = JSONUtils.getJSONObjectFromFile("database.json");
 			Movies = obj.getJSONArray("Movies");
 			 Screenings = obj.getJSONArray("Screenings");
 		} catch (IOException e)
@@ -100,8 +101,9 @@ public class StaffMovieControlCtrl implements Initializable {
 		}
 
 		movieList.setItems(movieListItems);
-
-		Image image = new Image(getClass().getResourceAsStream((ImagesPath.get(0))));
+		
+		File file = new File(ImagesPath.get(0));
+		Image image = new Image(file.toURI().toString());
 		iv.setImage(image);
 		description.setText(movieDescription.get(0));
 
@@ -152,12 +154,14 @@ public class StaffMovieControlCtrl implements Initializable {
 			VariableTracker.movieDescription=movieDescription.get(i);
 				description.setText(movieDescription.get(i));
 				try {
-					Image image = new Image(getClass().getResourceAsStream(String.valueOf(ImagesPath.get(i))));
+					File file = new File(ImagesPath.get(i));
+					Image image = new Image(file.toURI().toString());
 					validImage = image;
 				}
 				catch (NullPointerException e)
 				{
-					Image image = new Image(getClass().getResourceAsStream("/assets/placeholder.png"));
+					File file = new File("assets/placeholder.png");
+					Image image = new Image(file.toURI().toString());
 					validImage = image;
 				}
 				VariableTracker.movieImage=validImage;

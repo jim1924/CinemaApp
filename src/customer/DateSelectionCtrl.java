@@ -85,42 +85,28 @@ public class DateSelectionCtrl implements Initializable
 	 */
 	public void chooseDate()
 	{
+		ArrayList<String> movieListItems=new ArrayList<String>();
 		int year=movieDates.getValue().getYear();
 		int month=movieDates.getValue().getMonthValue();
 		int day=movieDates.getValue().getDayOfMonth();
 		String fullDate=day+"/"+month+"/"+year;
-		ArrayList<String> movieTimesItems=new ArrayList<String>();
 		for (int i = 0; i < Screenings.length(); i++)
 		{
 			
 			if (fullDate.equals(Screenings.getJSONObject(i).getString("date")) && checkIfMovietimeHasPassed(Screenings.getJSONObject(i).getInt("screeningID")))
 			{
-				movieTimesItems.add(Screenings.getJSONObject(i).getString("time"));
+				movieListItems.add(Screenings.getJSONObject(i).getString("title"));
 				application.VariableTracker.selectedDate=Screenings.getJSONObject(i).getString("date");
 			}
 		}
-		ObservableList<String> movieTimesObs = FXCollections.observableArrayList(movieTimesItems);
-		movieTimes.setItems(movieTimesObs);
+		
+		ObservableList<String> movieListObs = FXCollections.observableArrayList(movieListItems);
+		movieList.setItems(movieListObs);
+		movieTimes.setItems(null);
 	}
 	
 
-	/**
-	 * This method shows the available movies when the user has already chosen a day and a time
-	 */
-	public void chooseTime()
-	{
-		ArrayList<String> movieListItems=new ArrayList<String>();
-		application.VariableTracker.selectedTime=movieTimes.getSelectionModel().getSelectedItem();
-		for (int i = 0; i < Screenings.length(); i++)
-		{
-			if (application.VariableTracker.selectedTime!=null && application.VariableTracker.selectedDate!=null && application.VariableTracker.selectedDate.equals(Screenings.getJSONObject(i).getString("date"))&&application.VariableTracker.selectedTime.equals(Screenings.getJSONObject(i).getString("time")))
-			{
-				movieListItems.add(Screenings.getJSONObject(i).getString("title"));
-			}
-		}
-		ObservableList<String> movieListObs = FXCollections.observableArrayList(movieListItems);
-		movieList.setItems(movieListObs);
-	}
+
 	
 
 	/**
@@ -132,9 +118,8 @@ public class DateSelectionCtrl implements Initializable
 		for (int i = 0; i < Screenings.length(); i++)
 		{
 			boolean checkDate=application.VariableTracker.selectedDate.equals(Screenings.getJSONObject(i).getString("date"));
-			boolean checkTime=application.VariableTracker.selectedTime.equals(Screenings.getJSONObject(i).getString("time"));
 			boolean checkMovie=application.VariableTracker.selectedMovie.equals(Screenings.getJSONObject(i).getString("title"));
-			if (checkDate && checkTime && checkMovie)
+			if (checkDate && checkMovie)
 			{
 				for (int k = 0; k < Movies.length(); k++)
 				{
@@ -148,6 +133,26 @@ public class DateSelectionCtrl implements Initializable
 				}
 			}
 		}
+		
+		
+		int year=movieDates.getValue().getYear();
+		int month=movieDates.getValue().getMonthValue();
+		int day=movieDates.getValue().getDayOfMonth();
+		String fullDate=day+"/"+month+"/"+year;
+		ArrayList<String> movieTimesItems=new ArrayList<String>();
+		for (int i = 0; i < Screenings.length(); i++)
+		{
+			
+			if (fullDate.equals(Screenings.getJSONObject(i).getString("date")) && checkIfMovietimeHasPassed(Screenings.getJSONObject(i).getInt("screeningID")))
+			{
+				movieTimesItems.add(Screenings.getJSONObject(i).getString("time"));
+			}
+		}
+		
+		ObservableList<String> movieTimesObs = FXCollections.observableArrayList(movieTimesItems);
+		movieTimes.setItems(movieTimesObs);
+		
+		
 	}
 
 	/**
@@ -158,9 +163,11 @@ public class DateSelectionCtrl implements Initializable
 	 */
 	public void bookNow(ActionEvent Event) throws IOException
 	{
-		System.out.println(application.VariableTracker.selectedMovie+" "+application.VariableTracker.selectedDate+" "+application.VariableTracker.selectedTime);
+		application.VariableTracker.selectedTime=movieTimes.getSelectionModel().getSelectedItem();
+		
 		if (movieList.getSelectionModel().getSelectedItem()!=null && movieDates.getValue()!=null && movieTimes.getSelectionModel().getSelectedItem()!=null)
 		{
+			System.out.println(application.VariableTracker.selectedMovie+" "+application.VariableTracker.selectedDate+" "+application.VariableTracker.selectedTime);
 			// code to go to the booking screen
 			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
 			Scene availableTimesScene = new Scene(availableTimes);
