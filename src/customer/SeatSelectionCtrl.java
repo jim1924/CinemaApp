@@ -221,6 +221,11 @@ public class SeatSelectionCtrl implements Initializable
 			// finds the specific screening
 			if (selectedMovie.equals(Screenings.getJSONObject(i).getString("title")) && selectedDate.equals(Screenings.getJSONObject(i).getString("date")) && selectedTime.equals(Screenings.getJSONObject(i).getString("time")))
 			{
+				Integer bookedSeats=Screenings.getJSONObject(i).getInt("bookedSeats");
+				Integer freeSeats=Screenings.getJSONObject(i).getInt("freeSeats");
+				Screenings.getJSONObject(i).put("bookedSeats", bookedSeats+1);
+				Screenings.getJSONObject(i).put("freeSeats", freeSeats-1);
+				
 				// creates an object with the availability of each seat
 				JSONArray availabilityObj = Screenings.getJSONObject(i).getJSONArray("seats");
 				// loops through each object to identify if each seat is booked

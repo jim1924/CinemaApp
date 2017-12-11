@@ -121,7 +121,7 @@ public class HistoryCtrl implements Initializable
 	 * @param screeningID
 	 * @return
 	 */
-	private boolean checkIfMovietimeHasPassed(int screeningID)
+	public boolean checkIfMovietimeHasPassed(int screeningID)
 	{
 		Boolean checkCurrentDate=false;
 		String movieDate="";
@@ -228,6 +228,10 @@ public class HistoryCtrl implements Initializable
 		{
 			if (Screenings.getJSONObject(i).getInt("screeningID")==screeningID)
 			{
+				Integer bookedSeats=Screenings.getJSONObject(i).getInt("bookedSeats");
+				Integer freeSeats=Screenings.getJSONObject(i).getInt("freeSeats");
+				Screenings.getJSONObject(i).put("bookedSeats", bookedSeats-1);
+				Screenings.getJSONObject(i).put("freeSeats", freeSeats+1);
 				for (int j=0;j<Screenings.getJSONObject(i).getJSONArray("seats").length();j++)
 				{
 					for(int k=0;k<bookedSeatsArray.length();k++)

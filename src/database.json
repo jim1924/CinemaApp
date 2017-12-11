@@ -3,6 +3,8 @@
 		{
 			"date": "15/12/2017",
 			"screeningID": 1,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "14:00",
 			"title": "The Shawshank Redemption (1994)",
 			"seats": [
@@ -411,6 +413,8 @@
 		{
 			"date": "16/12/2017",
 			"screeningID": 2,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "22:00",
 			"title": "The Shawshank Redemption (1994)",
 			"seats": [
@@ -819,6 +823,8 @@
 		{
 			"date": "17/12/2017",
 			"screeningID": 3,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "20:00",
 			"title": "The Godfather: Part II (1974)",
 			"seats": [
@@ -1227,6 +1233,8 @@
 		{
 			"date": "18/12/2017",
 			"screeningID": 4,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "21:00",
 			"title": "The Godfather (1972)",
 			"seats": [
@@ -1635,6 +1643,8 @@
 		{
 			"date": "19/12/2017",
 			"screeningID": 5,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "22:00",
 			"title": "Pulp Fiction (1994)",
 			"seats": [
@@ -2043,6 +2053,8 @@
 		{
 			"date": "20/12/2017",
 			"screeningID": 6,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "22:00",
 			"title": "Schindler's List (1993)",
 			"seats": [
@@ -2451,6 +2463,8 @@
 		{
 			"date": "21/12/2017",
 			"screeningID": 7,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "18:00",
 			"title": "The Dark Knight (2008)",
 			"seats": [
@@ -2859,6 +2873,8 @@
 		{
 			"date": "22/12/2017",
 			"screeningID": 8,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "19:00",
 			"title": "The Dark Knight (2008)",
 			"seats": [
@@ -3267,6 +3283,8 @@
 		{
 			"date": "23/12/2017",
 			"screeningID": 9,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "23:00",
 			"title": "The Good, the Bad and the Ugly (1966)",
 			"seats": [
@@ -3675,6 +3693,9 @@
 		{
 			"date": "24/12/2017",
 			"screeningID": 10,
+			"bookedSeats":0,
+			"freeSeats":100,
+			
 			"time": "17:00",
 			"title": "Fight Club (1999)",
 			"seats": [
@@ -4083,6 +4104,8 @@
 		{
 			"date": "25/12/2017",
 			"screeningID": 11,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "00:00",
 			"title": "The Lord of the Rings: The Return of the King (2003)",
 			"seats": [
@@ -4491,6 +4514,8 @@
 		{
 			"date": "26/12/2017",
 			"screeningID": 12,
+			"bookedSeats":0,
+			"freeSeats":100,			
 			"time": "07:00",
 			"title": "Justice League",
 			"seats": [
@@ -4899,6 +4924,9 @@
 		{
 			"date": "27/12/2017",
 			"screeningID": 13,
+			"bookedSeats":0,
+			"freeSeats":100,
+			
 			"time": "17:00",
 			"title": "Fight Club (1999)",
 			"seats": [
@@ -5307,6 +5335,8 @@
 		{
 			"date": "28/12/2017",
 			"screeningID": 14,
+			"bookedSeats":0,
+			"freeSeats":100,
 			"time": "18:00",
 			"title": "12 Angry Men (1957)",
 			"seats": [
@@ -5715,6 +5745,8 @@
 		{
 			"date": "29/12/2017",
 			"screeningID": 15,
+			"bookedSeats":0,
+			"freeSeats":100,
 			"time": "21:00",
 			"title": "The Shawshank Redemption (1994)",
 			"seats": [

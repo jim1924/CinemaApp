@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import org.json.JSONArray;
@@ -83,7 +84,7 @@ public class MovieSelectCtrl implements Initializable
 			for (int k = 0; k < Screenings.length(); k++)
 			{
 
-				if (Screenings.getJSONObject(k).getString("title").equals(Movies.getJSONObject(i).getString("title")))
+				if (Screenings.getJSONObject(k).getString("title").equals(Movies.getJSONObject(i).getString("title")) && checkIfMovietimeHasPassed(Screenings.getJSONObject(k).getInt("screeningID")))
 				{
 					counter++;
 				}
@@ -92,7 +93,7 @@ public class MovieSelectCtrl implements Initializable
 			int counter2 = 0;
 			for (int j = 0; j < Screenings.length(); j++)
 			{
-				if (Screenings.getJSONObject(j).getString("title").equals(Movies.getJSONObject(i).getString("title")))
+				if (Screenings.getJSONObject(j).getString("title").equals(Movies.getJSONObject(i).getString("title")) && checkIfMovietimeHasPassed(Screenings.getJSONObject(j).getInt("screeningID")))
 				{
 					tempArray[counter2] = Screenings.getJSONObject(j).getString("date");
 					counter2++;
@@ -109,7 +110,7 @@ public class MovieSelectCtrl implements Initializable
 		
 		
 		
-		File file = new File("assets/1.jpg");
+		File file = new File(ImagesPath.get(0));
 		Image image = new Image(file.toURI().toString());
 		iv.setImage(image);
 		description.setText(movieDescription.get(0));
@@ -222,6 +223,80 @@ public class MovieSelectCtrl implements Initializable
 		window.setScene(loginscene);
 		window.show();
 		loginscene.getWindow().centerOnScreen();
+	}
+	
+	
+	/**
+	 * This method takes as input the ScreeningID and calculates whether the specific Screening has already been displayed
+	 * @param screeningID
+	 * @return
+	 */
+	public boolean checkIfMovietimeHasPassed(int screeningID)
+	{
+		Boolean checkCurrentDate=false;
+		String movieDate="";
+		String movieTime="";
+		for (int i = 0; i < Screenings.length(); i++)
+		{
+			if (Screenings.getJSONObject(i).getInt("screeningID") == screeningID)
+			{
+				movieDate=Screenings.getJSONObject(i).getString("date");
+				movieTime=Screenings.getJSONObject(i).getString("time");
+			}
+		}
+		String[] dayMonthYearTemp=movieDate.split("/");
+		String[] hourMinuteTemp=movieTime.split(":");
+		Integer[] dayMonthYear=new Integer[3];
+		Integer[] hourMinute=new Integer[2];
+		
+		dayMonthYear[0]=Integer.parseInt(dayMonthYearTemp[0]);
+		dayMonthYear[1]=Integer.parseInt(dayMonthYearTemp[1]);
+		dayMonthYear[2]=Integer.parseInt(dayMonthYearTemp[2]);
+		hourMinute[0]=Integer.parseInt(hourMinuteTemp[0]);
+		hourMinute[1]=Integer.parseInt(hourMinuteTemp[1]);
+		
+		Calendar now =Calendar.getInstance();
+		if(now.get(Calendar.YEAR)<dayMonthYear[2])
+			checkCurrentDate=true;
+		else if (now.get(Calendar.YEAR)==dayMonthYear[2])
+		{
+			if(now.get(Calendar.MONTH)+1<dayMonthYear[1])
+			{
+				checkCurrentDate=true;
+			}
+			else if(now.get(Calendar.MONTH)+1==dayMonthYear[1])
+			{
+				if(now.get(Calendar.DAY_OF_MONTH)<dayMonthYear[0])
+				{
+					checkCurrentDate=true;
+				}
+				else if(now.get(Calendar.DAY_OF_MONTH)==dayMonthYear[0])
+				{
+					
+					if(now.get(Calendar.HOUR_OF_DAY)<hourMinute[0]-1)
+					{
+						checkCurrentDate=true;
+					}
+					else
+					{
+						checkCurrentDate=false;
+					}
+				}
+				else
+				{
+					checkCurrentDate=false;
+				}
+			}
+			else
+			{
+				checkCurrentDate=false;
+			}
+		}
+		else
+		{
+			checkCurrentDate=false;
+		}
+		return checkCurrentDate;
 	}
 
 }

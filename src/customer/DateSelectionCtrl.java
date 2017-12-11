@@ -1,5 +1,6 @@
 package customer;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -72,8 +73,8 @@ public class DateSelectionCtrl implements Initializable
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		// populates with the first item of the movies list (to show something)
-		String path=Movies.getJSONObject(0).getString("imgSrc");
-		Image image = new Image(getClass().getResourceAsStream(path));
+		File file = new File(Movies.getJSONObject(0).getString("imgSrc"));
+		Image image = new Image(file.toURI().toString());
 		iv.setImage(image);
 		description.setText(Movies.getJSONObject(0).getString("desc"));
 		
@@ -92,7 +93,7 @@ public class DateSelectionCtrl implements Initializable
 		for (int i = 0; i < Screenings.length(); i++)
 		{
 			
-			if (fullDate.equals(Screenings.getJSONObject(i).getString("date")))
+			if (fullDate.equals(Screenings.getJSONObject(i).getString("date")) && checkIfMovietimeHasPassed(Screenings.getJSONObject(i).getInt("screeningID")))
 			{
 				movieTimesItems.add(Screenings.getJSONObject(i).getString("time"));
 				application.VariableTracker.selectedDate=Screenings.getJSONObject(i).getString("date");
@@ -139,8 +140,8 @@ public class DateSelectionCtrl implements Initializable
 				{
 					if (Movies.getJSONObject(k).getString("title").equals(application.VariableTracker.selectedMovie))
 					{
-						String path=Movies.getJSONObject(k).getString("imgSrc");
-						Image image = new Image(getClass().getResourceAsStream(path));
+						File file = new File(Movies.getJSONObject(k).getString("imgSrc"));
+						Image image = new Image(file.toURI().toString());
 						iv.setImage(image);
 						description.setText(Movies.getJSONObject(k).getString("desc"));
 					}
@@ -194,6 +195,79 @@ public class DateSelectionCtrl implements Initializable
 		window.setScene(loginscene);
 		window.show();
 		loginscene.getWindow().centerOnScreen();
+	}
+	
+	/**
+	 * This method takes as input the ScreeningID and calculates whether the specific Screening has already been displayed
+	 * @param screeningID
+	 * @return
+	 */
+	public boolean checkIfMovietimeHasPassed(int screeningID)
+	{
+		Boolean checkCurrentDate=false;
+		String movieDate="";
+		String movieTime="";
+		for (int i = 0; i < Screenings.length(); i++)
+		{
+			if (Screenings.getJSONObject(i).getInt("screeningID") == screeningID)
+			{
+				movieDate=Screenings.getJSONObject(i).getString("date");
+				movieTime=Screenings.getJSONObject(i).getString("time");
+			}
+		}
+		String[] dayMonthYearTemp=movieDate.split("/");
+		String[] hourMinuteTemp=movieTime.split(":");
+		Integer[] dayMonthYear=new Integer[3];
+		Integer[] hourMinute=new Integer[2];
+		
+		dayMonthYear[0]=Integer.parseInt(dayMonthYearTemp[0]);
+		dayMonthYear[1]=Integer.parseInt(dayMonthYearTemp[1]);
+		dayMonthYear[2]=Integer.parseInt(dayMonthYearTemp[2]);
+		hourMinute[0]=Integer.parseInt(hourMinuteTemp[0]);
+		hourMinute[1]=Integer.parseInt(hourMinuteTemp[1]);
+		
+		Calendar now =Calendar.getInstance();
+		if(now.get(Calendar.YEAR)<dayMonthYear[2])
+			checkCurrentDate=true;
+		else if (now.get(Calendar.YEAR)==dayMonthYear[2])
+		{
+			if(now.get(Calendar.MONTH)+1<dayMonthYear[1])
+			{
+				checkCurrentDate=true;
+			}
+			else if(now.get(Calendar.MONTH)+1==dayMonthYear[1])
+			{
+				if(now.get(Calendar.DAY_OF_MONTH)<dayMonthYear[0])
+				{
+					checkCurrentDate=true;
+				}
+				else if(now.get(Calendar.DAY_OF_MONTH)==dayMonthYear[0])
+				{
+					
+					if(now.get(Calendar.HOUR_OF_DAY)<hourMinute[0]-1)
+					{
+						checkCurrentDate=true;
+					}
+					else
+					{
+						checkCurrentDate=false;
+					}
+				}
+				else
+				{
+					checkCurrentDate=false;
+				}
+			}
+			else
+			{
+				checkCurrentDate=false;
+			}
+		}
+		else
+		{
+			checkCurrentDate=false;
+		}
+		return checkCurrentDate;
 	}
 
 }
