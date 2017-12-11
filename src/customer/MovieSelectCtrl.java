@@ -1,9 +1,8 @@
 package customer;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -108,7 +107,10 @@ public class MovieSelectCtrl implements Initializable
 
 		// populates with the first item of the movies list (to show something)
 		
-		Image image = new Image(getClass().getResourceAsStream((ImagesPath.get(0))));		
+		
+		
+		File file = new File("assets/1.jpg");
+		Image image = new Image(file.toURI().toString());
 		iv.setImage(image);
 		description.setText(movieDescription.get(0));
 	}
@@ -132,11 +134,13 @@ public class MovieSelectCtrl implements Initializable
 				description.setText(movieDescription.get(i));
 				try
 				{
-					Image image = new Image(getClass().getResourceAsStream(String.valueOf(ImagesPath.get(i))));
+					File file = new File(ImagesPath.get(i));
+					Image image = new Image(file.toURI().toString());
 					validImage = image;
 				} catch (NullPointerException e)
 				{
-					Image image = new Image(getClass().getResourceAsStream("/assets/placeholder.png"));
+					File file = new File("assets/placeholder.png");
+					Image image = new Image(file.toURI().toString());
 					validImage = image;
 				}
 				VariableTracker.movieImage = validImage;
