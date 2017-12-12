@@ -57,7 +57,7 @@ public class ScreeningControlCtrl implements Initializable {
 		
 		JSONObject obj =new JSONObject();
 		try{
-			obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+			obj = JSONUtils.getJSONObjectFromFile("database.json");
 		}
 		catch(Exception e){
 			System.out.println(e);
