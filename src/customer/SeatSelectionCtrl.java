@@ -25,6 +25,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * This is the controller class of the seat selection page. The user here has already selected a combination of Movie-Day-Time and this page shows the available seats to book
+ * The user can select 1 or more seats to book but of course they can't select a pre-booked one
+ * 
+ * @author Dimitris Selalmazidis
+ *
+ */
 public class SeatSelectionCtrl implements Initializable
 {
 	Boolean[][] bookedSeats = new Boolean[10][10];
@@ -149,7 +156,11 @@ public class SeatSelectionCtrl implements Initializable
 		}
 		return null;
 	}
-	// back button
+	/**
+	 * This method is linked with the back button and moves the user to the previous screen
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void back(ActionEvent Event) throws IOException 
 	{
 		
@@ -304,7 +315,11 @@ public class SeatSelectionCtrl implements Initializable
 
 		
 	}
-	// logout button
+	/**
+	 * This method is linked with the logout button and logs out the user
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void logout(ActionEvent Event) throws IOException 
 	{
 		// code to go to the first screen

@@ -32,9 +32,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- * This is the controller class of the movie selection page
+ * This is the controller class of the movie selection page. The user here can select a specific day they want, choose a movie available that day and then
+ * choose a specific time available
  * 
- * @author Dimitris Selal
+ * @author Dimitris Selalmazidis
  *
  */
 
@@ -66,9 +67,8 @@ public class DateSelectionCtrl implements Initializable
 	
 	
 	/**
-	 * This method is initializing the date-selection page. It populates the available times for a specific date the user chooses
+	 * This method is initializing the date-selection page. It just shows the image and description of the first movie
 	 */
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
@@ -81,7 +81,7 @@ public class DateSelectionCtrl implements Initializable
 	}
 
 	/**
-	 * This method changed changes the available time related to the date the users clicks
+	 * This method changed shows the available movies for a specific day the user has chosen
 	 */
 	public void chooseDate()
 	{
@@ -119,7 +119,7 @@ public class DateSelectionCtrl implements Initializable
 	
 
 	/**
-	 * This method updates the picture of a movie and the description of the movie when a movie is clicked from the listView
+	 * This method updates the picture and the description of the movie that the user picks and updated the Time field with the available screening times of this movie
 	 */
 	public void chooseMovie()
 	{
@@ -192,7 +192,11 @@ public class DateSelectionCtrl implements Initializable
 	}
 
 
-	//logout button
+	/**
+	 * This method is linked with the logout button and logs out the user
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void logout(ActionEvent Event) throws IOException
 	{
 		// code to go to the first screen
@@ -205,7 +209,11 @@ public class DateSelectionCtrl implements Initializable
 	}
 	
 
-	//back button
+	/**
+	 * This method is linked with the back button and moves the user to the previous screen
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void back(ActionEvent Event) throws IOException 
 	{
 
@@ -291,6 +299,11 @@ public class DateSelectionCtrl implements Initializable
 	}
 	
 	
+	/**
+	 * This method takes a date as a String and returns it to the form 1/1/2018 (and not 01/01/2018). This is done for comparison reasons
+	 * @param date
+	 * @return
+	 */
 	public static String dateToIntDate(String date)
 	{
 		String convDate="";

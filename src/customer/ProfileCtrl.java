@@ -24,6 +24,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * This is the controller class of the profile page. The user here can change their personal details like first name,last name, e-mail and password
+ * @author Dimitris Selalmazidis
+ *
+ */
 public class ProfileCtrl implements Initializable
 {
 	@FXML
@@ -112,7 +117,7 @@ public class ProfileCtrl implements Initializable
 
 	
 	/**
-	 * This method takes as parameters the new first name,last Name,email,password and stores them to the file and the class "variableTracker"
+	 * This method takes as parameters the new first name,last Name,email,password and stores them to the database and the class "variableTracker"
 	 * @param firstName
 	 * @param lastName
 	 * @param email
@@ -180,7 +185,11 @@ public class ProfileCtrl implements Initializable
 	}
 
 
-	//logout button
+	/**
+	 * This method is linked with the logout button and logs out the user
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void logout(ActionEvent Event) throws IOException
 	{
 		// code to go to the first screen
@@ -192,7 +201,11 @@ public class ProfileCtrl implements Initializable
 		loginscene.getWindow().centerOnScreen();
 	}
 	
-	//back button
+	/**
+	 * This method is linked with the back button and moves the user to the previous screen
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void back(ActionEvent Event) throws IOException // back button
 	{
 

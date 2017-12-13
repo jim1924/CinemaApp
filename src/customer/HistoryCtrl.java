@@ -29,6 +29,11 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * This class shows the user the history of all their bookings and allows the user to delete future only bookings
+ * @author Dimitris Selalmazidis
+ *
+ */
 public class HistoryCtrl implements Initializable
 {
 	public HistoryCtrl() throws IOException
@@ -278,7 +283,11 @@ public class HistoryCtrl implements Initializable
 	}
 
 	
-	//logout button
+	/**
+	 * This method is linked with the logout button and logs out the user
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void logout(ActionEvent Event) throws IOException
 	{
 		// code to go to the first screen
@@ -290,7 +299,11 @@ public class HistoryCtrl implements Initializable
 		loginscene.getWindow().centerOnScreen();
 	}
 	
-	//back button
+	/**
+	 * This method is linked with the back button and moves the user to the previous screen
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void back(ActionEvent Event) throws IOException // back button
 	{
 

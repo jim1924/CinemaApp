@@ -30,9 +30,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- * This is the controller class of the movie selection page
+ * This is the controller class of the movie selection page. The user can select firstly a movie they want to see and then select an available day and time
  * 
- * @author Dimitris Selal
+ * @author Dimitris Selalmazidis
  *
  */
 
@@ -59,10 +59,7 @@ public class MovieSelectCtrl implements Initializable
 	// this is in arrayList with each row having an array
 	ArrayList<String[]> movieDatesList = new ArrayList<String[]>();
 
-	/**
-	 * This method is initializing the movie-selection page. It populates the "movieList" ListView
-	 * with the available movies in order for the user to make a selection.
-	 */
+
 
 	public MovieSelectCtrl() throws IOException
 	{
@@ -70,7 +67,10 @@ public class MovieSelectCtrl implements Initializable
 	JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 	JSONArray Movies = obj.getJSONArray("Movies");
 	JSONArray Screenings = obj.getJSONArray("Screenings");
-
+	/**
+	 * This method is initializing the movie-selection page. It populates the "movieList" ListView
+	 * with the available movies in order for the user to make a selection.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
@@ -175,7 +175,11 @@ public class MovieSelectCtrl implements Initializable
 		movieTimes.setItems(movieTimesItems);
 	}
 
-	//back button
+	/**
+	 * This method is linked with the back button and moves the user to the previous screen
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void back(ActionEvent Event) throws IOException // back button
 	{
 
@@ -213,7 +217,11 @@ public class MovieSelectCtrl implements Initializable
 	}
 
 
-	//logout button
+	/**
+	 * This method is linked with the logout button and logs out the user
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void logout(ActionEvent Event) throws IOException
 	{
 		// code to go to the first screen

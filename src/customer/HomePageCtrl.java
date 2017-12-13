@@ -14,11 +14,30 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/**
+ * This class is the home page of the customer. They can choose a movie they want and then find the available screening times or they can choose a specific
+ * day, then choose a movie and finally choose one of the available times
+ * @author Dimitris Selalmazidis
+ *
+ */
 public class HomePageCtrl implements Initializable {
 	
 	@FXML
 	Label name=new Label();
-	//logout button
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1)
+	{
+		name.setText("Welcome Mr. "+application.VariableTracker.custLastName);
+
+	}	
+	
+	
+	/**
+	 * This method is linked with the logout button and logs out the user
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void logout(ActionEvent Event) throws IOException
 	{
 		//code to return to the first 
@@ -104,12 +123,7 @@ public class HomePageCtrl implements Initializable {
 	
 	
 	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1)
-	{
-		name.setText("Welcome Mr. "+application.VariableTracker.custLastName);
 
-	}
 	
 	
 

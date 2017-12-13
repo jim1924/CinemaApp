@@ -15,6 +15,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/**
+ * This is the controller class of the confirmation page. The user here can see the summary of his/her booking
+ * @author Dimitris Selalmazidis
+ *
+ */
 public class ConfirmationCtrl implements Initializable
 {
 	@FXML
@@ -29,6 +34,7 @@ public class ConfirmationCtrl implements Initializable
 	Label time = new Label();
 	@FXML
 	Label bookedSeats = new Label();
+
 
 
 	@Override
@@ -115,8 +121,12 @@ public class ConfirmationCtrl implements Initializable
 		return rowColumn;
 	}
 
-
-	public void logout(ActionEvent Event) throws IOException // logout button
+	/**
+	 * This method is linked with the logout button and logs out the user
+	 * @param Event
+	 * @throws IOException
+	 */
+	public void logout(ActionEvent Event) throws IOException
 	{
 		// code to go to the first screen
 		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
@@ -126,7 +136,13 @@ public class ConfirmationCtrl implements Initializable
 		window.show();
 		loginscene.getWindow().centerOnScreen();
 	}
-	public void home(ActionEvent Event) throws IOException // home page button
+	
+	/**
+	 * This method is linked with the home button and moves the user to the home page
+	 * @param Event
+	 * @throws IOException
+	 */
+	public void home(ActionEvent Event) throws IOException
 	{
 		// code to go to home
 		Parent main = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));

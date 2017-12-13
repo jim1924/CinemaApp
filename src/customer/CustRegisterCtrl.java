@@ -15,6 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import users.Customer;
 
+/**
+ * This class provides the ability for registering new users
+ *
+ */
 public class CustRegisterCtrl {
 
 	@FXML
@@ -40,6 +44,12 @@ public class CustRegisterCtrl {
 	@FXML
 	Label passwordErrorLbl2;
 	
+	
+	/**
+	 * This method is linked with the back button and moves the user to the previous screen
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void goBack(ActionEvent Event) throws IOException
 	{
 		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
@@ -50,6 +60,13 @@ public class CustRegisterCtrl {
 		loginscene.getWindow().centerOnScreen();
 	}
 	
+	
+	
+	/**
+	 * This method checks if the new user has inserted valid details for his/her registration
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void registerCustomer(ActionEvent Event) throws IOException
 	{
 		String sFirstName=firstName.getText();
@@ -64,8 +81,6 @@ public class CustRegisterCtrl {
 		boolean passwordIsValid = DataValidation.passwordValidator(password, passwordErrorLbl);
 		boolean passwordsMatch = DataValidation.passwordsMatch(password, password2, passwordErrorLbl2);
 		
-		//boolean emailNull= DataValidation.textFieldIsNull(email, emailErrorLbl, "Email field can not be empty.");
-		//boolean passwordNull= DataValidation.textFieldIsNull(password, passwordErrorLbl, "Password field can not be empty.");
 		
 		if(fNameIsValid && lNameIsValid && emailIsValid && passwordIsValid && passwordsMatch)
 		{
@@ -78,20 +93,6 @@ public class CustRegisterCtrl {
 		window.setScene(loginscene);
 		window.show();
 		loginscene.getWindow().centerOnScreen();
-		
-		
-//		Parent homePage = null;
-//		try {
-//			homePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		Scene movieSelectScene = new Scene(homePage);
-//		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-//		window.setScene(movieSelectScene);
-//		window.show();
-//		movieSelectScene.getWindow().centerOnScreen();
 		}
 		
 		
