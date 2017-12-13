@@ -41,7 +41,8 @@ public class ScreeningAdderCtrl implements Initializable {
 	ImageView poster;
 	@FXML
 	Label titleLbl;
-
+	@FXML
+	Label clashLbl;
 	@FXML
 	ComboBox<String> timesBox;
 	@Override
@@ -77,34 +78,60 @@ public class ScreeningAdderCtrl implements Initializable {
 	}
 	public void addScreening(ActionEvent Event) throws IOException
 	{
-		if(datePicker.getValue()!=null && timesBox.getSelectionModel().getSelectedItem()!=null )
+		if (datePicker.getValue() != null && timesBox.getSelectionModel().getSelectedItem() != null)
 		{
+
+			boolean clash = false;
+			String datein = datePicker.getValue().toString();
+			String year = datein.substring(0, 4);
+			String month = datein.substring(5, 7);
+			String day = datein.substring(8, 10);
+			String date = day + "/" + month + "/" + year;
+			String movie = VariableTracker.movieTitle;
+			String time = timesBox.getValue();
 			try
 			{
-				String datein = datePicker.getValue().toString();
-				String year = datein.substring(0, 4);
-				String month = datein.substring(5, 7);
-				String day = datein.substring(8, 10);
-				String date = day + "/" + month + "/" + year;
-				String movie = VariableTracker.movieTitle;
-				String time = timesBox.getValue();
-				Screening scr = new Screening(date, time, movie);
-			}
-			catch (NullPointerException e)
-			{
-				
-			}
-			Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningControl.fxml"));
-			Scene loginscene = new Scene(main);
-			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-			window.setScene(loginscene);
-			window.show();
-			loginscene.getWindow().centerOnScreen();
-		}
 
-		
+				JSONObject obj = new JSONObject();
+				try
+				{
+					obj = JSONUtils.getJSONObjectFromFile("database.json");
+				} catch (Exception e)
+				{
+					System.out.println(e);
+				}
+				JSONArray screenings = obj.getJSONArray("Screenings");
+				for (int i = 0; i < screenings.length(); i++)
+				{
+					String sDate = screenings.getJSONObject(i).getString("date");
+					String sTime = screenings.getJSONObject(i).getString("time");
+					if (sDate.equals(date) && sTime.equals(time))
+					{
+						clash = true;
+
+					}
+
+				}
+
+			} catch (NullPointerException e)
+			{
+
+			}
+			if (!clash)
+			{
+				Screening scr = new Screening(date, time, movie);
+				Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningControl.fxml"));
+				Scene loginscene = new Scene(main);
+				Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+				window.setScene(loginscene);
+				window.show();
+				loginscene.getWindow().centerOnScreen();
+
+			} else
+				clashLbl.setText("Screening already scheduled at this time");
+
+		}
 	}
-	
 	
 	
 }
