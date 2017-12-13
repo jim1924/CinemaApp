@@ -15,11 +15,11 @@ public class Movie {
 	private String desc;
 	private String imgSrc;
 
-public Movie (String title,String desc)
+public Movie (String title,String desc, String imgSrc)
 {
 	this.title=title;
 	this.desc=desc;
-	this.imgSrc="/assets/"+title+".jpg";
+	this.imgSrc=imgSrc;
 	try {
 		addMovie();
 	} catch (IOException e) {
