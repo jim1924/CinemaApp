@@ -23,7 +23,7 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <Label fx:id="clashLbl" layoutX="409.0" layoutY="228.0" prefHeight="17.0" prefWidth="258.0" textFill="#e80505" />
+      <Label fx:id="clashLbl" alignment="CENTER" layoutX="365.0" layoutY="228.0" prefHeight="21.0" prefWidth="317.0" textFill="#e80505" />
       
    </children>
 </AnchorPane>

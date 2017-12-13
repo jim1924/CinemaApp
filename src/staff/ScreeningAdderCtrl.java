@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import org.json.JSONArray;
@@ -117,7 +118,7 @@ public class ScreeningAdderCtrl implements Initializable {
 			{
 
 			}
-			if (!clash)
+			if (!clash && checkDay(date))
 			{
 				Screening scr = new Screening(date, time, movie);
 				Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningControl.fxml"));
@@ -127,10 +128,61 @@ public class ScreeningAdderCtrl implements Initializable {
 				window.show();
 				loginscene.getWindow().centerOnScreen();
 
-			} else
+			} else if (clash)
 				clashLbl.setText("Screening already scheduled at this time");
+			else
+				clashLbl.setText("The specific date has passed");
 
 		}
+	}
+	
+	/**
+	 * This method takes as input the ScreeningID and calculates whether the specific Screening has already been displayed
+	 * @param screeningID
+	 * @return
+	 */
+	public boolean checkDay(String date)
+	{
+		Boolean checkCurrentDate=false;
+		String movieDate="";
+
+		String[] dayMonthYearTemp=date.split("/");
+		Integer[] dayMonthYear=new Integer[3];
+		
+		dayMonthYear[0]=Integer.parseInt(dayMonthYearTemp[0]);
+		dayMonthYear[1]=Integer.parseInt(dayMonthYearTemp[1]);
+		dayMonthYear[2]=Integer.parseInt(dayMonthYearTemp[2]);
+		
+		Calendar now =Calendar.getInstance();
+		if(now.get(Calendar.YEAR)<dayMonthYear[2])
+			checkCurrentDate=true;
+		else if (now.get(Calendar.YEAR)==dayMonthYear[2])
+		{
+			if(now.get(Calendar.MONTH)+1<dayMonthYear[1])
+			{
+				checkCurrentDate=true;
+			}
+			else if(now.get(Calendar.MONTH)+1==dayMonthYear[1])
+			{
+				if(now.get(Calendar.DAY_OF_MONTH)<=dayMonthYear[0])
+				{
+					checkCurrentDate=true;
+				}
+				else
+				{
+					checkCurrentDate=false;
+				}
+			}
+			else
+			{
+				checkCurrentDate=false;
+			}
+		}
+		else
+		{
+			checkCurrentDate=false;
+		}
+		return checkCurrentDate;
 	}
 	
 	

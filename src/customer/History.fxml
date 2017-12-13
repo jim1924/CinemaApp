@@ -15,7 +15,7 @@
          <items>
             <HBox alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="252.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#back" prefHeight="45.0" prefWidth="92.0" text="Back">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#back" prefHeight="45.0" prefWidth="90.0" text="Back">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -48,7 +48,7 @@
       <Accordion fx:id="accd" layoutX="156.0" layoutY="192.0" prefHeight="279.0" prefWidth="525.0" />
       <Label alignment="CENTER" layoutX="274.0" layoutY="120.0" prefHeight="64.0" prefWidth="290.0" text="Bookings" underline="true">
          <font>
-            <Font size="33.0" />
+            <Font size="31.0" />
          </font>
       </Label>
    </children>
