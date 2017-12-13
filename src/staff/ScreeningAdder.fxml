@@ -16,7 +16,10 @@
       <DatePicker fx:id="datePicker" layoutX="557.0" layoutY="281.0" />
       <ComboBox fx:id="timesBox" layoutX="575.0" layoutY="345.0" prefWidth="150.0" />
       <ImageView fx:id="poster" fitHeight="561.0" fitWidth="395.0" layoutX="22.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="titleLbl" layoutX="636.0" layoutY="234.0" text="Title" textAlignment="CENTER" />
+      <Label fx:id="titleLbl" layoutX="527.0" layoutY="224.0" prefHeight="17.0" prefWidth="247.0" text="Title">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
       <Button layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
 
       <Button layoutX="605.0" layoutY="408.0" mnemonicParsing="false" onAction="#addScreening" prefWidth="92.0" text="Add" />
@@ -27,12 +30,12 @@
          <items>
             <HBox alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="252.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#back" prefHeight="45.0" prefWidth="92.0" text="Back">
+                  <Button mnemonicParsing="false" onAction="#goBack" prefHeight="45.0" prefWidth="92.0" text="Back">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#logout" prefHeight="45.0" prefWidth="112.0" text="Log out">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="45.0" prefWidth="112.0" text="Log out">
                      <font>
                         <Font size="20.0" />
                      </font>

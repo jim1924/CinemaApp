@@ -77,6 +77,14 @@ public class ScreeningAdderCtrl implements Initializable {
 		window.show();
 		loginscene.getWindow().centerOnScreen();
 	}
+	public void logOut(ActionEvent Event) throws IOException {
+		Parent main = FXMLLoader.load(getClass().getResource("/application/main.fxml"));
+		Scene loginscene = new Scene(main);
+		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+		window.setScene(loginscene);
+		window.show();
+		loginscene.getWindow().centerOnScreen();
+	}
 	public void addScreening(ActionEvent Event) throws IOException
 	{
 		if (datePicker.getValue() != null && timesBox.getSelectionModel().getSelectedItem() != null)
