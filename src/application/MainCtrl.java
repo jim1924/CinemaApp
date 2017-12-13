@@ -46,111 +46,12 @@ public class MainCtrl implements Initializable
 		regscene.getWindow().centerOnScreen();
 	}
 
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		
-		try{
-			
-
-			
-
-			
-			
-			
-			
-/*			final String path = "skata/assets";
-			final File jarFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-
-			if(jarFile.isFile()) {  // Run with JAR file
-			    final JarFile jar = new JarFile(jarFile);
-			    final Enumeration<JarEntry> entries = jar.entries(); //gives ALL entries in jar
-			    while(entries.hasMoreElements()) {
-			        final String name = entries.nextElement().getName();
-			        if (name.startsWith(path + "/")) { //filter according to the path
-			            System.out.println(name);
-			        }
-			    }
-			    jar.close();
-			} else { // Run with IDE
-			    final URL url = Launcher.class.getResource("/" + path);
-			    if (url != null) {
-			        try {
-			            final File apps = new File(url.toURI());
-			            for (File app : apps.listFiles()) {
-			                System.out.println(app);
-			            }
-			        } catch (URISyntaxException ex) {
-			            // never happens
-			        }
-			    }
-			}*/
-			
-			
-			
-		
-/*		URL res = getClass().getResource("/assets/database.json");
-		File f=(FileUtils.toFile(res));
-		//File fa = new File(this.getClass().getResource("/assets").getPath());
-		FileUtils.copyDirectory(f, new File("skata.json"));
-		System.out.println("goooood");
-		
-		URL inputUrl = getClass().getResource("/assets");
-		File dest = new File("skata");
-		FileUtils.copyURLToFile(inputUrl, dest);*/
-
-
-			
-			
-			
-			
-			
-		JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
-		System.out.println("Database exists");
-
-		}
-		catch (Exception e){
-			
-			
-			System.out.println("Database not found");
-			try{
-				InputStream in = getClass().getResourceAsStream("/database.json"); 
-				JSONObject obj = JSONUtils.getJSONObjectFromFile(in);
-				FileWriter write = new FileWriter( "database.json");
-				write.write(obj.toString());
-				write.close();
-				System.out.println("New database created");
-				
-			}
-			catch(Exception ex)
-			{
-				System.out.println("Database wasn't written");
-			}
-		}
-		
-			File folder = new File("assets");
-
-			if (folder.exists() && folder.isDirectory()) {
-				System.out.println("assets folder exists");
-				}
-			else{
-				System.out.println("folder wasn't found.");
-				new File("assets").mkdir();
-				try
-				{
-					updateWithDummy();
-				} catch (IOException e)
-				{
-					e.printStackTrace();
-				}
-
-
-				
-			}
-			
-		
-		
-		
+		readDBandAssets();
 		
 	}
 	
@@ -267,6 +168,62 @@ public class MainCtrl implements Initializable
 			}
 
 	}
+	
+	
+	/**
+	 * This method is called when the first screen of the app is launched. Due to the fact that .jar files cannot be edited, what this method is doing is
+	 * trying to read the database from the directory of the .jar file. If there is no such file, it reads from inside the .jar and copies the database
+	 * outside of the .jar file. From then on all of the app reads and writes to the files outside of the .jar file. The same procedure is followed for the assets folder.
+	 */
+	private void readDBandAssets(){
+		
+		try{	
+			JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
+			System.out.println("Database exists");
+
+			}
+			catch (Exception e){
+				
+				
+				System.out.println("Database not found");
+				try{
+					InputStream in = getClass().getResourceAsStream("/database.json"); 
+					JSONObject obj = JSONUtils.getJSONObjectFromFile(in);
+					FileWriter write = new FileWriter( "database.json");
+					write.write(obj.toString());
+					write.close();
+					System.out.println("New database created");
+					
+				}
+				catch(Exception ex)
+				{
+					System.out.println("Database wasn't written");
+				}
+			}
+			
+				File folder = new File("assets");
+
+				if (folder.exists() && folder.isDirectory()) {
+					System.out.println("assets folder exists");
+					}
+				else{
+					System.out.println("folder wasn't found.");
+					new File("assets").mkdir();
+					try
+					{
+						updateWithDummy();
+					} catch (IOException e)
+					{
+						e.printStackTrace();
+					}
+
+
+					
+				}
+		
+		
+	}
+
 	
 	private void updateWithDummy() throws IOException
 	{

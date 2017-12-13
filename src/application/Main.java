@@ -1,22 +1,15 @@
 package application;
 
 	
-import cinema.Screening;
-import cinema.Seat;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import users.Customer;
-import users.Employee;
 
 
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class Main extends Application {

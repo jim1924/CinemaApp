@@ -1,9 +1,7 @@
 package staff;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import org.json.JSONArray;
@@ -12,7 +10,6 @@ import org.json.JSONObject;
 import com.tcg.json.JSONUtils;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,7 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -32,6 +29,13 @@ public class ScreeningOverviewCtrl implements Initializable
 	 String selectedDate ;
 	 String selectedTime ;
 	Integer screeningID;
+	@FXML
+	Label ScreeningBookedSeats=new Label();
+	@FXML
+	Label ScreeningFreeSeats=new Label();
+	
+	@FXML
+	Button deleteScreening=new Button();
 
 	public ScreeningOverviewCtrl() throws IOException {
 	} 
@@ -40,22 +44,28 @@ public class ScreeningOverviewCtrl implements Initializable
 	GridPane grid = new GridPane();
 	JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 	JSONArray screenings = obj.getJSONArray("Screenings");
-	JSONArray bookings = obj.getJSONArray("Bookings");
-	JSONArray customerDetails = obj.getJSONArray("CustomerDetails");
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
+
 		 selectedMovie = application.VariableTracker.selectedMovieStaff;
 		 selectedDate = application.VariableTracker.selectedDateStaff;
 		 selectedTime = application.VariableTracker.selectedTimeStaff;
-		 System.out.println(selectedMovie+" "+selectedDate+" "+selectedTime);
 		JSONArray Screenings = screenings;
 		for (int i = 0; i < Screenings.length(); i++)
 		{
 			// finds the specific screening
 			if (selectedMovie.equals(Screenings.getJSONObject(i).getString("title")) && selectedDate.equals(Screenings.getJSONObject(i).getString("date")) && selectedTime.equals(Screenings.getJSONObject(i).getString("time")))
 			{
+				ScreeningBookedSeats.setText(Integer.toString(Screenings.getJSONObject(i).getInt("bookedSeats")));
+				ScreeningFreeSeats.setText(Integer.toString(Screenings.getJSONObject(i).getInt("freeSeats")));
+				
+				if (Integer.parseInt(ScreeningBookedSeats.getText())==0)
+				{
+					deleteScreening.setVisible(true);
+				}
+				
 				screeningID=Screenings.getJSONObject(i).getInt("screeningID");
 				// creates an object with the availability of each seat
 				JSONArray availabilityObj = Screenings.getJSONObject(i).getJSONArray("seats");
@@ -97,31 +107,31 @@ public class ScreeningOverviewCtrl implements Initializable
 
 
 	}
-
 	/**
-	 * This function returns the node, when a button of the grid is clicked
-	 * 
-	 * @param gridPane
-	 * @param col
-	 *            This is the column of the click
-	 * @param row
-	 *            This is the row of the click
-	 * @return return the specific button the user has clicked
+	 * This method is linked to the "Delete booking" button. This button appears only when there is no booking made yet
+	 * @param Event
+	 * @throws IOException
 	 */
-	private Node getNodeFromGridPane(GridPane gridPane, int col, int row)
+	public void deleteBooking(ActionEvent Event) throws IOException 
 	{
-		for (Node node : gridPane.getChildren())
+		for (int i=0;i<screenings.length();i++)
 		{
-			if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row)
+			if(screeningID==screenings.getJSONObject(i).getInt("screeningID"))
 			{
-				return node;
+				screenings.remove(i);
 			}
 		}
-		return null;
+		FileWriter write = new FileWriter( "database.json");
+		write.write(obj.toString());
+		write.close();
+		// code to go to the first screen
+		Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningControl.fxml"));
+		Scene loginscene = new Scene(main);
+		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+		window.setScene(loginscene);
+		window.show();
+		loginscene.getWindow().centerOnScreen();
 	}
-	
-
-
 	
 
 	

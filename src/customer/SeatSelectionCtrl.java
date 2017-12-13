@@ -188,9 +188,10 @@ public class SeatSelectionCtrl implements Initializable
 		{
 			for (int j=0;j<10;j++)
 			{
-				if (seatsToBook[i][j]!=null)
+				if (seatsToBook[i][j]!=null && seatsToBook[i][j]!=false)
 				{
 					atLeastOneSeatLelected=true;
+					break;
 				}
 			}
 		}

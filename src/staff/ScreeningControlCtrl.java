@@ -116,7 +116,6 @@ public class ScreeningControlCtrl implements Initializable {
 	{
 		String[] dayTime=new String[2];
 		dayTime=screeningList.getSelectionModel().getSelectedItem().split(" at ");
-		System.out.println(dayTime[0]+"a"+dayTime[1]);
 		return dayTime;
 	}
 	
