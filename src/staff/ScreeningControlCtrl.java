@@ -97,12 +97,12 @@ public class ScreeningControlCtrl implements Initializable {
 			dayTime=convertDayTime();
 			application.VariableTracker.selectedDateStaff=dayTime[0];
 			application.VariableTracker.selectedTimeStaff=dayTime[1];
-			Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningOverview.fxml"));
-			Scene loginscene = new Scene(main);
+			Parent availableTimes = FXMLLoader.load(getClass().getResource("/staff/ScreeningOverview.fxml"));
+			Scene availableTimesScene = new Scene(availableTimes);
 			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-			window.setScene(loginscene);
+			window.setScene(availableTimesScene);
 			window.show();
-			loginscene.getWindow().centerOnScreen();
+			availableTimesScene.getWindow().centerOnScreen();
 			
 			
 		}
