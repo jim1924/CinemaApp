@@ -30,7 +30,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
- * This class shows the user the history of all their bookings and allows the user to delete future only bookings
+ * This is the controller class of the history page. It shows all the user's bookings and allows the user to delete future bookings only
  * @author Dimitris Selalmazidis
  *
  */

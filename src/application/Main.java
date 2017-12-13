@@ -12,6 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.StageStyle;
 
+/**
+ * 
+ * This is where the java FX project starts
+ *
+ */
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {

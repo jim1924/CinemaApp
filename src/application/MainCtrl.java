@@ -24,8 +24,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * This is the controller of the login page. In here the customer or the employee can enter their credentials and login (it checks credentials on the fly)
+ * Also new customers can register
+ * 
+ *
+ */
 public class MainCtrl implements Initializable
 {
+	/**
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void gotostafflogin(ActionEvent Event) throws IOException{
 		
 		Parent login = FXMLLoader.load(getClass().getResource("/staff/StaffLogin.fxml"));

@@ -6,8 +6,9 @@ import javafx.scene.control.TextField;
 
 /**
  * 
- * This class is responsible for the data validation for registration process and login page. It checks if the user hasn't completed any field or if the user
+ * This class is responsible for the data validation for registration process, login page and new movie process. It checks if the user hasn't completed any field or if the user
  * has entered a valid e-mail or their password is between 4-6 characters and the confirmation password matches with the first entered password 
+ * It also checks that the user has entered a name,description and image when adding a new movie
  *
  */
 public class DataValidation {
@@ -16,6 +17,12 @@ public class DataValidation {
 
 	
 
+	/**
+	 * This method checks that the user has indeed filled the specific field
+	 * @param field
+	 * @param label
+	 * @return
+	 */
 	public static boolean emptyValidator(TextArea field, Label label) 
 	{
 		boolean valid = true;
@@ -31,6 +38,12 @@ public class DataValidation {
 		return valid;
 	}
 	
+	/**
+	 * This method checks that the user has indeed filled the specific field
+	 * @param field
+	 * @param label
+	 * @return
+	 */
 	public static boolean emptyValidator(TextField field, Label label) 
 	{
 		boolean valid = true;
@@ -46,6 +59,12 @@ public class DataValidation {
 		return valid;
 	}
 	
+	/**
+	 * This method checks that the user has indeed filled the specific field
+	 * @param field
+	 * @param label
+	 * @return
+	 */
 	public static boolean nameValidator(TextField field, Label label) 
 	{
 		boolean valid = true;
@@ -66,6 +85,12 @@ public class DataValidation {
 		return valid;
 	}
 
+	/**
+	 * This method checks that the user has inputed a valid e-mail
+	 * @param field
+	 * @param label
+	 * @return
+	 */
 	public static boolean emailValidator(TextField field, Label label) 
 	{
 		boolean valid = true;
@@ -86,6 +111,12 @@ public class DataValidation {
 		return valid;
 	}
 	
+	/**
+	 * This method checks that the user has inputed a valid passoword
+	 * @param field
+	 * @param label
+	 * @return
+	 */
 	public static boolean passwordValidator(TextField field, Label label) 
 	{
 		boolean valid = true;
@@ -105,6 +136,14 @@ public class DataValidation {
 		
 		return valid;
 	}
+	/**
+	 * 
+	 * This method checks that the user's confirmation password matches with the first field
+	 * @param pass1
+	 * @param pass2
+	 * @param label
+	 * @return
+	 */
 	public static boolean passwordsMatch(TextField pass1, TextField pass2, Label label)
 	{
 		boolean match = true;

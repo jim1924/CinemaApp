@@ -135,11 +135,10 @@ public class ScreeningAdderCtrl implements Initializable {
 
 		}
 	}
-	
 	/**
-	 * This method takes as input the ScreeningID and calculates whether the specific Screening has already been displayed
-	 * @param screeningID
-	 * @return
+	 * This method takes as input a date and calculates if this day is in the future or in the past.
+	 * @param date It returns true if the day is in the future or false if it is in the past
+	 * @return This is the date as a String
 	 */
 	public boolean checkDay(String date)
 	{
