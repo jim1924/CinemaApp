@@ -23,7 +23,7 @@ public class Customer extends User{
 	public void registerCustomer() throws IOException
 	{
 		
-		JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+		JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 		JSONArray jsonArray = obj.getJSONArray("CustomerDetails");
 		JSONArray emptyBooking = new JSONArray();
 		JSONObject temp = new JSONObject();
@@ -35,7 +35,7 @@ public class Customer extends User{
 		jsonArray.put(temp);
 		
 		
-		BufferedWriter writer= new BufferedWriter( new FileWriter("./src/assets/obj.json"));
+		BufferedWriter writer= new BufferedWriter( new FileWriter("database.json"));
 		writer.write(obj.toString());
 		writer.close();
 		

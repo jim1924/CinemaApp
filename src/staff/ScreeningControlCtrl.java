@@ -80,12 +80,44 @@ public class ScreeningControlCtrl implements Initializable {
 		screeningList.setItems(times);
 	}
 	public void goToScreeningAdder(ActionEvent Event) throws IOException {
-		Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningAdder.fxml"));
-		Scene loginscene = new Scene(main);
-		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-		window.setScene(loginscene);
-		window.show();
-		loginscene.getWindow().centerOnScreen();
+			Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningAdder.fxml"));
+			Scene loginscene = new Scene(main);
+			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+			window.setScene(loginscene);
+			window.show();
+			loginscene.getWindow().centerOnScreen();
+
+	}
+	
+	public void goToScreeningView(ActionEvent Event) throws IOException {
+		
+		if(screeningList.getSelectionModel().getSelectedItem()!=null)
+		{
+			String[] dayTime=new String[2];
+			dayTime=convertDayTime();
+			application.VariableTracker.selectedDateStaff=dayTime[0];
+			application.VariableTracker.selectedTimeStaff=dayTime[1];
+			Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningOverview.fxml"));
+			Scene loginscene = new Scene(main);
+			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+			window.setScene(loginscene);
+			window.show();
+			loginscene.getWindow().centerOnScreen();
+			
+			
+		}
+
+
+}
+
+
+
+	private String[] convertDayTime()
+	{
+		String[] dayTime=new String[2];
+		dayTime=screeningList.getSelectionModel().getSelectedItem().split(" at ");
+		System.out.println(dayTime[0]+"a"+dayTime[1]);
+		return dayTime;
 	}
 	
 

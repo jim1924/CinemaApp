@@ -31,7 +31,7 @@ public Movie (String title,String desc)
 public void addMovie() throws IOException
 {
 	
-	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 	JSONArray jsonArray = obj.getJSONArray("Movies");
 	JSONObject temp = new JSONObject();
 	temp.put("title", title);
@@ -41,7 +41,7 @@ public void addMovie() throws IOException
 	jsonArray.put(temp);
 	
 	
-	BufferedWriter writer= new BufferedWriter( new FileWriter("./src/assets/obj.json"));
+	BufferedWriter writer= new BufferedWriter( new FileWriter("database.json"));
 	writer.write(obj.toString());
 	writer.close();
 	

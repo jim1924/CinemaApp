@@ -46,7 +46,7 @@ public Seat getSeat(int x,int y)
 public void addScreening() throws IOException
 {
 	
-	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 	JSONArray jsonArray = obj.getJSONArray("Screenings");
 	index = jsonArray.length();
 	JSONObject temp = new JSONObject();
@@ -56,11 +56,13 @@ public void addScreening() throws IOException
 	temp.put("title", title);
 	temp.put("screeningID", index+1);
 	temp.put("seats", seats);
+	temp.put("bookedSeats", 0);
+	temp.put("freeSeats", 100);
 	
 	jsonArray.put(temp);
 	
 	
-	BufferedWriter writer= new BufferedWriter( new FileWriter("./src/assets/obj.json"));
+	BufferedWriter writer= new BufferedWriter( new FileWriter("database.json"));
 	writer.write(obj.toString());
 	writer.close();
 	

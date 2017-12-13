@@ -12,6 +12,11 @@ public static Image movieImage = null;
 
 
 
+//Staff Details
+public static String selectedMovieStaff;
+public static String selectedDateStaff;
+public static String selectedTimeStaff;
+
 
 
 //Customer Details
@@ -20,8 +25,6 @@ public static String custFirstName="";
 public static String custLastName="";
 public static ArrayList<Integer> custBookings=new ArrayList<Integer>();
 public static boolean selectMovieFirst=true;
-
-
 
 public static String selectedMovie;
 public static String selectedDate;

@@ -38,7 +38,7 @@ public boolean getBooked()
 public void addSeat() throws IOException
 {
 	
-	JSONObject obj = JSONUtils.getJSONObjectFromFile("./src/assets/obj.json");
+	JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
 	JSONArray jsonArray = obj.getJSONArray("Screenings");
 	JSONObject currentScreening = jsonArray.getJSONObject(index);
 	JSONArray seat = currentScreening.getJSONArray("seats");
@@ -50,7 +50,7 @@ public void addSeat() throws IOException
 	seat.put(temp);
 	
 	
-	BufferedWriter writer= new BufferedWriter( new FileWriter("./src/assets/obj.json"));
+	BufferedWriter writer= new BufferedWriter( new FileWriter("database.json"));
 	writer.write(obj.toString());
 	writer.close();
 	

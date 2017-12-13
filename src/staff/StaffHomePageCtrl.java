@@ -21,7 +21,7 @@ public class StaffHomePageCtrl   {
 		
 	}
 	public void goToMovieControl(ActionEvent Event) throws IOException {
-		Parent main = FXMLLoader.load(getClass().getResource("/staff/StaffMoviecontrol.fxml"));
+		Parent main = FXMLLoader.load(getClass().getResource("/staff/StaffMovieControl.fxml"));
 		Scene loginscene = new Scene(main);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
