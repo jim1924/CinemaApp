@@ -18,6 +18,7 @@
       <ImageView fx:id="poster" fitHeight="561.0" fitWidth="395.0" layoutX="22.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="titleLbl" layoutX="636.0" layoutY="234.0" text="Title" textAlignment="CENTER" />
       <Button layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+
       <Button layoutX="605.0" layoutY="408.0" mnemonicParsing="false" onAction="#addScreening" prefWidth="92.0" text="Add" />
       <Label layoutX="478.0" layoutY="286.0" text="Date" />
       <Label layoutX="478.0" layoutY="350.0" text="Time" />
@@ -52,6 +53,7 @@
             </HBox>
          </items>
       </ToolBar>
+
       
    </children>
 </AnchorPane>

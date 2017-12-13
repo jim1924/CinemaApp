@@ -92,10 +92,19 @@ public class DateSelectionCtrl implements Initializable
 		String fullDate=day+"/"+month+"/"+year;
 		for (int i = 0; i < Screenings.length(); i++)
 		{
-			
-			if (fullDate.equals(Screenings.getJSONObject(i).getString("date")) && checkIfMovietimeHasPassed(Screenings.getJSONObject(i).getInt("screeningID")))
+			if (fullDate.equals(dateToIntDate(Screenings.getJSONObject(i).getString("date"))) && checkIfMovietimeHasPassed(Screenings.getJSONObject(i).getInt("screeningID")))
 			{
-				movieListItems.add(Screenings.getJSONObject(i).getString("title"));
+				boolean checker=false;
+				for (int j=0;j<movieListItems.size();j++)
+				{
+					if(movieListItems.get(j).equals(Screenings.getJSONObject(i).getString("title")))
+						checker=true;
+				}
+				if(checker==false)
+				{
+					movieListItems.add(Screenings.getJSONObject(i).getString("title"));
+				}
+				
 				application.VariableTracker.selectedDate=Screenings.getJSONObject(i).getString("date");
 			}
 		}
@@ -110,47 +119,52 @@ public class DateSelectionCtrl implements Initializable
 	
 
 	/**
-	 * this method updates the picture of a movie and the description of the movie when a movie is clicked from the listView
+	 * This method updates the picture of a movie and the description of the movie when a movie is clicked from the listView
 	 */
 	public void chooseMovie()
 	{
-		application.VariableTracker.selectedMovie=movieList.getSelectionModel().getSelectedItem();
-		for (int i = 0; i < Screenings.length(); i++)
+		if(movieList.getSelectionModel().getSelectedItem()!=null)
 		{
-			boolean checkDate=application.VariableTracker.selectedDate.equals(Screenings.getJSONObject(i).getString("date"));
-			boolean checkMovie=application.VariableTracker.selectedMovie.equals(Screenings.getJSONObject(i).getString("title"));
-			if (checkDate && checkMovie)
+			application.VariableTracker.selectedMovie=movieList.getSelectionModel().getSelectedItem();
+			for (int i = 0; i < Screenings.length(); i++)
 			{
-				for (int k = 0; k < Movies.length(); k++)
+				boolean checkDate=application.VariableTracker.selectedDate.equals(Screenings.getJSONObject(i).getString("date"));
+				boolean checkMovie=application.VariableTracker.selectedMovie.equals(Screenings.getJSONObject(i).getString("title"));
+				
+				if (checkDate && checkMovie)
 				{
-					if (Movies.getJSONObject(k).getString("title").equals(application.VariableTracker.selectedMovie))
+					for (int k = 0; k < Movies.length(); k++)
 					{
-						File file = new File(Movies.getJSONObject(k).getString("imgSrc"));
-						Image image = new Image(file.toURI().toString());
-						iv.setImage(image);
-						description.setText(Movies.getJSONObject(k).getString("desc"));
+						if (Movies.getJSONObject(k).getString("title").equals(application.VariableTracker.selectedMovie))
+						{
+							File file = new File(Movies.getJSONObject(k).getString("imgSrc"));
+							Image image = new Image(file.toURI().toString());
+							iv.setImage(image);
+							description.setText(Movies.getJSONObject(k).getString("desc"));
+						}
 					}
 				}
 			}
-		}
-		
-		
-		int year=movieDates.getValue().getYear();
-		int month=movieDates.getValue().getMonthValue();
-		int day=movieDates.getValue().getDayOfMonth();
-		String fullDate=day+"/"+month+"/"+year;
-		ArrayList<String> movieTimesItems=new ArrayList<String>();
-		for (int i = 0; i < Screenings.length(); i++)
-		{
 			
-			if (fullDate.equals(Screenings.getJSONObject(i).getString("date")) && checkIfMovietimeHasPassed(Screenings.getJSONObject(i).getInt("screeningID")))
+			
+			int year=movieDates.getValue().getYear();
+			int month=movieDates.getValue().getMonthValue();
+			int day=movieDates.getValue().getDayOfMonth();
+			String fullDate=day+"/"+month+"/"+year;
+			ArrayList<String> movieTimesItems=new ArrayList<String>();
+			for (int i = 0; i < Screenings.length(); i++)
 			{
-				movieTimesItems.add(Screenings.getJSONObject(i).getString("time"));
+				
+				if (fullDate.equals(dateToIntDate(Screenings.getJSONObject(i).getString("date"))) && application.VariableTracker.selectedMovie.equals(Screenings.getJSONObject(i).getString("title")) && checkIfMovietimeHasPassed(Screenings.getJSONObject(i).getInt("screeningID")))
+				{
+					movieTimesItems.add(Screenings.getJSONObject(i).getString("time"));
+				}
 			}
+			
+			ObservableList<String> movieTimesObs = FXCollections.observableArrayList(movieTimesItems);
+			movieTimes.setItems(movieTimesObs);
 		}
-		
-		ObservableList<String> movieTimesObs = FXCollections.observableArrayList(movieTimesItems);
-		movieTimes.setItems(movieTimesObs);
+
 		
 		
 	}
@@ -167,7 +181,6 @@ public class DateSelectionCtrl implements Initializable
 		
 		if (movieList.getSelectionModel().getSelectedItem()!=null && movieDates.getValue()!=null && movieTimes.getSelectionModel().getSelectedItem()!=null)
 		{
-			System.out.println(application.VariableTracker.selectedMovie+" "+application.VariableTracker.selectedDate+" "+application.VariableTracker.selectedTime);
 			// code to go to the booking screen
 			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
 			Scene availableTimesScene = new Scene(availableTimes);
@@ -276,5 +289,20 @@ public class DateSelectionCtrl implements Initializable
 		}
 		return checkCurrentDate;
 	}
+	
+	
+	public static String dateToIntDate(String date)
+	{
+		String convDate="";
+		String[] dayMonthYearTemp;
+		Integer[] dayMonthYear=new Integer[3];
+		dayMonthYearTemp=date.split("/");
+		dayMonthYear[0]=Integer.parseInt(dayMonthYearTemp[0]);
+		dayMonthYear[1]=Integer.parseInt(dayMonthYearTemp[1]);
+		dayMonthYear[2]=Integer.parseInt(dayMonthYearTemp[2]);
+		convDate=dayMonthYear[0]+"/"+dayMonthYear[1]+"/"+dayMonthYear[2];
+		return convDate;
+	}
+	
 
 }
