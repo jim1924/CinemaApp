@@ -78,6 +78,7 @@ public class ScreeningAdderCtrl implements Initializable {
 	}
 	public void addScreening(ActionEvent Event) throws IOException
 	{
+
 		boolean clash=false;
 		String datein = datePicker.getValue().toString();
 		String year = datein.substring(0, 4);
@@ -107,7 +108,6 @@ public class ScreeningAdderCtrl implements Initializable {
 			}
 			
 			}
-			
 			
 		}
 		catch (NullPointerException e)
