@@ -128,6 +128,7 @@ public class StaffMovieControlCtrl implements Initializable {
 		loginscene.getWindow().centerOnScreen();
 	}
 	public void goToScreeningControl(ActionEvent Event) throws IOException {
+		application.VariableTracker.selectedMovieStaff=movieList.getSelectionModel().getSelectedItem();
 		Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningControl.fxml"));
 		Scene loginscene = new Scene(main);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
