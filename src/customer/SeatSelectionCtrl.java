@@ -251,15 +251,21 @@ public class SeatSelectionCtrl implements Initializable
 		}
 		JSONArray Bookings = bookings;
 		int bookingID=0;
+		boolean exists;
 		//This for loops finds an available booking ID counting from 0
+		do
+		{
+		exists=false;
+		bookingID++;
 		for (int i = 0; i < Bookings.length(); i++)
 		{
 			if(Bookings.getJSONObject(i).getInt("bookingID")==bookingID)
 			{
-				bookingID++;
-				continue;
+				exists=true;
 			}
 		}
+		}
+		while(exists);
 		
 		JSONObject newBooking = new JSONObject();
 		newBooking.put("customerEmail", application.VariableTracker.custEmail);
