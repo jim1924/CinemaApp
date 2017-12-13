@@ -15,7 +15,7 @@
       
       <TextField fx:id="titleField" layoutX="158.0" layoutY="142.0" prefHeight="27.0" prefWidth="200.0" />
       <TextArea fx:id="descriptionField" layoutX="158.0" layoutY="205.0" prefHeight="123.0" prefWidth="200.0" />
-      <Button layoutX="229.0" layoutY="365.0" mnemonicParsing="false" onAction="#addMovie" text="Add" />
+      <Button layoutX="230.0" layoutY="386.0" mnemonicParsing="false" onAction="#addMovie" text="Add" />
       <Label alignment="CENTER" layoutX="161.0" layoutY="41.0" text="Add a Movie" textAlignment="CENTER">
          <font>
             <Font size="38.0" />
@@ -23,6 +23,8 @@
       </Label>
       <Label fx:id="titleErrorLbl" layoutX="378.0" layoutY="116.0" prefHeight="63.0" prefWidth="235.0" textFill="#e00b0b" />
       <Label fx:id="descriptionErrorLbl" layoutX="378.0" layoutY="230.0" prefHeight="79.0" prefWidth="235.0" textFill="#e00b0b" />
-      
+            <Button layoutX="252.0" layoutY="343.0" mnemonicParsing="false" onAction="#uploadFile" text="Upload Image" />
+      <Label fx:id="imgSrcLbl" layoutX="56.0" layoutY="348.0" prefHeight="17.0" prefWidth="165.0" textOverrun="LEADING_ELLIPSIS" />
+      <Label fx:id="imgErrorLbl" layoutX="378.0" layoutY="348.0" prefHeight="17.0" prefWidth="200.0" textFill="#e00b0b" />
    </children>
 </AnchorPane>
