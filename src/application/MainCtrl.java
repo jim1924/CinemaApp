@@ -36,6 +36,11 @@ public class MainCtrl implements Initializable
 		loginscene.getWindow().centerOnScreen();
 	}
 	
+	/**
+	 * This method moves the user to the registration page
+	 * @param Event
+	 * @throws IOException
+	 */
 	public void goToCustReg(ActionEvent Event) throws IOException{
 		
 		Parent reg = FXMLLoader.load(getClass().getResource("/customer/CustRegister.fxml"));
@@ -69,6 +74,11 @@ public class MainCtrl implements Initializable
 	Label loginErrorLbl;
 	
 	
+	/**
+	 * This method checks in the database for an e-mail-password match and moves to the customer page or the staff page depending on the credentials
+	 * @param Event
+	 * @throws Exception
+	 */
 	public void checkCredentials(ActionEvent Event) throws Exception
 	{
 		//i wrote this code in order to move from one screen to another without having to put every time the credentials
@@ -162,11 +172,7 @@ public class MainCtrl implements Initializable
 				}
 				
 				else loginErrorLbl.setText("Invalid details");
-
-				
-
 			}
-
 	}
 	
 	
@@ -216,15 +222,14 @@ public class MainCtrl implements Initializable
 					{
 						e.printStackTrace();
 					}
-
-
-					
 				}
-		
-		
 	}
 
 	
+	/**
+	 * This method populates the newly created assets folder with the pre-existing movie images
+	 * @throws IOException
+	 */
 	private void updateWithDummy() throws IOException
 	{
 		for (int i=1;i<=10;i++)
@@ -241,14 +246,6 @@ public class MainCtrl implements Initializable
 		FileUtils.copyURLToFile(inputUrl2, dest2);
 		System.out.println("New folder created");
 	}
-	
-		
-		
-			
-		
-		
-		
-		
 	
 
 }

@@ -4,6 +4,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+/**
+ * 
+ * This class is responsible for the data validation for registration process and login page. It checks if the user hasn't completed any field or if the user
+ * has entered a valid e-mail or their password is between 4-6 characters and the confirmation password matches with the first entered password 
+ *
+ */
 public class DataValidation {
 
 	
