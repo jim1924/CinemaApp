@@ -1,30 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="0.0" minWidth="30.0" prefHeight="427.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="staff.MovieAdderCtrl">
+<AnchorPane minHeight="0.0" minWidth="30.0" prefHeight="662.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="staff.MovieAdderCtrl">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Label layoutX="73.0" layoutY="147.0" text="Title" />
-      <Label layoutX="73.0" layoutY="205.0" text="Description" />
-      
-      <TextField fx:id="titleField" layoutX="158.0" layoutY="142.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextArea fx:id="descriptionField" layoutX="158.0" layoutY="205.0" prefHeight="123.0" prefWidth="200.0" />
-      <Button layoutX="230.0" layoutY="386.0" mnemonicParsing="false" onAction="#addMovie" text="Add" />
-      <Label alignment="CENTER" layoutX="161.0" layoutY="41.0" text="Add a Movie" textAlignment="CENTER">
+      <Label layoutX="197.0" layoutY="251.0" text="Title">
          <font>
-            <Font size="38.0" />
-         </font>
-      </Label>
-      <Label fx:id="titleErrorLbl" layoutX="378.0" layoutY="116.0" prefHeight="63.0" prefWidth="235.0" textFill="#e00b0b" />
-      <Label fx:id="descriptionErrorLbl" layoutX="378.0" layoutY="230.0" prefHeight="79.0" prefWidth="235.0" textFill="#e00b0b" />
-            <Button layoutX="252.0" layoutY="343.0" mnemonicParsing="false" onAction="#uploadFile" text="Upload Image" />
-      <Label fx:id="imgSrcLbl" layoutX="56.0" layoutY="348.0" prefHeight="17.0" prefWidth="165.0" textOverrun="LEADING_ELLIPSIS" />
-      <Label fx:id="imgErrorLbl" layoutX="378.0" layoutY="348.0" prefHeight="17.0" prefWidth="200.0" textFill="#e00b0b" />
+            <Font size="30.0" />
+         </font></Label>
+      <Label layoutX="155.0" layoutY="342.0" text="Description">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
+      
+      <TextField fx:id="titleField" layoutX="329.0" layoutY="253.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextArea fx:id="descriptionField" layoutX="330.0" layoutY="290.0" prefHeight="123.0" prefWidth="200.0" />
+      <Button layoutX="398.0" layoutY="520.0" mnemonicParsing="false" onAction="#addMovie" prefHeight="45.0" prefWidth="92.0" text="Add">
+         <font>
+            <Font size="19.0" />
+         </font></Button>
+      <Label fx:id="titleErrorLbl" layoutX="552.0" layoutY="234.0" prefHeight="63.0" prefWidth="235.0" textFill="#e00b0b">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label fx:id="descriptionErrorLbl" layoutX="552.0" layoutY="314.0" prefHeight="79.0" prefWidth="235.0" textFill="#e00b0b">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+            <Button layoutX="552.0" layoutY="441.0" mnemonicParsing="false" onAction="#uploadFile" prefHeight="45.0" prefWidth="157.0" text="Upload Image">
+         <font>
+            <Font size="19.0" />
+         </font></Button>
+      <Label fx:id="imgSrcLbl" layoutX="240.0" layoutY="451.0" prefHeight="32.0" prefWidth="275.0" textOverrun="LEADING_ELLIPSIS">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="imgErrorLbl" layoutX="552.0" layoutY="501.0" prefHeight="22.0" prefWidth="203.0" textFill="#e00b0b">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <ToolBar prefHeight="77.0" prefWidth="836.0">
+         <items>
+            <HBox alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="252.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#goBack" prefHeight="45.0" prefWidth="92.0" text="Back">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="45.0" prefWidth="112.0" text="Log out">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="265.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="54.0" prefWidth="255.0" text="Add Movie">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </items>
+      </ToolBar>
    </children>
 </AnchorPane>

@@ -28,7 +28,7 @@ public class MainCtrl implements Initializable
 {
 	public void gotostafflogin(ActionEvent Event) throws IOException{
 		
-		Parent login = FXMLLoader.load(getClass().getResource("/staff/StaffLogin.fxml"));
+		Parent login = FXMLLoader.load(getClass().getResource("/staff/StaffHomePage.fxml"));
 		Scene loginscene=new Scene (login);
 		Stage window=(Stage)((Node)Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
