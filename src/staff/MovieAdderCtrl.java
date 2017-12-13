@@ -87,7 +87,8 @@ public class MovieAdderCtrl {
                   File destDir = new File("assets/");
                   FileUtils.copyFileToDirectory(file, destDir);
                   System.out.println("copied");
-                  imgSrc=destDir.getAbsolutePath()+"/"+file.getName();;
+                  imgSrc="assets/"+file.getName();;
+                  
                 
                   System.out.println(imgSrc);
               } catch(Exception e) {
