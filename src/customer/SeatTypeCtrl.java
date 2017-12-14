@@ -25,6 +25,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+
+// TODO: Auto-generated Javadoc
 /**
  * This is the controller class of the seat type selection. The user here can choose types of a ticket like adult ticket, child ticket or student ticket
  * 
@@ -34,34 +36,72 @@ import javafx.stage.Stage;
 
 public class SeatTypeCtrl implements Initializable
 {
+	
+	/** The adult sub. */
 	@FXML
 	Label adultSub=new Label();
+	
+	/** The student sub. */
 	@FXML
 	Label studentSub=new Label();
+	
+	/** The child sub. */
 	@FXML
 	Label childSub=new Label();
+	
+	/** The total. */
 	@FXML
 	Label total=new Label();
 	
+	/** The adult number. */
 	@FXML
 	ComboBox<Integer> adultNumber=new ComboBox<>();
+	
+	/** The student number. */
 	@FXML
 	ComboBox<Integer> studentNumber=new ComboBox<>();
+	
+	/** The child number. */
 	@FXML
 	ComboBox<Integer> childNumber=new ComboBox<>();
 	
+	/** The sub A. */
+	int subA =0;
+	
+	/** The sub S. */
+	int subS =0;
+	
+	/** The sub C. */
+	int subC =0;
+	
+	/** The total cost. */
+	int totalCost=0;
+	
+	/** The total available seats. */
 	int totalAvailableSeats;
 	
+	/**
+	 * Instantiates a new seat type ctrl.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public SeatTypeCtrl() throws IOException {
 	} 
 	
+	/** The obj. */
 	JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
+	
+	/** The screenings. */
 	JSONArray screenings = obj.getJSONArray("Screenings");
+	
+	/** The bookings. */
 	JSONArray bookings = obj.getJSONArray("Bookings");
+	
+	/** The customer details. */
 	JSONArray customerDetails = obj.getJSONArray("CustomerDetails");
 
-	/**
-	 * 
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
@@ -74,9 +114,7 @@ public class SeatTypeCtrl implements Initializable
 		childNumber.setItems(number);
 		childNumber.getSelectionModel().select(0);
 		
-		adultSub.setText("0");
-		studentSub.setText("0");
-		childSub.setText("0");
+		
 		
 		for (int i=0;i<screenings.length();i++)
 		{
@@ -89,12 +127,10 @@ public class SeatTypeCtrl implements Initializable
 		adultNumber.valueProperty().addListener(new ChangeListener<Integer>() {
 	        @Override public void changed(ObservableValue ov, Integer t, Integer t1) {
 	        	try{
-	        		
-		        	adultSub.setText(Integer.toString((Integer.parseInt((adultNumber.getSelectionModel().getSelectedItem().toString()))*8)) );
-		        	int sub1= Integer.parseInt(adultSub.getText());
-		        	int sub2= Integer.parseInt(studentSub.getText());
-		        	int sub3= Integer.parseInt(childSub.getText());
-		        	total.setText(Integer.toString((sub1+sub2+sub3)));
+	        		subA=adultNumber.getSelectionModel().getSelectedItem()*8;
+		        	adultSub.setText("£"+subA );
+		        	totalCost=subA+subS+subC;
+		        	total.setText("£"+totalCost);
 		        	
 	        	}
 	        	catch(Exception e)
@@ -107,11 +143,10 @@ public class SeatTypeCtrl implements Initializable
 	        @Override public void changed(ObservableValue ov, Integer t, Integer t1) {
 	        	
 	        	try{
-	        	studentSub.setText(Integer.toString((Integer.parseInt((studentNumber.getSelectionModel().getSelectedItem().toString()))*6)) );
-	        	int sub1= Integer.parseInt(adultSub.getText());
-	        	int sub2= Integer.parseInt(studentSub.getText());
-	        	int sub3= Integer.parseInt(childSub.getText());
-	        	total.setText(Integer.toString((sub1+sub2+sub3)));
+	        		subS=studentNumber.getSelectionModel().getSelectedItem()*6;
+		        	studentSub.setText("£"+subS );
+		        	totalCost=subA+subS+subC;
+		        	total.setText("£"+totalCost);
 	        	
         	}
         	catch(Exception e)
@@ -123,11 +158,10 @@ public class SeatTypeCtrl implements Initializable
 		childNumber.valueProperty().addListener(new ChangeListener<Integer>() {
 	        @Override public void changed(ObservableValue ov, Integer t, Integer t1) {
 	        	try{
-	        	childSub.setText(Integer.toString((Integer.parseInt((childNumber.getSelectionModel().getSelectedItem().toString()))*4)) );
-	        	int sub1= Integer.parseInt(adultSub.getText());
-	        	int sub2= Integer.parseInt(studentSub.getText());
-	        	int sub3= Integer.parseInt(childSub.getText());
-	        	total.setText(Integer.toString((sub1+sub2+sub3)));
+	        		subC=childNumber.getSelectionModel().getSelectedItem()*4;
+		        	childSub.setText("£"+subC );
+		        	totalCost=subA+subS+subC;
+		        	total.setText("£"+totalCost);
 	        	}
 	        	catch(Exception e)
 	        	{
@@ -140,7 +174,12 @@ public class SeatTypeCtrl implements Initializable
 	}
 	
 	
-	public void pupolateAdults() throws IOException
+	/**
+	 * Populate adults.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public void populateAdults() throws IOException
 	{
 		int localAvailable=totalAvailableSeats-Integer.parseInt((studentNumber.getSelectionModel().getSelectedItem()).toString())-Integer.parseInt((childNumber.getSelectionModel().getSelectedItem().toString()));
 		if(localAvailable<0)
@@ -164,7 +203,12 @@ public class SeatTypeCtrl implements Initializable
 		}
 	}
 	
-	public void pupolateStudent() throws IOException
+	/**
+	 * Populate student.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public void populateStudent() throws IOException
 	{
 		int localAvailable=totalAvailableSeats-Integer.parseInt((adultNumber.getSelectionModel().getSelectedItem().toString()))-Integer.parseInt(childNumber.getSelectionModel().getSelectedItem().toString());
 		if(localAvailable<0)
@@ -191,7 +235,12 @@ public class SeatTypeCtrl implements Initializable
 		
 	}
 	
-	public void pupolateChild() throws IOException
+	/**
+	 * Populate child.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public void populateChild() throws IOException
 	{
 		int localAvailable=totalAvailableSeats-Integer.parseInt((studentNumber.getSelectionModel().getSelectedItem().toString()))-Integer.parseInt((adultNumber.getSelectionModel().getSelectedItem().toString()));
 		if(localAvailable<0)
@@ -219,27 +268,32 @@ public class SeatTypeCtrl implements Initializable
 	}
 	
 	/**
-	 * This method loads the Seat Selection page after the user has chosen the seat-type
-	 * 
-	 * @param Event
-	 * @throws IOException
+	 * This method loads the Seat Selection page after the user has chosen the seat-type.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void chooseSeats(ActionEvent Event) throws IOException
 	{
 		if(adultNumber.getSelectionModel().getSelectedItem()!=0 || childNumber.getSelectionModel().getSelectedItem()!=0 || studentNumber.getSelectionModel().getSelectedItem()!=0 )
 		{
-			VariableTracker.totalCost=Integer.parseInt(total.getText());
+			VariableTracker.totalCost=totalCost;
 			VariableTracker.totalSeatsToBook=adultNumber.getSelectionModel().getSelectedItem()+childNumber.getSelectionModel().getSelectedItem()+studentNumber.getSelectionModel().getSelectedItem();
-			System.out.println(VariableTracker.totalCost);
-			System.out.println(VariableTracker.totalSeatsToBook);
+			Parent main = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
+			Scene loginscene = new Scene(main);
+			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+			window.setScene(loginscene);
+			window.show();
+			loginscene.getWindow().centerOnScreen();
 		}
 	}
 
 
 	/**
-	 * This method is linked with the logout button and logs out the user
-	 * @param Event
-	 * @throws IOException
+	 * This method is linked with the logout button and logs out the user.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void logout(ActionEvent Event) throws IOException
 	{
@@ -253,9 +307,10 @@ public class SeatTypeCtrl implements Initializable
 	}
 	
 	/**
-	 * This method is linked with the back button and moves the user to the previous screen
-	 * @param Event
-	 * @throws IOException
+	 * This method is linked with the back button and moves the user to the previous screen.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void back(ActionEvent Event) throws IOException 
 	{
