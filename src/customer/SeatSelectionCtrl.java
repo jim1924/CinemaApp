@@ -200,7 +200,7 @@ public class SeatSelectionCtrl implements Initializable
 				}
 			}
 		}
-		if(atLeastOneSeatLelected)
+		if(atLeastOneSeatLelected && chosenSeats==VariableTracker.totalSeatsToBook)
 		{
 			updateTheDataBase();
 			// code to go to the booking screen
