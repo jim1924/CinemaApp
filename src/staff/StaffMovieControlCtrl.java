@@ -30,27 +30,49 @@ import javafx.stage.Stage;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StaffMovieControlCtrl.
+ * @author Ahmed Afify
+ */
 public class StaffMovieControlCtrl implements Initializable {
 	
 	
+	/** The movie list. */
 	@FXML
 	ListView<String> movieList = new ListView<>(); // movie list ListView
+	
+	/** The description. */
 	@FXML
 	Label description = new Label(); // movie description label
+	
+	/** The movie times. */
 	@FXML
 	ComboBox<String> movieTimes = new ComboBox<>();
+	
+	/** The iv. */
 	@FXML
 	ImageView iv = new ImageView();// Place where the image of the screen will be hosted
 
+	/** The movie list items. */
 	ObservableList<String> movieListItems = FXCollections.observableArrayList();
+	
+	/** The movie description. */
 	ArrayList<String> movieDescription = new ArrayList<String>();
+	
+	/** The Images path. */
 	ArrayList<String> ImagesPath = new ArrayList<String>();
+	
+	/** The movie times list. */
 	// this is in arrayList with each row having an array
 	ArrayList<String[]> movieTimesList = new ArrayList<String[]>();
 
 	/**
 	 * This method is initializing the movie-selection page. It populates the "movieList" ListView
 	 * with the available movies in order for the user to make a selection.
+	 *
+	 * @param location the location
+	 * @param resources the resources
 	 */
 	
 	
@@ -109,6 +131,12 @@ public class StaffMovieControlCtrl implements Initializable {
 
 	}
 	
+	/**
+	 * Go back.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void goBack(ActionEvent Event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("/staff/StaffHomePage.fxml"));
 		Scene loginscene = new Scene(main);
@@ -117,6 +145,13 @@ public class StaffMovieControlCtrl implements Initializable {
 		window.show();
 		loginscene.getWindow().centerOnScreen();
 	}
+	
+	/**
+	 * Log out.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void logOut(ActionEvent Event) throws IOException
 	{
 		// code to go to the first screen
@@ -127,6 +162,13 @@ public class StaffMovieControlCtrl implements Initializable {
 		window.show();
 		loginscene.getWindow().centerOnScreen();
 	}
+	
+	/**
+	 * Go to screening control.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void goToScreeningControl(ActionEvent Event) throws IOException {
 		
 		if(movieList.getSelectionModel().getSelectedItem()!=null)
@@ -141,9 +183,10 @@ public class StaffMovieControlCtrl implements Initializable {
 		}
 
 	}
+	
 	/**
 	 * This method changed the movie image, the description and the available times when each movie
-	 * is clicked
+	 * is clicked.
 	 */
 	public void clickMovie()
 	{
@@ -184,6 +227,13 @@ public class StaffMovieControlCtrl implements Initializable {
 		// code to change the available times
 
 	}
+	
+	/**
+	 * Go to movie adder.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void goToMovieAdder(ActionEvent Event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("/staff/MovieAdder.fxml"));
 		Scene loginscene = new Scene(main);

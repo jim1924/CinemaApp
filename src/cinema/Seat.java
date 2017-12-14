@@ -9,12 +9,32 @@ import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Seat.
+ * @author Ahmed Afify
+ */
 public class Seat {
 
+	/** The booked. */
 	private boolean booked;
+	
+	/** The index. */
 	private int index;
+	
+	/** The i. */
 	private int i;
+	
+	/** The j. */
 	private int j;
+
+/**
+ * Instantiates a new seat.
+ *
+ * @param index the index
+ * @param i the i
+ * @param j the j
+ */
 public Seat(int index, int i, int j) {
 	this.booked=false;
 	this.index = index;
@@ -27,14 +47,30 @@ public Seat(int index, int i, int j) {
 		e.printStackTrace();
 	}
 }
+
+/**
+ * Book.
+ */
 public void book()
 {
 	booked=true;
 }
+
+/**
+ * Gets the booked.
+ *
+ * @return the booked
+ */
 public boolean getBooked()
 {
 	return booked;
 }
+
+/**
+ * Adds the seat.
+ *
+ * @throws IOException Signals that an I/O exception has occurred.
+ */
 public void addSeat() throws IOException
 {
 	

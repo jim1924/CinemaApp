@@ -9,12 +9,29 @@ import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Movie.
+ * @author Ahmed Afify
+ */
 public class Movie {
 
+	/** The title. */
 	private String title;
+	
+	/** The desc. */
 	private String desc;
+	
+	/** The img src. */
 	private String imgSrc;
 
+/**
+ * Instantiates a new movie.
+ *
+ * @param title the title
+ * @param desc the desc
+ * @param imgSrc the img src
+ */
 public Movie (String title,String desc, String imgSrc)
 {
 	this.title=title;
@@ -28,6 +45,11 @@ public Movie (String title,String desc, String imgSrc)
 	}
 }
 
+/**
+ * Adds the movie.
+ *
+ * @throws IOException Signals that an I/O exception has occurred.
+ */
 public void addMovie() throws IOException
 {
 	

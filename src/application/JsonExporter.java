@@ -12,8 +12,19 @@ import org.json.JSONObject;
 import com.tcg.json.JSONUtils;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JsonExporter.
+ * @author Ahmed Afify
+ */
 public class JsonExporter {
+	
+	/** The status. */
 	public String status="";
+    
+    /**
+     * Instantiates a new json exporter.
+     */
     public JsonExporter(){
     JSONObject obj= new JSONObject();
     		try{
@@ -39,6 +50,12 @@ public class JsonExporter {
         status="Export Failed";
     }           
     }
+    
+    /**
+     * Gets the status.
+     *
+     * @return the status
+     */
     public String getStatus()
     {
     	return status;

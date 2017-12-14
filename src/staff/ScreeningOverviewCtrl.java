@@ -22,29 +22,62 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ScreeningOverviewCtrl.
+ * @author Ahmed Afify
+ */
 public class ScreeningOverviewCtrl implements Initializable
 {
+	
+	/** The booked seats. */
 	Boolean[][] bookedSeats = new Boolean[10][10];
-	 String selectedMovie ;
-	 String selectedDate ;
-	 String selectedTime ;
+	 
+ 	/** The selected movie. */
+ 	String selectedMovie ;
+	 
+ 	/** The selected date. */
+ 	String selectedDate ;
+	 
+ 	/** The selected time. */
+ 	String selectedTime ;
+	
+	/** The screening ID. */
 	Integer screeningID;
+	
+	/** The Screening booked seats. */
 	@FXML
 	Label ScreeningBookedSeats=new Label();
+	
+	/** The Screening free seats. */
 	@FXML
 	Label ScreeningFreeSeats=new Label();
 	
+	/** The delete screening. */
 	@FXML
 	Button deleteScreening=new Button();
 
+	/**
+	 * Instantiates a new screening overview ctrl.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public ScreeningOverviewCtrl() throws IOException {
 	} 
 	
+	/** The grid. */
 	@FXML
 	GridPane grid = new GridPane();
+	
+	/** The obj. */
 	JSONObject obj = JSONUtils.getJSONObjectFromFile("database.json");
+	
+	/** The screenings. */
 	JSONArray screenings = obj.getJSONArray("Screenings");
 
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
@@ -107,10 +140,12 @@ public class ScreeningOverviewCtrl implements Initializable
 
 
 	}
+	
 	/**
 	 * This method is linked to the "Delete booking" button. This button appears only when there is no booking made yet
-	 * @param Event
-	 * @throws IOException
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void deleteBooking(ActionEvent Event) throws IOException 
 	{
@@ -137,9 +172,10 @@ public class ScreeningOverviewCtrl implements Initializable
 	
 	
 	/**
-	 * This method logs out the user when the log out button is presses
-	 * @param Event
-	 * @throws IOException
+	 * This method logs out the user when the log out button is presses.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void logout(ActionEvent Event) throws IOException 
 	{
@@ -153,9 +189,10 @@ public class ScreeningOverviewCtrl implements Initializable
 	}
 	
 	/**
-	 * This method moves to the previous page when the back button is pressed
-	 * @param Event
-	 * @throws IOException
+	 * This method moves to the previous page when the back button is pressed.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void back(ActionEvent Event) throws IOException 
 	{

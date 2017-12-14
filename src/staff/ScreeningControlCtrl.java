@@ -26,21 +26,42 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ScreeningControlCtrl.
+ * @author Ahmed Afify
+ */
 public class ScreeningControlCtrl implements Initializable {
 	
 	
 
+	/** The title. */
 	String title = VariableTracker.movieTitle;
+	
+	/** The desc. */
 	String desc = VariableTracker.movieDescription;
+	
+	/** The image. */
 	Image image = VariableTracker.movieImage;
 
+	/** The poster. */
 	@FXML
 	ImageView poster;
+	
+	/** The title lbl. */
 	@FXML
 	Label titleLbl;
+	
+	/** The screening list. */
 	@FXML
 	ListView<String> screeningList;
 
+	/**
+	 * Go back.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void goBack(ActionEvent Event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("/staff/StaffMovieControl.fxml"));
 		Scene loginscene = new Scene(main);
@@ -50,6 +71,12 @@ public class ScreeningControlCtrl implements Initializable {
 		loginscene.getWindow().centerOnScreen();
 	}
 	
+	/**
+	 * Log out.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void logOut(ActionEvent Event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("/application/main.fxml"));
 		Scene loginscene = new Scene(main);
@@ -59,6 +86,9 @@ public class ScreeningControlCtrl implements Initializable {
 		loginscene.getWindow().centerOnScreen();
 	}
 
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -86,6 +116,13 @@ public class ScreeningControlCtrl implements Initializable {
 		}
 		screeningList.setItems(times);
 	}
+	
+	/**
+	 * Go to screening adder.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void goToScreeningAdder(ActionEvent Event) throws IOException {
 			Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningAdder.fxml"));
 			Scene loginscene = new Scene(main);
@@ -96,6 +133,12 @@ public class ScreeningControlCtrl implements Initializable {
 
 	}
 	
+	/**
+	 * Go to screening view.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void goToScreeningView(ActionEvent Event) throws IOException {
 		
 		if(screeningList.getSelectionModel().getSelectedItem()!=null)
@@ -119,6 +162,11 @@ public class ScreeningControlCtrl implements Initializable {
 
 
 
+	/**
+	 * Convert day time.
+	 *
+	 * @return the string[]
+	 */
 	private String[] convertDayTime()
 	{
 		String[] dayTime=new String[2];
