@@ -6155,8 +6155,8 @@
 	],
 	"StaffDetails": [
 		{
-			"password": "1234",
-			"email": "q@w.com"
+			"password": "admin",
+			"email": "staff@cinema.com"
 		}
 	],
 	"Bookings": [
@@ -6215,14 +6215,7 @@
 		}
 	],
 	"CustomerDetails": [
-		{
-			"firstName": "Ahmed",
-			"lastName": "Afify",
-			"password": "afasfafsfag",
-			"bookings": [
-			],
-			"email": "asfas@gmail.com"
-		},
+		
 		{
 			"firstName": "Dimitris",
 			"lastName": "Selalmazidis",
@@ -6232,8 +6225,8 @@
 			"email": "jim.1924@hotmail.com"
 		},
 		{
-			"firstName": "John",
-			"lastName": "Dick",
+			"firstName": "Ahmed",
+			"lastName": "Afify",
 			"password": "1234",
 			"bookings": [
 			],
