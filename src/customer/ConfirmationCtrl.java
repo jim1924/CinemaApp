@@ -36,7 +36,10 @@ public class ConfirmationCtrl implements Initializable
 	Label bookedSeats = new Label();
 
 
-
+	/**
+	 * This method is initializing the booking confirmation page. It just taked the data stored from the previous page to the class VariableTracker (application package) 
+	 * and displays the summary of the booking. 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{

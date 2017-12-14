@@ -54,7 +54,9 @@ public class ProfileCtrl implements Initializable
 	Label passwordErrorLbl2;
 	
 
-
+	/**
+	 * This method is initializing the customer-profile page. It fills the first-name, last name  and e-mail fields
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{

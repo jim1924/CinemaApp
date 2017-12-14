@@ -51,6 +51,10 @@ public class SeatSelectionCtrl implements Initializable
 	JSONArray bookings = obj.getJSONArray("Bookings");
 	JSONArray customerDetails = obj.getJSONArray("CustomerDetails");
 
+	/**
+	 * This method is initializing the seat selection page. It reads from the database for a given combination of movie-day-time and populates the grid with buttons
+	 * If a seat is booked then the color if the button is red and the user cannot interact with it. Otherwise, the user can click any button to select a seat
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{

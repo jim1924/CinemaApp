@@ -48,6 +48,11 @@ public class HistoryCtrl implements Initializable
 	JSONArray Screenings = obj.getJSONArray("Screenings");
 	JSONArray CustomerDetails = obj.getJSONArray("CustomerDetails");
 
+	
+	/**
+	 * This method is initializing the booking history page. It adds to the creaded accordion N number of titled panes depending on the total number of bookings
+	 * Also it creates a "delete button" only to future bookings
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{

@@ -61,7 +61,12 @@ public class MainCtrl implements Initializable
 		regscene.getWindow().centerOnScreen();
 	}
 
-
+	/**
+	 * This method is initializing the first page of the program. The concept of readDBandAssets() method is the following. Because the jar file can only be read and not written,
+	 * additional files outside of the jar file must be created. So the readBDandAssets() method is firstly trying to read the database and assets folder outside of the jar. If it succeeds then
+	 * it is fine. If there is a fileNotFoundException (e.g in first execution), then it reads the jar file and copies the database and assets folder outside of the .jar file. From then on the whole application
+	 * is reading and writing to the files outside of the jar.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
