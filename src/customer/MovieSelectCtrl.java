@@ -206,7 +206,7 @@ public class MovieSelectCtrl implements Initializable
 			application.VariableTracker.selectedTime = movieTimes.getSelectionModel().getSelectedItem();
 
 			// code to go to the booking screen
-			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
+			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatType.fxml"));
 			Scene availableTimesScene = new Scene(availableTimes);
 			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 			window.setScene(availableTimesScene);

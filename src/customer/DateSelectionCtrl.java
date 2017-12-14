@@ -182,7 +182,7 @@ public class DateSelectionCtrl implements Initializable
 		if (movieList.getSelectionModel().getSelectedItem()!=null && movieDates.getValue()!=null && movieTimes.getSelectionModel().getSelectedItem()!=null)
 		{
 			// code to go to the booking screen
-			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
+			Parent availableTimes = FXMLLoader.load(getClass().getResource("/customer/SeatType.fxml"));
 			Scene availableTimesScene = new Scene(availableTimes);
 			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 			window.setScene(availableTimesScene);

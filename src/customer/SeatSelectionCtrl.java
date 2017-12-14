@@ -167,26 +167,12 @@ public class SeatSelectionCtrl implements Initializable
 	 */
 	public void back(ActionEvent Event) throws IOException 
 	{
-		
-		if (application.VariableTracker.selectMovieFirst)
-		{
-			Parent main = FXMLLoader.load(getClass().getResource("/customer/MovieSelect.fxml"));
+			Parent main = FXMLLoader.load(getClass().getResource("/customer/SeatType.fxml"));
 			Scene loginscene = new Scene(main);
 			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 			window.setScene(loginscene);
 			window.show();
 			loginscene.getWindow().centerOnScreen();
-		}
-		else
-		{
-			Parent main = FXMLLoader.load(getClass().getResource("/customer/DateSelection.fxml"));
-			Scene loginscene = new Scene(main);
-			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-			window.setScene(loginscene);
-			window.show();
-			loginscene.getWindow().centerOnScreen();
-		}
-
 	}
 
 	

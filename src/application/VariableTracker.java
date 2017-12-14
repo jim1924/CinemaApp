@@ -30,6 +30,8 @@ public static String custFirstName="";
 public static String custLastName="";
 public static ArrayList<Integer> custBookings=new ArrayList<Integer>();
 public static boolean selectMovieFirst=true;
+public static Integer totalSeatsToBook;
+public static Integer totalCost;
 
 public static String selectedMovie;
 public static String selectedDate;

@@ -96,17 +96,6 @@ public class MainCtrl implements Initializable
 	 */
 	public void checkCredentials(ActionEvent Event) throws Exception
 	{
-		//i wrote this code in order to move from one screen to another without having to put every time the credentials
-		if(true) {
-			
-	    Parent HomePage = FXMLLoader.load(getClass().getResource("/customer/HomePage.fxml"));
-		Scene HomePageScene = new Scene(HomePage);
-		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
-		window.setScene(HomePageScene);
-		window.show();
-		HomePageScene.getWindow().centerOnScreen();
-		}
-		
 		
 		boolean emailIsValid = DataValidation.emailValidator(email, emailErrorLbl);
 		boolean passwordIsValid = DataValidation.passwordValidator(password, passwordErrorLbl);
