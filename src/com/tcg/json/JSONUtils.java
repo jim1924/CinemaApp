@@ -8,8 +8,19 @@ import java.io.InputStreamReader;
 
 import org.json.JSONObject;
 
+/**
+ * This class is used everytime a JSON file needs to be read.
+ * @author Dimitris Selalmazidis
+ *
+ */
 public class JSONUtils {
 
+	/**
+	 * This method is responsible for reading the JSON database.
+	 * @param jsonFile
+	 * @return
+	 * @throws IOException
+	 */
 	public static String getJSONStringFromFile(String jsonFile) throws IOException {
 		StringBuilder stringBuilder= new StringBuilder();
 		BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(jsonFile)));
@@ -26,6 +37,12 @@ public class JSONUtils {
 
 	}
 	
+	/**
+	 * This method is responsible for reading the JSON database.
+	 * @param jsonFile
+	 * @return
+	 * @throws IOException
+	 */
 	public static JSONObject getJSONObjectFromFile(String jsonFile) throws IOException {
 		return new JSONObject(getJSONStringFromFile(jsonFile));
 	}
@@ -40,6 +57,12 @@ public class JSONUtils {
 		return o != null;
 	}
 	
+	/**
+	 * This method is just an overoload of the previous method
+	 * @param jsonFile
+	 * @return
+	 * @throws IOException
+	 */
 	public static String getJSONStringFromFile(InputStream jsonFile) throws IOException {
 		StringBuilder stringBuilder= new StringBuilder();
 		BufferedReader in = new BufferedReader(new InputStreamReader(jsonFile));
@@ -57,6 +80,12 @@ public class JSONUtils {
 
 	}
 	
+	/**
+	 * This method is just an overoload of the previous method
+	 * @param jsonFile
+	 * @return
+	 * @throws IOException
+	 */
 	public static JSONObject getJSONObjectFromFile(InputStream jsonFile) throws IOException {
 		return new JSONObject(getJSONStringFromFile(jsonFile));
 	}
