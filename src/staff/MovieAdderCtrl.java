@@ -17,28 +17,55 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MovieAdderCtrl.
+ * @author Ahmed Afify
+ */
 public class MovieAdderCtrl {
 
 	
+	/** The title field. */
 	@FXML
 	TextField titleField;
+	
+	/** The description field. */
 	@FXML
 	TextArea descriptionField;
+	
+	/** The title error lbl. */
 	@FXML
 	Label titleErrorLbl;
+	
+	/** The img src lbl. */
 	@FXML
 	Label imgSrcLbl;
+	
+	/** The img error lbl. */
 	@FXML
 	Label imgErrorLbl;
+	
+	/** The description error lbl. */
 	@FXML
 	Label descriptionErrorLbl;
 	
 	
+	/** The fc. */
 	final FileChooser fc = new FileChooser();
+	
+	/** The img chosen. */
 	boolean imgChosen = false;
+	
+	/** The img src. */
 	String imgSrc;
 		
 	
+	/**
+	 * Go back.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void goBack(ActionEvent Event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("/staff/StaffMovieControl.fxml"));
 		Scene loginscene = new Scene(main);
@@ -47,6 +74,13 @@ public class MovieAdderCtrl {
 		window.show();
 		loginscene.getWindow().centerOnScreen();
 	}
+	
+	/**
+	 * Log out.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void logOut(ActionEvent Event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("/application/main.fxml"));
 		Scene loginscene = new Scene(main);
@@ -56,6 +90,12 @@ public class MovieAdderCtrl {
 		loginscene.getWindow().centerOnScreen();
 	}
 	
+	/**
+	 * Adds the movie.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void addMovie(ActionEvent Event) throws IOException
 	{
 		boolean titleIsValid = DataValidation.emptyValidator(titleField, titleErrorLbl);
@@ -83,11 +123,18 @@ public class MovieAdderCtrl {
 			
 		}
 	}
+	
+	/**
+	 * Upload file.
+	 *
+	 * @param Event the event
+	 */
 	public void uploadFile(ActionEvent Event)
 	{
-		Stage stage = new Stage();
+		Node node = (Node) Event.getSource();
 		configureFileChooser(fc);
-		  File file = fc.showOpenDialog(stage);
+		  File file = fc.showOpenDialog(node.getScene().getWindow());
+		  
           if (file != null) {
               System.out.println(file.getAbsolutePath());
               imgSrcLbl.setText(file.getAbsolutePath());
@@ -104,6 +151,12 @@ public class MovieAdderCtrl {
               imgChosen = true;
           }
 	}
+	
+	/**
+	 * Configure file chooser.
+	 *
+	 * @param fileChooser the file chooser
+	 */
 	private static void configureFileChooser(
 	       FileChooser fileChooser) {      
 	            fileChooser.setTitle("Select Image");

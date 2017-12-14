@@ -42,7 +42,7 @@
          </items>
       </ToolBar>
       <Button layoutX="206.0" layoutY="263.0" mnemonicParsing="false" onAction="#goToMovieControl" prefHeight="129.0" prefWidth="166.0" text="Movie Control" />
-      <Label fx:id="exportStatusLbl" layoutX="323.0" layoutY="448.0" prefHeight="54.0" prefWidth="225.0" textFill="#e40f0f">
+      <Label fx:id="exportStatusLbl" layoutX="266.0" layoutY="447.0" prefHeight="54.0" prefWidth="305.0" textFill="#e40f0f">
          <font>
             <Font size="29.0" />
          </font>

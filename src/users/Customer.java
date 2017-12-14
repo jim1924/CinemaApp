@@ -9,10 +9,38 @@ import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
 
-public class Customer extends User{
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Customer.
+ * @author Ahmed Afify
+ */
+public class Customer{
+	
+	/** The email. */
+	private String email="";
+	
+	/** The password. */
+	private String password="";
+	
+	/** The first name. */
+	private String firstName="";
+	
+	/** The last name. */
+	private String lastName="";
 
+	/**
+	 * Instantiates a new customer.
+	 *
+	 * @param firstName the first name
+	 * @param lastName the last name
+	 * @param email the email
+	 * @param password the password
+	 */
 	public Customer(String firstName,String lastName,String email, String password) {
-		super(firstName,lastName,email, password);
+		this.email=email;
+		this.password=password;
+		this.firstName=firstName;
+		this.lastName=lastName;
 		try {
 			registerCustomer();
 		} catch (IOException e) {
@@ -20,6 +48,12 @@ public class Customer extends User{
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Register customer.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void registerCustomer() throws IOException
 	{
 		
