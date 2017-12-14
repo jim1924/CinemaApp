@@ -28,7 +28,6 @@
       <RowConstraints maxHeight="192.1986541748047" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" onAction="#gotostafflogin" prefHeight="45.0" prefWidth="92.0" text="Staff" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
       <Button mnemonicParsing="false" onAction="#checkCredentials" prefHeight="36.0" prefWidth="80.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
       <TextField fx:id="email" onAction="#checkCredentials" prefHeight="27.0" prefWidth="190.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <PasswordField fx:id="password" onAction="#checkCredentials" prefHeight="27.0" prefWidth="190.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
