@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
 
+import application.VariableTracker;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -34,6 +35,7 @@ import javafx.stage.Stage;
  */
 public class SeatSelectionCtrl implements Initializable
 {
+	int chosenSeats=0;
 	Boolean[][] bookedSeats = new Boolean[10][10];
 	static Boolean[][] seatsToBook = new Boolean[10][10];
 	 String selectedMovie ;
@@ -97,7 +99,7 @@ public class SeatSelectionCtrl implements Initializable
 				Button button = new Button();
 				button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 				button.setAlignment(Pos.CENTER);
-				if (bookedSeats[i][j]!=null && bookedSeats[i][j])
+				if (bookedSeats[i][j]!=null && bookedSeats[i][j] )
 				{
 					button.setStyle("-fx-background-color: red;");
 				}
@@ -119,12 +121,14 @@ public class SeatSelectionCtrl implements Initializable
 					if (bookedSeats[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)]!=null && !bookedSeats[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)])
 					{
 						// if the seat is empty, turn it into green
-						if (seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] == null || seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] == false)
+						if (seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] == null || seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] == false && chosenSeats<VariableTracker.totalSeatsToBook)
 						{
+							chosenSeats=chosenSeats+1;
 							getNodeFromGridPane(grid, GridPane.getColumnIndex(element), GridPane.getRowIndex(element)).setStyle("-fx-background-color: green;");
 							seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] = true;
-						} else
+						} else if(seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] == true)
 						{
+							chosenSeats=chosenSeats-1;
 							seatsToBook[GridPane.getRowIndex(element)][GridPane.getColumnIndex(element)] = false;
 							getNodeFromGridPane(grid, GridPane.getColumnIndex(element), GridPane.getRowIndex(element)).setStyle("");
 						}
@@ -272,6 +276,7 @@ public class SeatSelectionCtrl implements Initializable
 		newBooking.put("customerEmail", application.VariableTracker.custEmail);
 		newBooking.put("screeningID", screeningID);
 		newBooking.put("bookingID", bookingID);
+		newBooking.put("totalCost", application.VariableTracker.totalCost);
 		ArrayList<String> seats=new ArrayList<String>();
 		for (int i=0;i<10;i++)
 		{

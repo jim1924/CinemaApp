@@ -230,8 +230,13 @@ public class SeatTypeCtrl implements Initializable
 		{
 			VariableTracker.totalCost=Integer.parseInt(total.getText());
 			VariableTracker.totalSeatsToBook=adultNumber.getSelectionModel().getSelectedItem()+childNumber.getSelectionModel().getSelectedItem()+studentNumber.getSelectionModel().getSelectedItem();
-			System.out.println(VariableTracker.totalCost);
-			System.out.println(VariableTracker.totalSeatsToBook);
+			// code to go to the seat selection
+			Parent main = FXMLLoader.load(getClass().getResource("/customer/SeatSelection.fxml"));
+			Scene loginscene = new Scene(main);
+			Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
+			window.setScene(loginscene);
+			window.show();
+			loginscene.getWindow().centerOnScreen();
 		}
 	}
 

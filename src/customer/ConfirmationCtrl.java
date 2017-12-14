@@ -34,6 +34,8 @@ public class ConfirmationCtrl implements Initializable
 	Label time = new Label();
 	@FXML
 	Label bookedSeats = new Label();
+	@FXML
+	Label totalCost = new Label();
 
 
 	/**
@@ -46,6 +48,7 @@ public class ConfirmationCtrl implements Initializable
 		movie.setText(application.VariableTracker.selectedMovie);
 		date.setText(application.VariableTracker.selectedDate);
 		time.setText(application.VariableTracker.selectedTime);
+		totalCost.setText(Integer.toString(application.VariableTracker.totalCost)+"£");
 		ArrayList<String> bookedSeats = new ArrayList<String>();
 		int counter = 0;
 		for (int i = 0; i < 10; i++)
