@@ -4,7 +4,7 @@
 			"date": "15/12/2017",
 			"screeningID": 1,
 			"bookedSeats":0,
-			"freeSeats":100,			
+			"freeSeats":10,			
 			"time": "14:00",
 			"title": "The Shawshank Redemption (1994)",
 			"seats": [

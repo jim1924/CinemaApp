@@ -92,12 +92,13 @@ public class HistoryCtrl implements Initializable
 						grid.add(new Label("Booked Seats:"), 0, 3);
 						String bookedSeats=arrayToStringConverter(Bookings.getJSONObject(i).getJSONArray("bookedSeats"));
 						grid.add(new Label(bookedSeats), 1, 3);
-						
+						grid.add(new Label("Total Cost:"), 0, 4);
+						grid.add(new Label(Integer.toString(Bookings.getJSONObject(i).getInt("totalCost"))+"£"), 1, 4);
 						
 						if(checkIfMovietimeHasPassed(screeningID))
 						{
 							Button deleteBooking=new Button("Delete Booking");
-							grid.add((deleteBooking), 0, 8,2,1);
+							grid.add((deleteBooking), 0, 10,2,1);
 							deleteBooking.setOnAction(new EventHandler<ActionEvent>() {
 							    @Override public void handle(ActionEvent e) {
 							    	try{
