@@ -131,9 +131,10 @@ public class MovieAdderCtrl {
 	 */
 	public void uploadFile(ActionEvent Event)
 	{
-		Stage stage = new Stage();
+		Node node = (Node) Event.getSource();
 		configureFileChooser(fc);
-		  File file = fc.showOpenDialog(stage);
+		  File file = fc.showOpenDialog(node.getScene().getWindow());
+		  
           if (file != null) {
               System.out.println(file.getAbsolutePath());
               imgSrcLbl.setText(file.getAbsolutePath());
