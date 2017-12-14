@@ -32,7 +32,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="265.0">
+            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="292.0">
                <children>
                   <Label alignment="CENTER" prefHeight="54.0" prefWidth="255.0" text="Screening Overview">
                      <font>
@@ -43,7 +43,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="252.0">
                <children>
-                  <Button fx:id="deleteScreening" alignment="CENTER" mnemonicParsing="false" onAction="#deleteBooking" prefHeight="45.0" prefWidth="165.0" text="Delete Booking" visible="false">
+                  <Button fx:id="deleteScreening" alignment="CENTER" mnemonicParsing="false" onAction="#deleteBooking" prefHeight="45.0" prefWidth="199.0" text="Delete Screening" visible="false">
                      <font>
                         <Font size="20.0" />
                      </font>

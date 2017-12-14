@@ -30,7 +30,8 @@ public class StaffHomePageCtrl   {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void goBack(ActionEvent Event) throws IOException {
-		Parent main = FXMLLoader.load(getClass().getResource("/application/main.fxml"));
+		// code to go to the first screen
+		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 		Scene loginscene = new Scene(main);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);
@@ -45,7 +46,8 @@ public class StaffHomePageCtrl   {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void logOut(ActionEvent Event) throws IOException {
-		Parent main = FXMLLoader.load(getClass().getResource("/application/main.fxml"));
+		// code to go to the first screen
+		Parent main = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 		Scene loginscene = new Scene(main);
 		Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
 		window.setScene(loginscene);

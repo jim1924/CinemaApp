@@ -16,9 +16,9 @@
       <DatePicker fx:id="datePicker" layoutX="557.0" layoutY="281.0" />
       <ComboBox fx:id="timesBox" layoutX="575.0" layoutY="345.0" prefWidth="150.0" />
       <ImageView fx:id="poster" fitHeight="561.0" fitWidth="395.0" layoutX="22.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="titleLbl" layoutX="527.0" layoutY="224.0" prefHeight="17.0" prefWidth="247.0" text="Title">
+      <Label fx:id="titleLbl" layoutX="471.0" layoutY="225.0" prefHeight="35.0" prefWidth="366.0" text="Title">
          <font>
-            <Font size="24.0" />
+            <Font size="14.0" />
          </font></Label>
       <Button layoutX="26.0" layoutY="31.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
 

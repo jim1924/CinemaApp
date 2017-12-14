@@ -69,22 +69,22 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="movie" layoutX="218.0" layoutY="208.0" prefHeight="45.0" prefWidth="578.0">
+      <Label fx:id="movie" layoutX="230.0" layoutY="209.0" prefHeight="45.0" prefWidth="578.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="date" layoutX="217.0" layoutY="278.0" prefHeight="45.0" prefWidth="173.0">
+      <Label fx:id="date" layoutX="230.0" layoutY="279.0" prefHeight="45.0" prefWidth="173.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="time" layoutX="218.0" layoutY="347.0" prefHeight="45.0" prefWidth="173.0">
+      <Label fx:id="time" layoutX="230.0" layoutY="348.0" prefHeight="45.0" prefWidth="173.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="bookedSeats" alignment="TOP_LEFT" layoutX="218.0" layoutY="433.0" prefHeight="64.0" prefWidth="540.0" wrapText="true">
+      <Label fx:id="bookedSeats" alignment="TOP_LEFT" layoutX="230.0" layoutY="433.0" prefHeight="64.0" prefWidth="540.0" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>
@@ -94,7 +94,7 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="totalCost" layoutX="217.0" layoutY="517.0" prefHeight="45.0" prefWidth="173.0">
+      <Label fx:id="totalCost" layoutX="230.0" layoutY="517.0" prefHeight="45.0" prefWidth="173.0">
          <font>
             <Font size="24.0" />
          </font>

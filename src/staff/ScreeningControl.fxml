@@ -14,7 +14,10 @@
    <children>
    <ListView fx:id="screeningList" layoutX="473.0" layoutY="158.0" prefHeight="302.0" prefWidth="239.0" />
       <ImageView fx:id="poster" fitHeight="561.0" fitWidth="395.0" layoutX="22.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="titleLbl" layoutX="473.0" layoutY="125.0" prefHeight="21.0" prefWidth="239.0" textAlignment="CENTER" />
+      <Label fx:id="titleLbl" layoutX="473.0" layoutY="125.0" prefHeight="21.0" prefWidth="349.0" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
       <Button layoutX="532.0" layoutY="529.0" mnemonicParsing="false" onAction="#goToScreeningAdder" prefHeight="31.0" prefWidth="121.0" text="Add Screening" />
       <Button layoutX="532.0" layoutY="493.0" mnemonicParsing="false" onAction="#goToScreeningView" prefHeight="31.0" prefWidth="121.0" text="View Screening" />
       <ToolBar prefHeight="77.0" prefWidth="836.0">
