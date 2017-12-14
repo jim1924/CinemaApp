@@ -30,22 +30,43 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ScreeningAdderCtrl.
+ * @author Ahmed Afify
+ */
 public class ScreeningAdderCtrl implements Initializable {
 
 	
+	/** The title. */
 	String title = VariableTracker.movieTitle;
+	
+	/** The image. */
 	Image image = VariableTracker.movieImage;
 	
+	/** The date picker. */
 	@FXML
 	DatePicker datePicker;
+	
+	/** The poster. */
 	@FXML
 	ImageView poster;
+	
+	/** The title lbl. */
 	@FXML
 	Label titleLbl;
+	
+	/** The clash lbl. */
 	@FXML
 	Label clashLbl;
+	
+	/** The times box. */
 	@FXML
 	ComboBox<String> timesBox;
+	
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -69,6 +90,13 @@ public class ScreeningAdderCtrl implements Initializable {
 		timesBox.setItems(times);
 		
 	}
+	
+	/**
+	 * Go back.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void goBack(ActionEvent Event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("/staff/ScreeningControl.fxml"));
 		Scene loginscene = new Scene(main);
@@ -77,6 +105,13 @@ public class ScreeningAdderCtrl implements Initializable {
 		window.show();
 		loginscene.getWindow().centerOnScreen();
 	}
+	
+	/**
+	 * Log out.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void logOut(ActionEvent Event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("/application/main.fxml"));
 		Scene loginscene = new Scene(main);
@@ -85,6 +120,13 @@ public class ScreeningAdderCtrl implements Initializable {
 		window.show();
 		loginscene.getWindow().centerOnScreen();
 	}
+	
+	/**
+	 * Adds the screening.
+	 *
+	 * @param Event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void addScreening(ActionEvent Event) throws IOException
 	{
 		if (datePicker.getValue() != null && timesBox.getSelectionModel().getSelectedItem() != null)

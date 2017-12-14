@@ -12,12 +12,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.StageStyle;
 
+
 /**
+ * This is where the java FX project starts.
  * 
- * This is where the java FX project starts
- *
  */
 public class Main extends Application {
+	
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -33,6 +35,11 @@ public class Main extends Application {
 		}
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		
 		launch(args);

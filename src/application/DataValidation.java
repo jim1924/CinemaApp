@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
  * has entered a valid e-mail or their password is between 4-6 characters and the confirmation password matches with the first entered password 
  * It also checks that the user has entered a name,description and image when adding a new movie
  *
+ *@author Ahmed Afify
  */
 public class DataValidation {
 
@@ -40,15 +41,15 @@ public class DataValidation {
 	
 	/**
 	 * This method checks that the user has indeed filled the specific field
-	 * @param field
+	 * @param descriptionField
 	 * @param label
 	 * @return
 	 */
-	public static boolean emptyValidator(TextField field, Label label) 
+	public static boolean emptyValidator(TextField descriptionField, Label label) 
 	{
 		boolean valid = true;
 		String labelString = null;
-		if (field.getText().isEmpty())
+		if (descriptionField.getText().isEmpty())
 		{
 			valid=false;
 			labelString = "Field can not be empty.";
@@ -60,7 +61,7 @@ public class DataValidation {
 	}
 	
 	/**
-	 * This method checks that the user has indeed filled the specific field
+	 * This method checks that the user has entered a valid name
 	 * @param field
 	 * @param label
 	 * @return
@@ -112,7 +113,7 @@ public class DataValidation {
 	}
 	
 	/**
-	 * This method checks that the user has inputed a valid passoword
+	 * This method checks that the user has inputed a valid password
 	 * @param field
 	 * @param label
 	 * @return

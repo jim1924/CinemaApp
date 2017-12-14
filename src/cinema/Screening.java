@@ -9,13 +9,35 @@ import org.json.JSONObject;
 
 import com.tcg.json.JSONUtils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Screening.
+ * @author Ahmed Afify
+ */
 public class Screening {
+
+/** The date. */
 private String date;
+
+/** The time. */
 private String time;
+
+/** The title. */
 private String title;
+
+/** The index. */
 public int index;
+
+/** The theater. */
 private Seat[][] theater = new Seat[10][10];
 
+/**
+ * Instantiates a new screening.
+ *
+ * @param date the date
+ * @param time the time
+ * @param title the title
+ */
 public Screening(String date, String time, String title)
 {
 	this.date=date;
@@ -38,11 +60,25 @@ public Screening(String date, String time, String title)
 	}
 	
 }
+
+/**
+ * Gets the seat.
+ *
+ * @param x the x
+ * @param y the y
+ * @return the seat
+ */
 public Seat getSeat(int x,int y)
 {
 	return theater[x][y];
 	
 }
+
+/**
+ * Adds the screening.
+ *
+ * @throws IOException Signals that an I/O exception has occurred.
+ */
 public void addScreening() throws IOException
 {
 	

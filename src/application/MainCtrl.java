@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 /**
  * This is the controller of the login page. In here the customer or the employee can enter their credentials and login (it checks credentials on the fly)
  * Also new customers can register
- * 
+ *  @author Ahmed Afify
  *
  */
 public class MainCtrl implements Initializable
